@@ -1,0 +1,101 @@
+{
+    "@odata.context":  "https://graph.microsoft.com/beta/$metadata#deviceManagement/deviceConfigurations(assignments())/$entity",
+    "@odata.type":  "#microsoft.graph.macOSEndpointProtectionConfiguration",
+    "@odata.id":  "deviceManagement/deviceConfigurations(\u00270e9eb7c4-172d-412f-86b1-35bc9c58d2a8\u0027)",
+    "@odata.editLink":  "deviceManagement/deviceConfigurations(\u00270e9eb7c4-172d-412f-86b1-35bc9c58d2a8\u0027)/microsoft.graph.macOSEndpointProtectionConfiguration",
+    "id":  "0e9eb7c4-172d-412f-86b1-35bc9c58d2a8",
+    "lastModifiedDateTime@odata.type":  "#DateTimeOffset",
+    "lastModifiedDateTime":  "2025-06-02T06:00:02.2240673Z",
+    "roleScopeTagIds@odata.type":  "#Collection(String)",
+    "roleScopeTagIds":  [
+                            "0"
+                        ],
+    "supportsScopeTags":  true,
+    "deviceManagementApplicabilityRuleOsEdition":  null,
+    "deviceManagementApplicabilityRuleOsVersion":  null,
+    "deviceManagementApplicabilityRuleDeviceMode":  null,
+    "createdDateTime@odata.type":  "#DateTimeOffset",
+    "createdDateTime":  "2025-06-02T06:00:02.2240673Z",
+    "description":  "Firewall, Gatekeeper",
+    "displayName":  "MacOS - Endpoint protection",
+    "version":  1,
+    "gatekeeperAllowedAppSource@odata.type":  "#microsoft.graph.macOSGatekeeperAppSources",
+    "gatekeeperAllowedAppSource":  "macAppStoreAndIdentifiedDevelopers",
+    "gatekeeperBlockOverride":  true,
+    "firewallEnabled":  true,
+    "firewallBlockAllIncoming":  false,
+    "firewallEnableStealthMode":  true,
+    "fileVaultEnabled":  false,
+    "fileVaultSelectedRecoveryKeyTypes@odata.type":  "#microsoft.graph.macOSFileVaultRecoveryKeyTypes",
+    "fileVaultSelectedRecoveryKeyTypes":  "notConfigured",
+    "fileVaultInstitutionalRecoveryKeyCertificate":  null,
+    "fileVaultInstitutionalRecoveryKeyCertificateFileName":  null,
+    "fileVaultPersonalRecoveryKeyHelpMessage":  null,
+    "fileVaultAllowDeferralUntilSignOut":  false,
+    "fileVaultNumberOfTimesUserCanIgnore":  null,
+    "fileVaultDisablePromptAtSignOut":  false,
+    "fileVaultPersonalRecoveryKeyRotationInMonths":  null,
+    "fileVaultHidePersonalRecoveryKey":  false,
+    "advancedThreatProtectionRealTime@odata.type":  "#microsoft.graph.enablement",
+    "advancedThreatProtectionRealTime":  "notConfigured",
+    "advancedThreatProtectionCloudDelivered@odata.type":  "#microsoft.graph.enablement",
+    "advancedThreatProtectionCloudDelivered":  "notConfigured",
+    "advancedThreatProtectionAutomaticSampleSubmission@odata.type":  "#microsoft.graph.enablement",
+    "advancedThreatProtectionAutomaticSampleSubmission":  "notConfigured",
+    "advancedThreatProtectionDiagnosticDataCollection@odata.type":  "#microsoft.graph.enablement",
+    "advancedThreatProtectionDiagnosticDataCollection":  "notConfigured",
+    "advancedThreatProtectionExcludedFolders@odata.type":  "#Collection(String)",
+    "advancedThreatProtectionExcludedFolders":  [
+
+                                                ],
+    "advancedThreatProtectionExcludedFiles@odata.type":  "#Collection(String)",
+    "advancedThreatProtectionExcludedFiles":  [
+
+                                              ],
+    "advancedThreatProtectionExcludedExtensions@odata.type":  "#Collection(String)",
+    "advancedThreatProtectionExcludedExtensions":  [
+
+                                                   ],
+    "advancedThreatProtectionExcludedProcesses@odata.type":  "#Collection(String)",
+    "advancedThreatProtectionExcludedProcesses":  [
+
+                                                  ],
+    "firewallApplications@odata.type":  "#Collection(microsoft.graph.macOSFirewallApplication)",
+    "firewallApplications":  [
+
+                             ],
+    "assignments@odata.context":  "https://graph.microsoft.com/beta/$metadata#deviceManagement/deviceConfigurations(\u00270e9eb7c4-172d-412f-86b1-35bc9c58d2a8\u0027)/microsoft.graph.macOSEndpointProtectionConfiguration/assignments",
+    "assignments@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u00270e9eb7c4-172d-412f-86b1-35bc9c58d2a8\u0027)/microsoft.graph.macOSEndpointProtectionConfiguration/assignments/$ref",
+    "assignments@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u00270e9eb7c4-172d-412f-86b1-35bc9c58d2a8\u0027)/microsoft.graph.macOSEndpointProtectionConfiguration/assignments",
+    "assignments":  [
+
+                    ],
+    "deviceSettingStateSummaries@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u00270e9eb7c4-172d-412f-86b1-35bc9c58d2a8\u0027)/microsoft.graph.macOSEndpointProtectionConfiguration/deviceSettingStateSummaries/$ref",
+    "deviceSettingStateSummaries@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u00270e9eb7c4-172d-412f-86b1-35bc9c58d2a8\u0027)/microsoft.graph.macOSEndpointProtectionConfiguration/deviceSettingStateSummaries",
+    "deviceStatuses@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u00270e9eb7c4-172d-412f-86b1-35bc9c58d2a8\u0027)/microsoft.graph.macOSEndpointProtectionConfiguration/deviceStatuses/$ref",
+    "deviceStatuses@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u00270e9eb7c4-172d-412f-86b1-35bc9c58d2a8\u0027)/microsoft.graph.macOSEndpointProtectionConfiguration/deviceStatuses",
+    "deviceStatusOverview@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u00270e9eb7c4-172d-412f-86b1-35bc9c58d2a8\u0027)/microsoft.graph.macOSEndpointProtectionConfiguration/deviceStatusOverview/$ref",
+    "deviceStatusOverview@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u00270e9eb7c4-172d-412f-86b1-35bc9c58d2a8\u0027)/microsoft.graph.macOSEndpointProtectionConfiguration/deviceStatusOverview",
+    "groupAssignments@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u00270e9eb7c4-172d-412f-86b1-35bc9c58d2a8\u0027)/microsoft.graph.macOSEndpointProtectionConfiguration/groupAssignments/$ref",
+    "groupAssignments@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u00270e9eb7c4-172d-412f-86b1-35bc9c58d2a8\u0027)/microsoft.graph.macOSEndpointProtectionConfiguration/groupAssignments",
+    "userStatuses@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u00270e9eb7c4-172d-412f-86b1-35bc9c58d2a8\u0027)/microsoft.graph.macOSEndpointProtectionConfiguration/userStatuses/$ref",
+    "userStatuses@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u00270e9eb7c4-172d-412f-86b1-35bc9c58d2a8\u0027)/microsoft.graph.macOSEndpointProtectionConfiguration/userStatuses",
+    "userStatusOverview@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u00270e9eb7c4-172d-412f-86b1-35bc9c58d2a8\u0027)/microsoft.graph.macOSEndpointProtectionConfiguration/userStatusOverview/$ref",
+    "userStatusOverview@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u00270e9eb7c4-172d-412f-86b1-35bc9c58d2a8\u0027)/microsoft.graph.macOSEndpointProtectionConfiguration/userStatusOverview",
+    "#microsoft.graph.assign":  {
+                                    "title":  "microsoft.graph.assign",
+                                    "target":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u00270e9eb7c4-172d-412f-86b1-35bc9c58d2a8\u0027)/microsoft.graph.deviceConfiguration/microsoft.graph.assign"
+                                },
+    "#microsoft.graph.assignedAccessMultiModeProfiles":  {
+                                                             "title":  "microsoft.graph.assignedAccessMultiModeProfiles",
+                                                             "target":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u00270e9eb7c4-172d-412f-86b1-35bc9c58d2a8\u0027)/microsoft.graph.deviceConfiguration/microsoft.graph.assignedAccessMultiModeProfiles"
+                                                         },
+    "#microsoft.graph.windowsPrivacyAccessControls":  {
+                                                          "title":  "microsoft.graph.windowsPrivacyAccessControls",
+                                                          "target":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u00270e9eb7c4-172d-412f-86b1-35bc9c58d2a8\u0027)/microsoft.graph.deviceConfiguration/microsoft.graph.windowsPrivacyAccessControls"
+                                                      },
+    "#microsoft.graph.getOmaSettingPlainTextValue":  {
+                                                         "title":  "microsoft.graph.getOmaSettingPlainTextValue",
+                                                         "target":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u00270e9eb7c4-172d-412f-86b1-35bc9c58d2a8\u0027)/microsoft.graph.deviceConfiguration/microsoft.graph.getOmaSettingPlainTextValue"
+                                                     }
+}

@@ -239,6 +239,9 @@ jobs:
           
           # Execute IntuneManagement export
           .\IntuneManagement\Start-IntuneManagement.ps1 @params
+
+          # Convert JSON files to UTF-8 without BOM
+          .\Convert-JsonToUtf8.ps1
         shell: powershell
 
       # 6. Commit and push the backup to the repo
