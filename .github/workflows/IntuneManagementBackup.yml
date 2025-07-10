@@ -51,9 +51,9 @@ jobs:
               exit 1
           }
               
-          $Env:AAD_TENANT_ID = ${{ secrets.AZURE_TENANT_ID }}
-          $Env:AAD_APP_ID = ${{ secrets.AZURE_CLIENT_ID }}
-          $Env:AAD_APP_SECRET = ${{ secrets.AZURE_CLIENT_SECRET }}
+          $Env:AAD_TENANT_ID = "${{ secrets.AZURE_TENANT_ID }}"
+          $Env:AAD_APP_ID = "${{ secrets.AZURE_CLIENT_ID }}"
+          $Env:AAD_APP_SECRET = "${{ secrets.AZURE_CLIENT_SECRET }}"
 
           Write-Host "TenantId: $env:AAD_TENANT_ID"
           Write-Host "AppId: $env:AAD_APP_ID"
