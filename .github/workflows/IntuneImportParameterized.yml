@@ -1,0 +1,347 @@
+name: Intune Import - Parameterized
+
+permissions:
+  contents: write
+
+on:
+  workflow_dispatch:
+    inputs:
+      import_path:
+        description: 'Import path for backup files'
+        required: false
+        default: '.\intune-backup'
+        type: string
+      name_filter:
+        description: 'Name filter for imported objects'
+        required: false
+        default: ' - Restore'
+        type: string
+      add_object_type:
+        description: 'Add object type to imported files'
+        required: false
+        default: true
+        type: boolean
+      import_scopes:
+        description: 'Import scopes'
+        required: false
+        default: false
+        type: boolean
+      import_assignments:
+        description: 'Import assignments'
+        required: false
+        default: true
+        type: boolean
+      replace_dependency_ids:
+        description: 'Replace dependency IDs'
+        required: false
+        default: true
+        type: boolean
+      import_type:
+        description: 'Import type behavior'
+        required: false
+        default: 'skipIfExist'
+        type: choice
+        options:
+          - 'skipIfExist'
+          - 'overwrite'
+          - 'append'
+      conditional_access_state:
+        description: 'Conditional Access policy state after import'
+        required: false
+        default: 'disabled'
+        type: choice
+        options:
+          - 'disabled'
+          - 'enabled'
+          - 'enabledForReportingButNotEnforced'
+      object_types:
+        description: 'Comma-separated list of object types to import (leave empty for all)'
+        required: false
+        default: ''
+        type: string
+      intune_management_version:
+        description: 'IntuneManagement tool version/tag'
+        required: false
+        default: '3.9.8'
+        type: string
+      dry_run:
+        description: 'Perform a dry run (validate configuration without importing)'
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  intune-import:
+    runs-on: windows-latest
+    steps:
+      # 1. Check out the current repo
+      - uses: actions/checkout@v4
+
+      # 2. Check out the IntuneManagement tool
+      - uses: actions/checkout@v4
+        with:
+          repository: Micke-K/IntuneManagement
+          path: ./IntuneManagement
+          ref: ${{ inputs.intune_management_version }}
+
+      # 3. Validate import path exists
+      - name: Validate Import Path
+        run: |
+          $importPath = "${{ inputs.import_path }}"
+          if (-not (Test-Path $importPath -PathType Container)) {
+            Write-Error "Import path does not exist: $importPath"
+            Write-Host "Available directories:"
+            Get-ChildItem -Directory | ForEach-Object { Write-Host "  - $($_.Name)" }
+            exit 1
+          }
+          
+          Write-Host "Import path validated: $importPath"
+          
+          # Show what's in the import directory
+          Write-Host "Contents of import directory:"
+          Get-ChildItem $importPath -Recurse -Directory | ForEach-Object { 
+            Write-Host "  Directory: $($_.FullName)"
+            $fileCount = (Get-ChildItem $_.FullName -File).Count
+            Write-Host "    Files: $fileCount"
+          }
+        shell: powershell
+
+      # 4. Generate dynamic BulkImport.json configuration
+      - name: Generate BulkImport Configuration
+        run: |
+          # Define all available object types
+          $allObjectTypes = @(
+            "AdministrativeTemplates",
+            "ADMXFiles",
+            "AndroidOEMConfig",
+            "AppConfigurationManagedApp",
+            "AppConfigurationManagedDevice",
+            "AppProtection",
+            "AppleEnrollmentTypes",
+            "Applications",
+            "AuthenticationContext",
+            "AuthenticationStrengths",
+            "AutoPilot",
+            "AzureBranding",
+            "CoManagementSettings",
+            "CompliancePolicies",
+            "CompliancePoliciesV2",
+            "ComplianceScripts",
+            "ConditionalAccess",
+            "MacCustomAttributes",
+            "DeviceConfiguration",
+            "DriverUpdateProfiles",
+            "EndpointSecurity",
+            "EnrollmentRestrictions",
+            "EnrollmentStatusPage",
+            "FeatureUpdates",
+            "AssignmentFilters",
+            "DeviceHealthScripts",
+            "IntuneBranding",
+            "NamedLocations",
+            "Notifications",
+            "PolicySets",
+            "QualityUpdates",
+            "ReusableSettings",
+            "RoleDefinitions",
+            "ScopeTags",
+            "PowerShellScripts",
+            "MacScripts",
+            "SettingsCatalog",
+            "TermsAndConditions",
+            "TermsOfUse",
+            "UpdatePolicies",
+            "W365ProvisioningPolicies",
+            "W365UserSettings"
+          )
+          
+          # Parse selected object types
+          $selectedTypes = if ("${{ inputs.object_types }}" -eq "") {
+            $allObjectTypes
+          } else {
+            "${{ inputs.object_types }}" -split "," | ForEach-Object { $_.Trim() }
+          }
+          
+          # Create configuration object
+          $config = @{
+            BulkImport = @(
+              @{
+                Name = "txtImportPath"
+                Value = "${{ inputs.import_path }}"
+              },
+              @{
+                Name = "txtImportNameFilter"
+                Value = "${{ inputs.name_filter }}"
+              },
+              @{
+                Name = "chkAddObjectType"
+                Value = [bool]::Parse("${{ inputs.add_object_type }}")
+              },
+              @{
+                Name = "chkImportScopes"
+                Value = [bool]::Parse("${{ inputs.import_scopes }}")
+              },
+              @{
+                Name = "chkImportAssignments"
+                Value = [bool]::Parse("${{ inputs.import_assignments }}")
+              },
+              @{
+                Name = "chkReplaceDependencyIDs"
+                Value = [bool]::Parse("${{ inputs.replace_dependency_ids }}")
+              },
+              @{
+                Name = "cbImportType"
+                Value = "${{ inputs.import_type }}"
+              },
+              @{
+                Name = "cbImportCAState"
+                Value = "${{ inputs.conditional_access_state }}"
+              },
+              @{
+                Name = "ObjectTypes"
+                Type = "Custom"
+                ObjectTypes = $selectedTypes
+              }
+            )
+          }
+          
+          # Convert to JSON and save with UTF-8 encoding
+          $jsonContent = $config | ConvertTo-Json -Depth 10 -Compress:$false
+          [System.IO.File]::WriteAllText("$PWD\BulkImport_Generated.json", $jsonContent, [System.Text.Encoding]::UTF8)
+          
+          Write-Host "Generated BulkImport configuration:"
+          Write-Host "Import Path: ${{ inputs.import_path }}"
+          Write-Host "Name Filter: ${{ inputs.name_filter }}"
+          Write-Host "Add Object Type: ${{ inputs.add_object_type }}"
+          Write-Host "Import Scopes: ${{ inputs.import_scopes }}"
+          Write-Host "Import Assignments: ${{ inputs.import_assignments }}"
+          Write-Host "Replace Dependency IDs: ${{ inputs.replace_dependency_ids }}"
+          Write-Host "Import Type: ${{ inputs.import_type }}"
+          Write-Host "Conditional Access State: ${{ inputs.conditional_access_state }}"
+          Write-Host "Dry Run: ${{ inputs.dry_run }}"
+          Write-Host "Selected Object Types: $($selectedTypes -join ', ')"
+          
+          # Display the generated configuration
+          Write-Host "`nGenerated BulkImport.json content:"
+          Write-Host $jsonContent
+        shell: powershell
+
+      # 5. Dry run validation (if enabled)
+      - name: Dry Run Validation
+        if: ${{ inputs.dry_run == true }}
+        run: |
+          Write-Host "=== DRY RUN MODE ===" -ForegroundColor Yellow
+          Write-Host "This is a dry run. No actual import will be performed." -ForegroundColor Yellow
+          Write-Host "Configuration validation and preview only." -ForegroundColor Yellow
+          Write-Host ""
+          
+          # Check for generated configuration file
+          $silentBatchFile = Get-ChildItem -filter "BulkImport_Generated.json" -File -ErrorAction SilentlyContinue
+          if (-not $silentBatchFile) {
+            Write-Error "BulkImport_Generated.json not found."
+            exit 1
+          }
+          
+          # Validate JSON content
+          try {
+            $jsonContent = Get-Content $($silentBatchFile.FullName) | Out-String | ConvertFrom-Json
+            Write-Host "✓ Configuration file validation successful" -ForegroundColor Green
+          } catch {
+            Write-Error "✗ Configuration file contains invalid JSON: $_"
+            exit 1
+          }
+          
+          # Preview what would be imported
+          $importPath = "${{ inputs.import_path }}"
+          if (Test-Path $importPath) {
+            Write-Host "Preview of files that would be processed:" -ForegroundColor Cyan
+            Get-ChildItem $importPath -Recurse -File -Include "*.json" | ForEach-Object {
+              Write-Host "  - $($_.FullName)" -ForegroundColor Gray
+            }
+          }
+          
+          Write-Host ""
+          Write-Host "=== DRY RUN COMPLETE ===" -ForegroundColor Yellow
+          Write-Host "Configuration is valid. Set dry_run to false to perform actual import." -ForegroundColor Yellow
+        shell: powershell
+
+      # 6. Run IntuneManagement import (skip if dry run)
+      - name: Import Intune Configuration
+        if: ${{ inputs.dry_run == false }}
+        run: |
+          Write-Host "Working directory: $(Get-Location)"
+          
+          # Check for generated configuration file
+          $silentBatchFile = Get-ChildItem -filter "BulkImport_Generated.json" -File -ErrorAction SilentlyContinue
+          if (-not $silentBatchFile) {
+            Write-Host "BulkImport_Generated.json not found. Falling back to BulkImport.json"
+            $silentBatchFile = Get-ChildItem -filter "BulkImport.json" -Recurse -File -ErrorAction SilentlyContinue
+            if (-not $silentBatchFile) {
+              Write-Error "Neither BulkImport_Generated.json nor BulkImport.json found."
+              exit 1
+            }
+          }
+          
+          # Display configuration content for debugging
+          Write-Host "Configuration file content:"
+          Get-Content $silentBatchFile.FullName | Write-Host
+          
+          # Validate JSON content
+          try {
+            $jsonContent = Get-Content $($silentBatchFile.FullName) | Out-String | ConvertFrom-Json
+            Write-Host "Configuration file validation successful"
+          } catch {
+            Write-Error "Configuration file contains invalid JSON: $_"
+            exit 1
+          }
+          
+          # Set environment variables
+          $Env:AAD_TENANT_ID = "${{ secrets.AZURE_TENANT_ID }}"
+          $Env:AAD_APP_ID = "${{ secrets.AZURE_CLIENT_ID }}"
+          $Env:AAD_APP_SECRET = "${{ secrets.AZURE_CLIENT_SECRET }}"
+          
+          Write-Host "TenantId: $env:AAD_TENANT_ID"
+          Write-Host "AppId: $env:AAD_APP_ID"
+          Write-Host "AppSecret Length: $($env:AAD_APP_SECRET.Length)"
+          
+          # Prepare parameters for IntuneManagement
+          $params = @{
+            Silent           = $true
+            Verbose          = $true
+            SilentBatchFile  = $($silentBatchFile.FullName)
+            TenantId         = $env:AAD_TENANT_ID
+            AppId            = $env:AAD_APP_ID
+            Secret           = $env:AAD_APP_SECRET
+          }
+          
+          # Execute IntuneManagement import
+          Write-Host "Starting Intune import process..."
+          .\IntuneManagement\Start-IntuneManagement.ps1 @params
+          Write-Host "Intune import completed successfully"
+        shell: powershell
+
+      # 7. Generate import summary
+      - name: Generate Import Summary
+        if: ${{ inputs.dry_run == false }}
+        run: |
+          Write-Host "=== IMPORT SUMMARY ===" -ForegroundColor Green
+          Write-Host "Import completed with the following configuration:" -ForegroundColor Green
+          Write-Host "  Import Path: ${{ inputs.import_path }}"
+          Write-Host "  Name Filter: ${{ inputs.name_filter }}"
+          Write-Host "  Import Type: ${{ inputs.import_type }}"
+          Write-Host "  Conditional Access State: ${{ inputs.conditional_access_state }}"
+          Write-Host "  Import Assignments: ${{ inputs.import_assignments }}"
+          Write-Host "  Replace Dependency IDs: ${{ inputs.replace_dependency_ids }}"
+          Write-Host ""
+          Write-Host "Check the IntuneManagement output above for detailed results."
+          Write-Host "=== IMPORT SUMMARY COMPLETE ===" -ForegroundColor Green
+        shell: powershell
+
+      # 8. Clean up generated files
+      - name: Cleanup generated files
+        run: |
+          if (Test-Path "BulkImport_Generated.json") {
+            Remove-Item "BulkImport_Generated.json" -Force
+            Write-Host "Cleaned up generated configuration file"
+          }
+        shell: powershell

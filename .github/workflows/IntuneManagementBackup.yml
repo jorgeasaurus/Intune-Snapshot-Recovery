@@ -1,0 +1,83 @@
+name: Intune Backup - Scheduled
+
+permissions:
+  contents: write
+
+on:
+  # Allow manual trigger in Actions tab
+  workflow_dispatch:
+  # Scheduled daily at 14:00 UTC (adjust as needed)
+  schedule:
+    - cron: "0 14 * * *"
+
+jobs:
+  Intune-Full-Backup:
+    runs-on: windows-latest
+    steps:
+      # 1. Check out the current repo (to access and update backup files)
+      - uses: actions/checkout@v3
+
+      # 2. Check out the IntuneManagement tool (specific version tag for stability)
+      - uses: actions/checkout@v3
+        with:
+          repository: Micke-K/IntuneManagement
+          path: ./IntuneManagement
+          ref: 3.9.8 # use a known good release or latest tag
+
+      # 3. Clean out previous backup files
+      - name: Remove old backup (full)
+        run: |
+          $backupDir = ".\intune-backup"
+          if (Test-Path $backupDir -PathType Container) {
+            Remove-Item $backupDir -Recurse -Force
+          }
+        shell: powershell
+
+      # 4. Run IntuneManagement export (full tenant)
+      - name: Export Intune config (Full)
+        run: |
+          Write-Host "Working directory: $(Get-Location)"
+          #Show all files in the current directory for debugging
+          $silentbatchFile = Get-ChildItem -filter "BulkExport.json" -recurse -File -erroraction SilentlyContinue
+          if (-not $silentbatchFile) {
+            Write-Host "BulkExport.json not found in repo directory. Please ensure it exists."
+            exit 1
+          }
+          # Before using JSON, validate it
+          try {
+              $jsonContent = Get-Content $($silentbatchFile.FullName) | Out-String | ConvertFrom-Json
+          } catch {
+              Write-Error "BulkExport.json is invalid JSON: $_"
+              exit 1
+          }
+              
+          $Env:AAD_TENANT_ID = ${{ secrets.AZURE_TENANT_ID }}
+          $Env:AAD_APP_ID = ${{ secrets.AZURE_CLIENT_ID }}
+          $Env:AAD_APP_SECRET = ${{ secrets.AZURE_CLIENT_SECRET }}
+
+          Write-Host "TenantId: $env:AAD_TENANT_ID"
+          Write-Host "AppId: $env:AAD_APP_ID"
+          Write-Host "AppSecret Length: $($env:AAD_APP_SECRET.Length)"
+
+          $params = @{
+            Silent           = $true
+            Verbose          = $true
+            SilentBatchFile  = $($silentbatchFile.FullName)
+            TenantId         = $env:AAD_TENANT_ID
+            AppId            = $env:AAD_APP_ID
+            Secret           = $env:AAD_APP_SECRET
+          }
+          .\IntuneManagement\Start-IntuneManagement.ps1 @params
+        shell: powershell
+
+      # 5. Commit and push the backup to the repo
+      - name: Commit Intune backup to repo
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: "Intune backup: ${{ github.run_id }} on ${{ github.event.repository.pushed_at }}"
+          add: ./*
+          default_author: github_actions
+          cwd: ./intune-backup
+          fetch: --tags --force
+          pathspec_error_handling: ignore
+          push: true

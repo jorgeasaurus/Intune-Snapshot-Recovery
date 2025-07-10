@@ -1,0 +1,7 @@
+credentials.ps1
+workspace.code-workspace
+.DS_Store
+IntuneBackupAndRestore/*
+Scripts/clonerepos.ps1
+code.code-workspace
+IntuneManagement/*
