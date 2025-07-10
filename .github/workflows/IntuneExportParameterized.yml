@@ -4,9 +4,9 @@ permissions:
   contents: write
 
 on:
-  # Scheduled daily at 14:00 UTC (adjust as needed)
-  schedule:
-    - cron: "0 14 * * *"
+  # Uncomment the following line to enable scheduled runs
+  # schedule:
+  #  - cron: "0 14 * * *"
   workflow_dispatch:
     inputs:
       export_path:
