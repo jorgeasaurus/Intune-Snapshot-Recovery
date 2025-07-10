@@ -24,7 +24,7 @@ on:
       import_assignments:
         description: 'Import assignments'
         required: false
-        default: true
+        default: false
         type: boolean
       replace_dependency_ids:
         description: 'Replace dependency IDs'
