@@ -12,7 +12,7 @@ on:
       export_path:
         description: 'Export path for backup files'
         required: false
-        default: '.\intune-backup'
+        default: '.\intune-backup\Production'
         type: string
       name_filter:
         description: 'Name filter for exported objects'

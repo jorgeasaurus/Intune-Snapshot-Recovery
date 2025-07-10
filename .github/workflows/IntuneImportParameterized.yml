@@ -9,7 +9,7 @@ on:
       import_path:
         description: 'Import path for backup files'
         required: false
-        default: '.\intune-backup'
+        default: '.\intune-backup\sample-tenant'
         type: string
       name_filter:
         description: 'Name filter for imported objects'
@@ -47,7 +47,7 @@ on:
       object_types:
         description: 'Comma-separated list of object types to import (leave empty for all)'
         required: false
-        default: ''
+        default: 'AppProtection,SettingsCatalog'
         type: string
       dry_run:
         description: 'Perform a dry run (validate configuration without importing)'
