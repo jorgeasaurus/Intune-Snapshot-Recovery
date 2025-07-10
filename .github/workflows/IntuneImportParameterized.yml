@@ -164,10 +164,6 @@ jobs:
                 Value = "${{ inputs.name_filter }}"
               },
               @{
-                Name = "chkAddObjectType"
-                Value = [bool]::Parse("${{ inputs.add_object_type }}")
-              },
-              @{
                 Name = "chkImportScopes"
                 Value = [bool]::Parse("${{ inputs.import_scopes }}")
               },

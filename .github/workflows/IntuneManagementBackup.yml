@@ -1,4 +1,4 @@
-name: Intune Backup - Scheduled
+name: Full Intune Export - Scheduled
 
 permissions:
   contents: write

@@ -1,4 +1,4 @@
-name: Intune Restore - Manual Trigger
+name: Full Intune Import - Manual Trigger
 
 on:
   # Allow manual trigger in Actions tab
