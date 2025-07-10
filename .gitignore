@@ -5,6 +5,7 @@ IntuneBackupAndRestore/*
 Scripts/clonerepos.ps1
 code.code-workspace
 IntuneManagement/*
+IntuneManagement
 intune-backup/jorgeasaurus
 .claude
 Dynamic*.json
