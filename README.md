@@ -1,9 +1,9 @@
 # Intune Snapshot Recovery
 
-A toolkit for backing up, restoring, and managing Microsoft Intune tenant configurations using automated workflows and PowerShell scripts.
+A toolkit for backing up, restoring, and managing Microsoft Intune tenant configurations using Github Actions and PowerShell scripts.
 
 <p align="center">
-  <img src="logo.png" alt="Intune Snapshot Recovery Logo" width="600"/>
+  <img src="logo.png" alt="Intune Snapshot Recovery Logo" width="1280"/>
 </p>
 
 ## 🚀 Overview
