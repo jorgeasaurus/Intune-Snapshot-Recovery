@@ -14,7 +14,7 @@ on:
       name_filter:
         description: 'Name filter for imported objects'
         required: false
-        default: ' - Restore'
+        default: ''
         type: string
       import_scopes:
         description: 'Import scopes'

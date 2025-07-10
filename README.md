@@ -17,8 +17,7 @@ This repository provides automated solutions for:
 ├── .github/workflows/              # GitHub Actions workflows
 │   ├── IntuneExportParameterized.yml    # Parameterized export workflow
 │   ├── IntuneImportParameterized.yml    # Parameterized import workflow
-│   ├── IntuneManagementBackup.yml       # Scheduled backup workflow
-│   └── IntuneManagementRestore.yml      # Manual restore workflow
+│   └──  IntuneManagementBackup.yml       # Scheduled backup workflow
 ├── intune-backup/                  # Backup storage directory
 │   └── [tenant-name]/             # Tenant-specific backups
 │       ├── Applications/
@@ -26,9 +25,6 @@ This repository provides automated solutions for:
 │       ├── DeviceConfiguration/
 │       └── [other-policy-types]/
 ├── IntuneManagement-Local.ps1      # Local backup/restore script
-├── Generate-BulkConfig.ps1         # Interactive config generator
-├── BulkExport.json                 # Default export configuration
-├── BulkImport.json                 # Default import configuration
 └── README.md
 ```
 

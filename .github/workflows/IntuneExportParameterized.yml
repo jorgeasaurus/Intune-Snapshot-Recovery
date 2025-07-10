@@ -29,7 +29,7 @@ on:
       add_company_name:
         description: 'Add company name to exported files'
         required: false
-        default: true
+        default: false
         type: boolean
       export_scripts:
         description: 'Export PowerShell scripts'
@@ -46,11 +46,6 @@ on:
         required: false
         default: ''
         type: string
-      intune_management_version:
-        description: 'IntuneManagement tool version/tag'
-        required: false
-        default: '3.9.8'
-        type: string
       commit_message_prefix:
         description: 'Prefix for commit message'
         required: false
@@ -64,124 +59,7 @@ jobs:
       # 1. Check out the current repo
       - uses: actions/checkout@v4
 
-      # 2. Check out the IntuneManagement tool
-      - uses: actions/checkout@v4
-        with:
-          repository: Micke-K/IntuneManagement
-          path: ./IntuneManagement
-          ref: ${{ inputs.intune_management_version }}
-
-      # 3. Generate dynamic BulkExport.json configuration
-      - name: Generate BulkExport Configuration
-        run: |
-          # Define all available object types
-          $allObjectTypes = @(
-            "AdministrativeTemplates",
-            "ADMXFiles",
-            "AndroidOEMConfig",
-            "AppConfigurationManagedApp",
-            "AppConfigurationManagedDevice",
-            "AppProtection",
-            "AppleEnrollmentTypes",
-            "Applications",
-            "AuthenticationContext",
-            "AuthenticationStrengths",
-            "AutoPilot",
-            "AzureBranding",
-            "CoManagementSettings",
-            "CompliancePolicies",
-            "CompliancePoliciesV2",
-            "ComplianceScripts",
-            "ConditionalAccess",
-            "MacCustomAttributes",
-            "DeviceConfiguration",
-            "DriverUpdateProfiles",
-            "EndpointSecurity",
-            "EnrollmentRestrictions",
-            "EnrollmentStatusPage",
-            "FeatureUpdates",
-            "AssignmentFilters",
-            "DeviceHealthScripts",
-            "IntuneBranding",
-            "NamedLocations",
-            "Notifications",
-            "PolicySets",
-            "QualityUpdates",
-            "ReusableSettings",
-            "RoleDefinitions",
-            "ScopeTags",
-            "PowerShellScripts",
-            "MacScripts",
-            "SettingsCatalog",
-            "TermsAndConditions",
-            "TermsOfUse",
-            "UpdatePolicies",
-            "W365ProvisioningPolicies",
-            "W365UserSettings"
-          )
-          
-          # Parse selected object types
-          $selectedTypes = if ("${{ inputs.object_types }}" -eq "") {
-            $allObjectTypes
-          } else {
-            "${{ inputs.object_types }}" -split "," | ForEach-Object { $_.Trim() }
-          }
-          
-          # Create configuration object
-          $config = @{
-            BulkExport = @(
-              @{
-                Name = "txtExportPath"
-                Value = "${{ inputs.export_path }}"
-              },
-              @{
-                Name = "txtExportNameFilter"
-                Value = "${{ inputs.name_filter }}"
-              },
-              @{
-                Name = "chkAddObjectType"
-                Value = [bool]::Parse("${{ inputs.add_object_type }}")
-              },
-              @{
-                Name = "chkExportAssignments"
-                Value = [bool]::Parse("${{ inputs.export_assignments }}")
-              },
-              @{
-                Name = "chkAddCompanyName"
-                Value = [bool]::Parse("${{ inputs.add_company_name }}")
-              },
-              @{
-                Name = "chkExportScript"
-                Value = [bool]::Parse("${{ inputs.export_scripts }}")
-              },
-              @{
-                Name = "chkExportApplicationFile"
-                Value = [bool]::Parse("${{ inputs.export_application_files }}")
-              },
-              @{
-                Name = "ObjectTypes"
-                Type = "Custom"
-                ObjectTypes = $selectedTypes
-              }
-            )
-          }
-          
-          # Convert to JSON and save with UTF-8 encoding
-          $jsonContent = $config | ConvertTo-Json -Depth 10 -Compress:$false
-          [System.IO.File]::WriteAllText("$PWD\BulkExport_Generated.json", $jsonContent, [System.Text.Encoding]::UTF8)
-          
-          Write-Host "Generated BulkExport configuration:"
-          Write-Host "Export Path: ${{ inputs.export_path }}"
-          Write-Host "Name Filter: ${{ inputs.name_filter }}"
-          Write-Host "Add Object Type: ${{ inputs.add_object_type }}"
-          Write-Host "Export Assignments: ${{ inputs.export_assignments }}"
-          Write-Host "Add Company Name: ${{ inputs.add_company_name }}"
-          Write-Host "Export Scripts: ${{ inputs.export_scripts }}"
-          Write-Host "Export Application Files: ${{ inputs.export_application_files }}"
-          Write-Host "Selected Object Types: $($selectedTypes -join ', ')"
-        shell: powershell
-
-      # 4. Clean out previous backup files
+      # 2. Clean out previous backup files
       - name: Remove old backup files
         run: |
           $backupDir = "${{ inputs.export_path }}"
@@ -193,73 +71,75 @@ jobs:
           }
         shell: powershell
 
-      # 5. Run IntuneManagement export
+      # 3. Run Intune backup using our unified script
       - name: Export Intune Configuration
         run: |
-          Write-Host "Working directory: $(Get-Location)"
+          Write-Host "Starting Intune export using Invoke-IntuneBackupRestore.ps1"
+          Write-Host "Export Path: ${{ inputs.export_path }}"
+          Write-Host "Name Filter: ${{ inputs.name_filter }}"
+          Write-Host "Add Object Type: ${{ inputs.add_object_type }}"
+          Write-Host "Export Assignments: ${{ inputs.export_assignments }}"
+          Write-Host "Add Company Name: ${{ inputs.add_company_name }}"
+          Write-Host "Export Scripts: ${{ inputs.export_scripts }}"
+          Write-Host "Export Application Files: ${{ inputs.export_application_files }}"
+          Write-Host "Object Types: ${{ inputs.object_types }}"
           
-          # Check for generated configuration file
-          $silentBatchFile = Get-ChildItem -filter "BulkExport_Generated.json" -File -ErrorAction SilentlyContinue
-          if (-not $silentBatchFile) {
-            Write-Host "BulkExport_Generated.json not found. Falling back to BulkExport.json"
-            $silentBatchFile = Get-ChildItem -filter "BulkExport.json" -Recurse -File -ErrorAction SilentlyContinue
-            if (-not $silentBatchFile) {
-              Write-Error "Neither BulkExport_Generated.json nor BulkExport.json found."
-              exit 1
-            }
+          # Parse object types if provided
+          $objectTypesArray = if ("${{ inputs.object_types }}" -eq "") {
+            $null
+          } else {
+            "${{ inputs.object_types }}" -split "," | ForEach-Object { $_.Trim() }
           }
           
-          # Validate JSON content
-          try {
-            $jsonContent = Get-Content $($silentBatchFile.FullName) | Out-String | ConvertFrom-Json
-            Write-Host "Configuration file validation successful"
-          } catch {
-            Write-Error "Configuration file contains invalid JSON: $_"
-            exit 1
+          # Build parameters for the script
+          $scriptParams = @{
+            Action = "Backup"
+            TenantId = "${{ secrets.AZURE_TENANT_ID }}"
+            AppId = "${{ secrets.AZURE_CLIENT_ID }}"
+            Secret = "${{ secrets.AZURE_CLIENT_SECRET }}"
+            BackupPath = "${{ inputs.export_path }}"
           }
           
-          # Set environment variables
-          $Env:AAD_TENANT_ID = "${{ secrets.AZURE_TENANT_ID }}"
-          $Env:AAD_APP_ID = "${{ secrets.AZURE_CLIENT_ID }}"
-          $Env:AAD_APP_SECRET = "${{ secrets.AZURE_CLIENT_SECRET }}"
-          
-          Write-Host "TenantId: $env:AAD_TENANT_ID"
-          Write-Host "AppId: $env:AAD_APP_ID"
-          Write-Host "AppSecret Length: $($env:AAD_APP_SECRET.Length)"
-          
-          # Prepare parameters for IntuneManagement
-          $params = @{
-            Silent           = $true
-            Verbose          = $true
-            SilentBatchFile  = $($silentBatchFile.FullName)
-            TenantId         = $env:AAD_TENANT_ID
-            AppId            = $env:AAD_APP_ID
-            Secret           = $env:AAD_APP_SECRET
+          # Add optional parameters if provided
+          if ("${{ inputs.name_filter }}" -ne "") {
+            $scriptParams.NameFilter = "${{ inputs.name_filter }}"
           }
           
-          # Execute IntuneManagement export
-          .\IntuneManagement\Start-IntuneManagement.ps1 @params
-
-          # Convert JSON files to UTF-8 without BOM
-          .\Convert-JsonToUtf8.ps1
+          if ("${{ inputs.add_object_type }}" -ne "") {
+            $scriptParams.AddObjectType = [bool]::Parse("${{ inputs.add_object_type }}")
+          }
+          
+          if ("${{ inputs.export_assignments }}" -ne "") {
+            $scriptParams.ExportAssignments = [bool]::Parse("${{ inputs.export_assignments }}")
+          }
+          
+          if ("${{ inputs.add_company_name }}" -ne "") {
+            $scriptParams.AddCompanyName = [bool]::Parse("${{ inputs.add_company_name }}")
+          }
+          
+          if ("${{ inputs.export_scripts }}" -ne "") {
+            $scriptParams.ExportScript = [bool]::Parse("${{ inputs.export_scripts }}")
+          }
+          
+          if ("${{ inputs.export_application_files }}" -ne "") {
+            $scriptParams.ExportApplicationFile = [bool]::Parse("${{ inputs.export_application_files }}")
+          }
+          
+          if ($objectTypesArray) {
+            $scriptParams.ObjectTypes = $objectTypesArray
+          }
+          
+          # Execute the backup script
+          .\Invoke-IntuneBackupRestore.ps1 @scriptParams
         shell: powershell
 
-      # 6. Commit and push the backup to the repo
+      # 4. Commit and push the backup to the repo
       - name: Commit Intune backup to repo
         uses: EndBug/add-and-commit@v9
         with:
-          message: "${{ inputs.commit_message_prefix }}: ${{ github.run_number }} - ${{ github.event.repository.pushed_at }}"
+          message: "${{ inputs.commit_message_prefix }}: ${{ github.run_number }} on ${{ github.event.repository.pushed_at }}"
           add: './*'
           default_author: github_actions
           fetch: --tags --force
           pathspec_error_handling: ignore
           push: true
-
-      # 7. Clean up generated files
-      - name: Cleanup generated files
-        run: |
-          if (Test-Path "BulkExport_Generated.json") {
-            Remove-Item "BulkExport_Generated.json" -Force
-            Write-Host "Cleaned up generated configuration file"
-          }
-        shell: powershell

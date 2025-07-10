@@ -6,7 +6,7 @@
     },
     {
       "Name": "txtImportNameFilter",
-      "Value": " - Restore"
+      "Value": ""
     },
     {
       "Name": "chkAddObjectType",
@@ -81,4 +81,3 @@
     }
   ]
 }
-
