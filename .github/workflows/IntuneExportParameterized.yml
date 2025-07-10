@@ -32,7 +32,7 @@ on:
       add_company_name:
         description: 'Add company name to exported files'
         required: false
-        default: false
+        default: true
         type: boolean
       export_scripts:
         description: 'Export PowerShell scripts'
