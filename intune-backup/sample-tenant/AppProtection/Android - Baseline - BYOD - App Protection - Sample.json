@@ -3,7 +3,7 @@
     "@odata.type": "#microsoft.graph.androidManagedAppProtection",
     "@odata.id": "deviceAppManagement/androidManagedAppProtections(\u0027T_7a335bad-86cb-4d85-ab98-737cf1e81515\u0027)",
     "@odata.editLink": "deviceAppManagement/androidManagedAppProtections(\u0027T_7a335bad-86cb-4d85-ab98-737cf1e81515\u0027)",
-    "displayName": "Android - Baseline - BYOD - App Protection",
+    "displayName": "Android - Baseline - BYOD - App Protection - Sample",
     "description": "",
     "createdDateTime@odata.type": "#DateTimeOffset",
     "createdDateTime": "2025-06-15T04:12:59.3945497Z",
