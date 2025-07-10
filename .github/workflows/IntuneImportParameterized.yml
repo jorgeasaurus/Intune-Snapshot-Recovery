@@ -16,11 +16,6 @@ on:
         required: false
         default: ' - Restore'
         type: string
-      add_object_type:
-        description: 'Add object type to imported files'
-        required: false
-        default: true
-        type: boolean
       import_scopes:
         description: 'Import scopes'
         required: false
