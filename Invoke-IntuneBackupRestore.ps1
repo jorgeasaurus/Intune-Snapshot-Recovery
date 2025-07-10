@@ -881,11 +881,12 @@ function Backup-IntuneConfig {
         Write-Status "BackupPath not specified in BulkExport.json, using default: $BackupPath"
     }
     
-    # Remove old backup files
-    if (Test-Path $BackupPath -PathType Container) {
-        Write-Status "Removing old backup files from $BackupPath"
-        # Remove all files and directories in the backup path minus the sample-tenant directory
-        Get-ChildItem $BackupPath -Force | Where-Object { $_.Name -ne 'sample-tenant' } | Remove-Item -Recurse -Force
+    # Ensure backup directory exists
+    if (-not (Test-Path $BackupPath -PathType Container)) {
+        Write-Status "Creating backup directory: $BackupPath"
+        New-Item -Path $BackupPath -ItemType Directory -Force | Out-Null
+    } else {
+        Write-Status "Backup directory exists: $BackupPath"
     }
     
     # Get IntuneManagement tool

@@ -62,15 +62,15 @@ jobs:
       # 1. Check out the current repo
       - uses: actions/checkout@v4
 
-      # 2. Clean out previous backup files
-      - name: Remove old backup files
+      # 2. Ensure backup directory exists
+      - name: Prepare backup directory
         run: |
           $backupDir = "${{ inputs.export_path }}"
-          if (Test-Path $backupDir -PathType Container) {
-            Write-Host "Removing old backup files from: $backupDir"
-            Remove-Item $backupDir -Recurse -Force
+          if (-not (Test-Path $backupDir -PathType Container)) {
+            Write-Host "Creating backup directory: $backupDir"
+            New-Item -Path $backupDir -ItemType Directory -Force | Out-Null
           } else {
-            Write-Host "Backup directory does not exist: $backupDir"
+            Write-Host "Backup directory exists: $backupDir"
           }
         shell: powershell
 
