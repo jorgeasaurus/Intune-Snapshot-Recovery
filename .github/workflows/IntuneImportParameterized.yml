@@ -7,9 +7,9 @@ on:
   workflow_dispatch:
     inputs:
       import_path:
-        description: 'Import path for backup files'
+        description: 'Import path for backup files, point to your backup directory'
         required: false
-        default: '.\intune-backup'
+        default: '.\intune-backup\sample-tenant'
         type: string
       name_filter:
         description: 'Name filter for imported objects'
