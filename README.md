@@ -1,6 +1,10 @@
 # Intune Snapshot Recovery
 
-A comprehensive toolkit for backing up, restoring, and managing Microsoft Intune tenant configurations using automated workflows and PowerShell scripts.
+A toolkit for backing up, restoring, and managing Microsoft Intune tenant configurations using automated workflows and PowerShell scripts.
+
+<p align="center">
+  <img src="logo.png" alt="Intune Snapshot Recovery Logo" width="600"/>
+</p>
 
 ## 🚀 Overview
 
@@ -10,21 +14,31 @@ This repository provides automated solutions for:
 - **Environment Migration**: Copy configurations between tenants (DEV → PROD)
 - **Disaster Recovery**: Quickly restore tenant state from snapshots
 - **Policy Management**: Bulk import/export of Intune policies and configurations
+- **Scheduled Automation**: Daily automated backups via GitHub Actions
+- **JSON Encoding**: Built-in UTF-8 conversion for compatibility
+- **Dry Run Testing**: Preview import operations without making changes
+- **Comprehensive Logging**: Detailed execution logs with automatic rotation
+
+**🔧 Powered by IntuneManagement**
+
+This toolkit leverages the powerful [IntuneManagement](https://github.com/Micke-K/IntuneManagement) project as its core engine. The IntuneManagement tool provides the robust Microsoft Graph API integration and comprehensive Intune object type support that makes this automation possible.
 
 ## 📁 Repository Structure
 
 ```
 ├── .github/workflows/              # GitHub Actions workflows
-│   ├── IntuneExportParameterized.yml    # Parameterized export workflow
-│   ├── IntuneImportParameterized.yml    # Parameterized import workflow
-│   └──  IntuneManagementBackup.yml       # Scheduled backup workflow
+│   ├── IntuneExportParameterized.yml    # Parameterized export workflow (with scheduling)
+│   ├── IntuneImportParameterized.yml    # Parameterized import workflow (with dry run)
+│   └── IntuneManagementBackup.yml       # Legacy scheduled backup workflow
 ├── intune-backup/                  # Backup storage directory
 │   └── [tenant-name]/             # Tenant-specific backups
 │       ├── Applications/
 │       ├── CompliancePolicies/
 │       ├── DeviceConfiguration/
 │       └── [other-policy-types]/
-├── IntuneManagement-Local.ps1      # Local backup/restore script
+├── Invoke-IntuneBackupRestore.ps1  # Unified backup/restore script with dynamic configuration
+├── logs/                           # Execution logs directory (auto-created)
+│   └── IntuneBackupRestore_*.log   # Timestamped log files
 └── README.md
 ```
 
@@ -41,6 +55,8 @@ You'll need an Azure AD app registration with the following permissions:
 - `Group.Read.All`
 - `GroupMember.Read.All`
 - `User.Read.All`
+- `Agreement.Read.All` (Optional for exporting Terms of use objects)
+- `Agreement.ReadWrite.All` (Optional for exporting Terms of use objects)
 
 **Directory (Azure AD) Graph Permissions:**
 - `Policy.ReadWrite.ConditionalAccess`
@@ -53,7 +69,7 @@ Configure these secrets in your GitHub repository:
 - `AZURE_CLIENT_SECRET`: Azure AD app registration client secret
 
 ### Local Requirements
-- PowerShell 5.1 or later
+- PowerShell 5.1 (PowerShell Core v6+ not currently supported)
 - Git (for cloning IntuneManagement tool)
 - Internet connection (to download dependencies)
 
@@ -61,29 +77,55 @@ Configure these secrets in your GitHub repository:
 
 ### 1. Clone Repository
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/jorgeasaurus/Intune-Snapshot-Recovery
 cd intune-snapshot-recovery
 ```
 
 ### 2. Local Backup (PowerShell)
 ```powershell
 # Basic backup
-.\IntuneManagement-Local.ps1 -Action Backup -TenantId "your-tenant-id" -AppId "your-app-id" -Secret "your-secret"
+.\Invoke-IntuneBackupRestore.ps1 `
+    -Action Backup `
+    -TenantId "your-tenant-id" `
+    -AppId "your-app-id" `
+    -Secret "your-secret" `
+    -BackupPath ".\intune-backup\production"
 
-# Customized backup
-.\IntuneManagement-Local.ps1 -Action Backup -TenantId "your-tenant-id" -AppId "your-app-id" -Secret "your-secret" -SilentBatchFile = "BulkExportCustom.json"
+# Customized backup with specific options
+.\Invoke-IntuneBackupRestore.ps1 `
+    -Action Backup `
+    -TenantId "your-tenant-id" `
+    -AppId "your-app-id" `
+    -Secret "your-secret" `
+    -BackupPath ".\intune-backup\custom" `
+    -AddCompanyName $true `
+    -ExportAssignments $true
 ```
 
 ### 3. Local Restore (PowerShell)
 ```powershell
-# Restore from backup
-.\IntuneManagement-Local.ps1 -Action Restore -TenantId "your-tenant-id" -AppId "your-app-id" -Secret "your-secret"
+# Basic restore from backup
+.\Invoke-IntuneBackupRestore.ps1 `
+    -Action Restore `
+    -TenantId "your-tenant-id" `
+    -AppId "your-app-id" `
+    -Secret "your-secret" `
+    -BackupPath ".\intune-backup\production"
+
+# Dry run restore (preview only)
+.\Invoke-IntuneBackupRestore.ps1 `
+    -Action Restore `
+    -TenantId "your-tenant-id" `
+    -AppId "your-app-id" `
+    -Secret "your-secret" `
+    -BackupPath ".\intune-backup\production" `
+    -DryRun
 ```
 
 ### 4. GitHub Actions Workflows
 
 #### Automated Daily Backup
-The `IntuneManagementBackup.yml` workflow runs daily at 14:00 UTC and can be triggered manually.
+The `IntuneExportParameterized.yml` workflow runs daily at 14:00 UTC and can be triggered manually.
 
 #### Parameterized Export
 Use `IntuneExportParameterized.yml` for custom export operations:
@@ -93,6 +135,9 @@ Use `IntuneExportParameterized.yml` for custom export operations:
    - Export path
    - Object types to include
    - Export options (assignments, scripts, etc.)
+   - Company name inclusion
+   - Application file export
+   - **Scheduled execution**: Automatically runs daily at 14:00 UTC
 
 #### Parameterized Import
 Use `IntuneImportParameterized.yml` for custom import operations:
@@ -102,189 +147,79 @@ Use `IntuneImportParameterized.yml` for custom import operations:
    - Import path
    - Import behavior (skip/overwrite/append)
    - Conditional Access state
-   - **Dry run option** for testing
+   - **Dry run option** for safe testing
+   - Assignment import control
+   - Dependency ID replacement
 
-## 📝 Configuration Files
+## 📝 Configuration & Logging
 
-### BulkExport.json
-Controls what gets exported:
-```json
-{
-    "BulkExport": [
-        {
-            "Name": "txtExportPath",
-            "Value": ".\\intune-backup"
-        },
-        {
-            "Name": "txtExportNameFilter",
-            "Value": ""
-        },
-        {
-            "Name": "chkAddObjectType",
-            "Value": true
-        },
-        {
-            "Name": "chkExportAssignments",
-            "Value": true
-        },
-        {
-            "Name": "chkAddCompanyName",
-            "Value": true
-        },
-        {
-            "Name": "chkExportScript",
-            "Value": true
-        },
-        {
-            "Name": "chkExportApplicationFile",
-            "Value": false
-        },
-        {
-            "Name": "ObjectTypes",
-            "Type": "Custom",
-            "ObjectTypes": [
-                "AdministrativeTemplates",
-                "ADMXFiles",
-                "AndroidOEMConfig",
-                "AppConfigurationManagedApp",
-                "AppConfigurationManagedDevice",
-                "AppProtection",
-                "AppleEnrollmentTypes",
-                "Applications",
-                "AuthenticationContext",
-                "AuthenticationStrengths",
-                "AutoPilot",
-                "AzureBranding",
-                "CoManagementSettings",
-                "CompliancePolicies",
-                "CompliancePoliciesV2",
-                "ComplianceScripts",
-                "ConditionalAccess",
-                "MacCustomAttributes",
-                "DeviceConfiguration",
-                "DriverUpdateProfiles",
-                "EndpointSecurity",
-                "EnrollmentRestrictions",
-                "EnrollmentStatusPage",
-                "FeatureUpdates",
-                "AssignmentFilters",
-                "DeviceHealthScripts",
-                "IntuneBranding",
-                "NamedLocations",
-                "Notifications",
-                "PolicySets",
-                "QualityUpdates",
-                "ReusableSettings",
-                "RoleDefinitions",
-                "ScopeTags",
-                "PowerShellScripts",
-                "MacScripts",
-                "SettingsCatalog",
-                "TermsAndConditions",
-                "TermsOfUse",
-                "UpdatePolicies",
-                "W365ProvisioningPolicies",
-                "W365UserSettings"
-            ]
-        }
-    ]
-}
-```
+### Dynamic Configuration Generation
+The `Invoke-IntuneBackupRestore.ps1` script automatically generates configuration files based on parameters, eliminating the need for manual JSON file management. All configuration is done through script parameters for maximum flexibility and ease of use.
 
-### BulkImport.json
-Controls how imports are handled:
-```json
-{
-  "BulkImport": [
-    {
-      "Name": "txtImportPath",
-      "Value": ".\\intune-backup"
-    },
-    {
-      "Name": "txtImportNameFilter",
-      "Value": " - Restore"
-    },
-    {
-      "Name": "chkAddObjectType",
-      "Value": true
-    },
-    {
-      "Name": "chkImportScopes",
-      "Value": false
-    },
-    {
-      "Name": "chkImportAssignments",
-      "Value": true
-    },
-    {
-      "Name": "chkReplaceDependencyIDs",
-      "Value": true
-    },
-    {
-      "Name": "cbImportType",
-      "Value": "skipIfExist"
-    },
-    {
-      "Name": "cbImportCAState",
-      "Value": "disabled"
-    },
-    {
-      "Name": "ObjectTypes",
-      "Type": "Custom",
-      "ObjectTypes": [
-        "AdministrativeTemplates",
-        "ADMXFiles",
-        "AndroidOEMConfig",
-        "AppConfigurationManagedApp",
-        "AppConfigurationManagedDevice",
-        "AppProtection",
-        "AppleEnrollmentTypes",
-        "Applications",
-        "AuthenticationContext",
-        "AuthenticationStrengths",
-        "AutoPilot",
-        "CoManagementSettings",
-        "CompliancePolicies",
-        "CompliancePoliciesV2",
-        "ComplianceScripts",
-        "ConditionalAccess",
-        "MacCustomAttributes",
-        "DeviceConfiguration",
-        "DriverUpdateProfiles",
-        "EndpointSecurity",
-        "EnrollmentRestrictions",
-        "EnrollmentStatusPage",
-        "FeatureUpdates",
-        "AssignmentFilters",
-        "DeviceHealthScripts",
-        "IntuneBranding",
-        "NamedLocations",
-        "Notifications",
-        "PolicySets",
-        "QualityUpdates",
-        "ReusableSettings",
-        "RoleDefinitions",
-        "ScopeTags",
-        "PowerShellScripts",
-        "MacScripts",
-        "SettingsCatalog",
-        "TermsAndConditions",
-        "TermsOfUse",
-        "UpdatePolicies",
-        "W365ProvisioningPolicies",
-        "W365UserSettings"
-      ]
-    }
-  ]
-}
+### Execution Logging
+The script automatically generates detailed execution logs for troubleshooting and audit purposes:
 
+**Features:**
+- **Automatic Log Creation**: Logs are saved to `.\logs\` directory (auto-created)
+- **Timestamped Files**: Format: `IntuneBackupRestore_[Action]_[Timestamp].log`
+- **Detailed Information**: Includes script parameters, execution steps, and outcomes
+- **Automatic Cleanup**: Old log files (30+ days) are automatically removed
+- **Security**: Sensitive information (secrets) are redacted from logs
 
-```
-
-### Generate Custom Configurations
-Use the interactive configuration generator:
+**Log Control:**
 ```powershell
-.\Generate-BulkConfig.ps1
+# Enable logging (default)
+.\Invoke-IntuneBackupRestore.ps1 `
+    -Action Backup `
+    -TenantId "..." `
+    -AppId "..." `
+    -Secret "..." `
+    -BackupPath "..." `
+    -EnableLogging $true
+
+# Disable logging
+.\Invoke-IntuneBackupRestore.ps1 `
+    -Action Backup `
+    -TenantId "..." `
+    -AppId "..." `
+    -Secret "..." `
+    -BackupPath "..." `
+    -EnableLogging $false
+
+# Custom log directory
+.\Invoke-IntuneBackupRestore.ps1 `
+    -Action Backup `
+    -TenantId "..." `
+    -AppId "..." `
+    -Secret "..." `
+    -BackupPath "..." `
+    -LogPath "C:\MyLogs"
+```
+
+### Parameter-Based Configuration
+The unified script allows you to specify all configuration options directly as parameters, providing maximum flexibility without requiring configuration files:
+
+```powershell
+# Advanced backup with selective object types
+.\Invoke-IntuneBackupRestore.ps1 `
+    -Action Backup `
+    -TenantId "$env:AZURE_TENANT_ID" `
+    -AppId "$env:AZURE_CLIENT_ID" `
+    -Secret "$env:AZURE_CLIENT_SECRET" `
+    -BackupPath ".\selective-backup" `
+    -ObjectTypes @("CompliancePolicies", "DeviceConfiguration") `
+    -ExportAssignments $true
+
+# Restore with specific import behavior
+.\Invoke-IntuneBackupRestore.ps1 `
+    -Action Restore `
+    -TenantId "$env:AZURE_TENANT_ID" `
+    -AppId "$env:AZURE_CLIENT_ID" `
+    -Secret "$env:AZURE_CLIENT_SECRET" `
+    -BackupPath ".\intune-backup\production" `
+    -ImportType "overwrite" `
+    -ImportAssignments $true `
+    -CAState "disabled"
 ```
 
 ## 🎯 Use Cases
@@ -297,10 +232,20 @@ Use the interactive configuration generator:
 ### Environment Promotion
 ```powershell
 # Export from DEV tenant
-.\IntuneManagement-Local.ps1 -Action Backup -TenantId "dev-tenant-id" -AppId "app-id" -Secret "secret"
+.\Invoke-IntuneBackupRestore.ps1 `
+    -Action Backup `
+    -TenantId "dev-tenant-id" `
+    -AppId "app-id" `
+    -Secret "secret" `
+    -BackupPath ".\dev-export"
 
 # Import to PROD tenant
-.\IntuneManagement-Local.ps1 -Action Restore -TenantId "prod-tenant-id" -AppId "app-id" -Secret "secret"
+.\Invoke-IntuneBackupRestore.ps1 `
+    -Action Restore `
+    -TenantId "prod-tenant-id" `
+    -AppId "app-id" `
+    -Secret "secret" `
+    -BackupPath ".\dev-export"
 ```
 
 ### Disaster Recovery
@@ -317,8 +262,14 @@ Use the interactive configuration generator:
 
 ### Selective Object Type Export
 ```powershell
-# Only export specific object types
-# Modify BulkExport.json ObjectTypes array or use parameterized workflow
+# Only export specific object types using parameters
+.\Invoke-IntuneBackupRestore.ps1 `
+    -Action Backup `
+    -TenantId "$env:AZURE_TENANT_ID" `
+    -AppId "$env:AZURE_CLIENT_ID" `
+    -Secret "$env:AZURE_CLIENT_SECRET" `
+    -BackupPath ".\selective-backup" `
+    -ObjectTypes @("CompliancePolicies", "DeviceConfiguration", "AppProtection")
 ```
 
 ### Custom Import Behavior
@@ -369,7 +320,26 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ### Debug Mode
 Add `-Verbose` parameter to scripts for detailed logging:
 ```powershell
-.\IntuneManagement-Local.ps1 -Action Backup -TenantId "tenant" -AppId "app" -Secret "secret" -Verbose
+.\Invoke-IntuneBackupRestore.ps1 `
+    -Action Backup `
+    -TenantId "tenant" `
+    -AppId "app" `
+    -Secret "secret" `
+    -BackupPath ".\debug-backup" `
+    -Verbose
+```
+
+### Log Analysis
+Review execution logs for detailed troubleshooting information:
+```powershell
+# View latest log file
+Get-ChildItem -Path ".\logs" -Filter "IntuneBackupRestore_*.log" | 
+Sort-Object LastWriteTime -Descending | Select-Object -First 1 | Get-Content
+
+# Search for errors in recent logs
+Get-ChildItem -Path ".\logs" -Filter "IntuneBackupRestore_*.log" | 
+Sort-Object LastWriteTime -Descending | Select-Object -First 5 | 
+ForEach-Object { Select-String -Path $_.FullName -Pattern "ERROR" }
 ```
 
 ## 📚 Additional Resources

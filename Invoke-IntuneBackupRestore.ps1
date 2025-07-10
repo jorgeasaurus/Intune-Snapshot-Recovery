@@ -80,6 +80,12 @@
 .PARAMETER ExportApplicationFile
     Export application installation files during backup (default: $false)
 
+.PARAMETER LogPath
+    Directory path where log files will be stored (default: ".\logs")
+
+.PARAMETER EnableLogging
+    Enable file logging to capture detailed execution logs (default: $true)
+
 .EXAMPLE
     # Basic backup of all Intune configurations
     .\Invoke-IntuneBackupRestore.ps1 -Action Backup -TenantId "12345678-1234-1234-1234-123456789012" -AppId "87654321-4321-4321-4321-210987654321" -Secret "your-secret" -BackupPath ".\intune-backup\production"
@@ -185,13 +191,105 @@ param(
     [bool]$ExportScript,
     
     [Parameter(Mandatory = $false)]
-    [bool]$ExportApplicationFile
+    [bool]$ExportApplicationFile,
+    
+    # Logging parameters
+    [Parameter(Mandatory = $false)]
+    [string]$LogPath = ".\logs",
+    
+    [Parameter(Mandatory = $false)]
+    [bool]$EnableLogging = $true
 )
 
+# Global variables for logging
+$Global:LogFilePath = $null
+
+function Initialize-Logging {
+    param(
+        [string]$LogDirectory,
+        [bool]$EnableLogging,
+        [string]$Action
+    )
+    
+    if (-not $EnableLogging) {
+        return
+    }
+    
+    try {
+        # Create logs directory if it doesn't exist
+        if (-not (Test-Path $LogDirectory)) {
+            New-Item -Path $LogDirectory -ItemType Directory -Force | Out-Null
+            Write-Host "Created logs directory: $LogDirectory" -ForegroundColor Green
+        }
+        
+        # Create log file with timestamp and action
+        $timestamp = Get-Date -Format "yyyyMMdd-HHmmss"
+        $logFileName = "IntuneBackupRestore_${Action}_${timestamp}.log"
+        $Global:LogFilePath = Join-Path $LogDirectory $logFileName
+        
+        # Initialize log file with header
+        $header = @"
+================================================================================
+Intune Backup/Restore Log
+================================================================================
+Script: Invoke-IntuneBackupRestore.ps1
+Action: $Action
+Start Time: $(Get-Date -Format "yyyy-MM-dd HH:mm:ss")
+PowerShell Version: $($PSVersionTable.PSVersion)
+OS: $([System.Environment]::OSVersion.VersionString)
+User: $([System.Environment]::UserName)
+Computer: $([System.Environment]::MachineName)
+================================================================================
+
+"@
+        [System.IO.File]::WriteAllText($Global:LogFilePath, $header, [System.Text.Encoding]::UTF8)
+        
+        Write-Host "Logging initialized: $Global:LogFilePath" -ForegroundColor Green
+        
+        # Clean up old log files (keep last 30 days)
+        Remove-OldLogFiles -LogDirectory $LogDirectory -DaysToKeep 30
+        
+    } catch {
+        Write-Warning "Failed to initialize logging: $($_.Exception.Message)"
+        $Global:LogFilePath = $null
+    }
+}
+
+function Remove-OldLogFiles {
+    param(
+        [string]$LogDirectory,
+        [int]$DaysToKeep = 30
+    )
+    
+    try {
+        $cutoffDate = (Get-Date).AddDays(-$DaysToKeep)
+        $oldLogFiles = Get-ChildItem -Path $LogDirectory -Filter "IntuneBackupRestore_*.log" | 
+        Where-Object { $_.LastWriteTime -lt $cutoffDate }
+        
+        foreach ($file in $oldLogFiles) {
+            Remove-Item $file.FullName -Force
+            Write-Verbose "Removed old log file: $($file.Name)"
+        }
+        
+        if ($oldLogFiles.Count -gt 0) {
+            Write-Verbose "Cleaned up $($oldLogFiles.Count) old log files"
+        }
+    } catch {
+        Write-Warning "Failed to clean up old log files: $($_.Exception.Message)"
+    }
+}
+
 function Write-Status {
-    param([string]$Message, [string]$Level = "INFO")
+    param(
+        [string]$Message, 
+        [string]$Level = "INFO"
+    )
+    
     $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-    Write-Host "[$timestamp] [$Level] $Message" -ForegroundColor $(
+    $formattedMessage = "[$timestamp] [$Level] $Message"
+    
+    # Write to console with color
+    Write-Host $formattedMessage -ForegroundColor $(
         switch ($Level) {
             "ERROR" { "Red" }
             "WARNING" { "Yellow" }
@@ -199,6 +297,61 @@ function Write-Status {
             default { "White" }
         }
     )
+    
+    # Write to log file if logging is enabled
+    if ($Global:LogFilePath -and (Test-Path $Global:LogFilePath)) {
+        try {
+            Add-Content -Path $Global:LogFilePath -Value $formattedMessage -Encoding UTF8
+        } catch {
+            # Silently fail if we can't write to log - don't disrupt main operation
+        }
+    }
+}
+
+function Write-LogSeparator {
+    param([string]$Title)
+    
+    $separator = "=" * 80
+    $titleLine = "=== $Title ==="
+    
+    Write-Status $separator
+    Write-Status $titleLine
+    Write-Status $separator
+}
+
+function Write-LogSection {
+    param([string]$SectionName)
+    
+    $section = "-" * 60
+    $sectionLine = "--- $SectionName ---"
+    
+    Write-Status $section
+    Write-Status $sectionLine
+    Write-Status $section
+}
+
+function Complete-Logging {
+    param([string]$Action, [bool]$Success = $true)
+    
+    if ($Global:LogFilePath -and (Test-Path $Global:LogFilePath)) {
+        try {
+            $footer = @"
+
+================================================================================
+Script Execution Completed
+================================================================================
+Action: $Action
+End Time: $(Get-Date -Format "yyyy-MM-dd HH:mm:ss")
+Status: $(if ($Success) { "SUCCESS" } else { "FAILED" })
+Log File: $Global:LogFilePath
+================================================================================
+"@
+            Add-Content -Path $Global:LogFilePath -Value $footer -Encoding UTF8
+            Write-Status "Log file completed: $Global:LogFilePath" "SUCCESS"
+        } catch {
+            Write-Warning "Failed to complete log file: $($_.Exception.Message)"
+        }
+    }
 }
 
 function Convert-JsonToUtf8 {
@@ -262,7 +415,7 @@ function Convert-JsonToUtf8 {
             
             foreach ($file in $jsonFiles) {
                 try {
-                    Write-Host "Processing: $($file.FullName)" -ForegroundColor White
+                    Write-Verbose "Processing: $($file.FullName)"
                     
                     # Read the file and detect current encoding
                     $bytes = [System.IO.File]::ReadAllBytes($file.FullName)
@@ -289,7 +442,7 @@ function Convert-JsonToUtf8 {
                             $utf8Bytes = [System.Text.Encoding]::UTF8.GetBytes($content)
                             if ([System.Linq.Enumerable]::SequenceEqual($bytes, $utf8Bytes)) {
                                 $currentEncoding = "UTF-8 without BOM (already correct)"
-                                Write-Verbose "  Current encoding: $currentEncoding - SKIPPED" -ForegroundColor Green
+                                Write-Verbose "  Current encoding: $currentEncoding - SKIPPED"
                                 $skippedCount++
                                 continue
                             } else {
@@ -300,7 +453,7 @@ function Convert-JsonToUtf8 {
                         }
                     }
                     
-                    Write-Verbose "  Current encoding: $currentEncoding" -ForegroundColor Gray
+                    Write-Verbose "  Current encoding: $currentEncoding"
                     
                     # Read content using detected encoding
                     $content = [System.IO.File]::ReadAllText($file.FullName, $encoding)
@@ -319,14 +472,14 @@ function Convert-JsonToUtf8 {
                     if ($CreateBackup) {
                         $backupPath = "$($file.FullName).backup"
                         Copy-Item -Path $file.FullName -Destination $backupPath -Force
-                        Write-Verbose "  Backup created: $backupPath" -ForegroundColor Blue
+                        Write-Verbose "  Backup created: $backupPath"
                     }
                     
                     # Write content as UTF-8 without BOM
                     $utf8NoBom = New-Object System.Text.UTF8Encoding $false
                     [System.IO.File]::WriteAllText($file.FullName, $content, $utf8NoBom)
                     
-                    Write-Verbose "  Successfully converted to UTF-8 without BOM" -ForegroundColor Green
+                    Write-Verbose "  Successfully converted to UTF-8 without BOM"
                     $convertedCount++
                 } catch {
                     Write-Error "  Error processing file: $($_.Exception.Message)"
@@ -675,7 +828,9 @@ function Backup-IntuneConfig {
         [string[]]$ObjectTypes
     )
     
-    Write-Status "Starting Intune configuration backup..."
+    Write-LogSection "BACKUP CONFIGURATION"
+    Write-Status "Starting Intune configuration backup..." "INFO"
+    Write-Status "Target backup path: $BackupPath" "INFO"
     
     # Always generate dynamic export configuration when BackupPath is provided
     if ($BackupPath) {
@@ -730,7 +885,7 @@ function Backup-IntuneConfig {
     if (Test-Path $BackupPath -PathType Container) {
         Write-Status "Removing old backup files from $BackupPath"
         # Remove all files and directories in the backup path minus the sample-tenant directory
-        Get-ChildItem $BackupPath -Force | Where-Object { $_.Name -ne 'sample-tenant' } | Remove-Item -Recurse -Force -WhatIf
+        Get-ChildItem $BackupPath -Force | Where-Object { $_.Name -ne 'sample-tenant' } | Remove-Item -Recurse -Force
     }
     
     # Get IntuneManagement tool
@@ -797,6 +952,8 @@ function Restore-IntuneConfig {
         [string[]]$ObjectTypes
     )
     
+    Write-LogSection "RESTORE CONFIGURATION"
+    
     if ($DryRun) {
         Write-Status "=== DRY RUN MODE ===" "WARNING"
         Write-Status "This is a dry run. No actual import will be performed." "WARNING"
@@ -804,7 +961,8 @@ function Restore-IntuneConfig {
         Write-Status ""
     }
     
-    Write-Status "Starting Intune configuration restore..."
+    Write-Status "Starting Intune configuration restore..." "INFO"
+    Write-Status "Source backup path: $BackupPath" "INFO"
     
     # Always generate dynamic import configuration when BackupPath is provided
     if ($BackupPath) {
@@ -848,8 +1006,6 @@ function Restore-IntuneConfig {
         Write-Status "Configuration file contains invalid JSON: $_" "ERROR"
         throw
     }
-    
-    Write-Status "BulkImport.json content: $(Get-Content $bulkImportFile.FullName)"
     
     # Parse import path from JSON
     $importPathSetting = $jsonContent.BulkImport | Where-Object { $_.Name -eq "txtImportPath" }
@@ -942,7 +1098,44 @@ function Restore-IntuneConfig {
 
 # Main execution
 try {
-    Write-Status "Starting Intune Management Local Script - Action: $Action"
+    # Initialize logging
+    Initialize-Logging -LogDirectory $LogPath -EnableLogging $EnableLogging -Action $Action
+    
+    Write-LogSeparator "SCRIPT EXECUTION START"
+    Write-Status "Starting Intune Management Script - Action: $Action"
+    
+    # Log script parameters (excluding sensitive information)
+    Write-LogSection "SCRIPT PARAMETERS"
+    Write-Status "Action: $Action"
+    Write-Status "TenantId: $TenantId"
+    Write-Status "AppId: $AppId"
+    Write-Status "AppSecret: [REDACTED - Length: $($Secret.Length)]"
+    Write-Status "IntuneManagementPath: $IntuneManagementPath"
+    Write-Status "BackupPath: $BackupPath"
+    Write-Status "DryRun: $DryRun"
+    Write-Status "EnableLogging: $EnableLogging"
+    Write-Status "LogPath: $LogPath"
+    
+    if ($PSBoundParameters.ContainsKey('NameFilter')) { Write-Status "NameFilter: $NameFilter" }
+    if ($PSBoundParameters.ContainsKey('AddObjectType')) { Write-Status "AddObjectType: $AddObjectType" }
+    if ($PSBoundParameters.ContainsKey('ObjectTypes')) { Write-Status "ObjectTypes: $($ObjectTypes -join ', ')" }
+    
+    if ($Action -eq 'Backup') {
+        if ($PSBoundParameters.ContainsKey('ExportAssignments')) { Write-Status "ExportAssignments: $ExportAssignments" }
+        if ($PSBoundParameters.ContainsKey('AddCompanyName')) { Write-Status "AddCompanyName: $AddCompanyName" }
+        if ($PSBoundParameters.ContainsKey('ExportScript')) { Write-Status "ExportScript: $ExportScript" }
+        if ($PSBoundParameters.ContainsKey('ExportApplicationFile')) { Write-Status "ExportApplicationFile: $ExportApplicationFile" }
+    }
+    
+    if ($Action -eq 'Restore') {
+        if ($PSBoundParameters.ContainsKey('ImportScopes')) { Write-Status "ImportScopes: $ImportScopes" }
+        if ($PSBoundParameters.ContainsKey('ImportAssignments')) { Write-Status "ImportAssignments: $ImportAssignments" }
+        if ($PSBoundParameters.ContainsKey('ReplaceDependencyIDs')) { Write-Status "ReplaceDependencyIDs: $ReplaceDependencyIDs" }
+        if ($PSBoundParameters.ContainsKey('ImportType')) { Write-Status "ImportType: $ImportType" }
+        if ($PSBoundParameters.ContainsKey('CAState')) { Write-Status "CAState: $CAState" }
+    }
+    
+    Write-LogSeparator "STARTING $($Action.ToUpper()) OPERATION"
     
     switch ($Action) {
         'Backup' {
@@ -967,6 +1160,7 @@ try {
             Backup-IntuneConfig @backupParams
 
             # Convert JSON files to UTF-8 encoding
+            Write-LogSection "JSON UTF-8 CONVERSION"
             Write-Status "Converting JSON files to UTF-8 encoding in $BackupPath"
             Convert-JsonToUtf8 -Path $BackupPath
         }
@@ -995,8 +1189,14 @@ try {
         }
     }
     
+    Write-LogSeparator "SCRIPT EXECUTION COMPLETED"
     Write-Status "Script completed successfully" "SUCCESS"
+    Complete-Logging -Action $Action -Success $true
 } catch {
+    Write-LogSeparator "SCRIPT EXECUTION FAILED"
     Write-Status "Script failed: $_" "ERROR"
+    Write-Status "Exception Details: $($_.Exception.GetType().Name)" "ERROR"
+    Write-Status "Stack Trace: $($_.ScriptStackTrace)" "ERROR"
+    Complete-Logging -Action $Action -Success $false
     exit 1
 }

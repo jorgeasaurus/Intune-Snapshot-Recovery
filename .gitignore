@@ -8,4 +8,4 @@ IntuneManagement/*
 IntuneManagement
 intune-backup/jorgeasaurus
 .claude
-Dynamic*.json
+*Bulk*.json
