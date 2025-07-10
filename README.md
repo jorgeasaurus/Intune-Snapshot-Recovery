@@ -25,9 +25,8 @@ This repository provides automated solutions for:
 │       ├── CompliancePolicies/
 │       ├── DeviceConfiguration/
 │       └── [other-policy-types]/
-├── scripts/
-│   ├── IntuneManagement-Local.ps1      # Local backup/restore script
-│   └── Generate-BulkConfig.ps1         # Interactive config generator
+├──IntuneManagement-Local.ps1      # Local backup/restore script
+├──Generate-BulkConfig.ps1         # Interactive config generator
 ├── BulkExport.json                 # Default export configuration
 ├── BulkImport.json                 # Default import configuration
 └── README.md

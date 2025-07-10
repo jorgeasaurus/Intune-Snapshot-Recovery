@@ -159,7 +159,7 @@ function Backup-IntuneConfig {
     # Prepare parameters for IntuneManagement
     $params = @{
         Silent          = $true
-        Verbose         = $true
+        Verbose         = $false
         SilentBatchFile = $bulkExportFile.FullName
         TenantId        = $env:AAD_TENANT_ID
         AppId           = $env:AAD_APP_ID
@@ -210,16 +210,16 @@ function Restore-IntuneConfig {
     # Validate JSON content
     try {
         $jsonContent = Get-Content $bulkImportFile.FullName | Out-String | ConvertFrom-Json
-        Write-Status "✓ Configuration file validation successful" "SUCCESS"
+        Write-Status "Configuration file validation successful" "SUCCESS"
     } catch {
-        Write-Status "✗ Configuration file contains invalid JSON: $_" "ERROR"
+        Write-Status "Configuration file contains invalid JSON: $_" "ERROR"
         throw
     }
     
     Write-Status "BulkImport.json content: $(Get-Content $bulkImportFile.FullName)"
     
     # Parse import path from JSON
-    $importPath = "./intune-backup"  # default
+    $importPath = ".\intune-backup"  # default
     $importPathSetting = $jsonContent.BulkImport | Where-Object { $_.Name -eq "txtImportPath" }
     if ($importPathSetting) {
         $importPath = $importPathSetting.Value
@@ -227,7 +227,7 @@ function Restore-IntuneConfig {
     
     # Validate import path and show preview
     if (Test-Path $importPath -PathType Container) {
-        Write-Status "✓ Import path validated: $importPath" "SUCCESS"
+        Write-Status "Import path validated: $importPath" "SUCCESS"
         
         # Show what would be imported
         Write-Status "Preview of files that would be processed:" "INFO"
@@ -246,7 +246,7 @@ function Restore-IntuneConfig {
             Write-Status "  No JSON files found in import directory" "WARNING"
         }
     } else {
-        Write-Status "✗ Import path does not exist: $importPath" "ERROR"
+        Write-Status "Import path does not exist: $importPath" "ERROR"
         Write-Status "Available directories:" "INFO"
         Get-ChildItem -Directory -ErrorAction SilentlyContinue | ForEach-Object { 
             Write-Status "  - $($_.Name)" "INFO" 
@@ -257,9 +257,9 @@ function Restore-IntuneConfig {
     if ($DryRun) {
         Write-Status ""
         Write-Status "=== DRY RUN SUMMARY ===" "SUCCESS"
-        Write-Status "✓ Configuration file is valid" "SUCCESS"
-        Write-Status "✓ Import path exists and contains files" "SUCCESS"
-        Write-Status "✓ No errors detected in validation" "SUCCESS"
+        Write-Status "Configuration file is valid" "SUCCESS"
+        Write-Status "Import path exists and contains files" "SUCCESS"
+        Write-Status "No errors detected in validation" "SUCCESS"
         Write-Status ""
         Write-Status "To perform actual import, run without -DryRun parameter" "INFO"
         Write-Status "=== DRY RUN COMPLETE ===" "SUCCESS"

@@ -198,7 +198,6 @@ jobs:
           Write-Host "Generated BulkImport configuration:"
           Write-Host "Import Path: ${{ inputs.import_path }}"
           Write-Host "Name Filter: ${{ inputs.name_filter }}"
-          Write-Host "Add Object Type: ${{ inputs.add_object_type }}"
           Write-Host "Import Scopes: ${{ inputs.import_scopes }}"
           Write-Host "Import Assignments: ${{ inputs.import_assignments }}"
           Write-Host "Replace Dependency IDs: ${{ inputs.replace_dependency_ids }}"
@@ -231,9 +230,9 @@ jobs:
           # Validate JSON content
           try {
             $jsonContent = Get-Content $($silentBatchFile.FullName) | Out-String | ConvertFrom-Json
-            Write-Host "✓ Configuration file validation successful" -ForegroundColor Green
+            Write-Host "Configuration file validation successful" -ForegroundColor Green
           } catch {
-            Write-Error "✗ Configuration file contains invalid JSON: $_"
+            Write-Error "Configuration file contains invalid JSON: $_"
             exit 1
           }
           
