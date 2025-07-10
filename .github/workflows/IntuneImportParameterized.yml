@@ -159,7 +159,7 @@ jobs:
           }
           
           if ("${{ inputs.conditional_access_state }}" -ne "") {
-            $scriptParams.ConditionalAccessState = "${{ inputs.conditional_access_state }}"
+            $scriptParams.CAState = "${{ inputs.conditional_access_state }}"
           }
           
           if ($objectTypesArray) {
