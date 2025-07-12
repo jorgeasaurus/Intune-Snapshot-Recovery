@@ -1,0 +1,59 @@
+{
+    "@odata.context":  "https://graph.microsoft.com/beta/$metadata#deviceAppManagement/mobileApps(categories(),assignments())/$entity",
+    "@odata.type":  "#microsoft.graph.managedAndroidStoreApp",
+    "id":  "6930c2be-9c12-4c76-ade2-2d440bffea0d",
+    "displayName":  "Microsoft Edge",
+    "description":  "Microsoft Edge, now available on Android, creates one continuous browsing experience for Windows 10 users across their devices. Content and data sync seamlessly in the background, so users can browse across devices, without skipping a beat.\r\n\r\nFamiliar Microsoft Edge features like the Hub allow users to organize the web in a way that cuts through the clutter, making it easier to find, view and manage their content on-the-go.\r\n\r\nMicrosoft Edge is designed for Windows 10 users to browse the web how they need to, wherever they are, without disrupting their flow.\r\n\r\nContinue on PC: Go anywhere and pick up where you left off by seamlessly moving content between your mobile device and PC (requires Windows 10 Fall Creator’s Update).\r\n\r\nData Sync: Your favorites and reading list are synced across your devices, so no matter the device, your browser is always personalized to you.\r\n\r\nHub View: With your favorites, reading list, history and books all in one place, finding and managing your content is made simple.\r\n\r\nReading View: Reorganize the content on a webpage to make it easier to focus on what you’re reading.\r\n\r\nQR Code Reader: Easily read QR codes at the touch of a button. Microsoft Edge will pull up the reading and information right onto your screen.\r\n\r\nVoice Search: You can now use your voice to search the web. Ask a question or speak a prompt to use the web in more natural, familiar ways.\r\n\r\nInPrivate: When you browse with InPrivate mode, your browsing data (like your history, temporary internet files, and cookies) isn\u0027t saved on your PC once you\u0027re done.\r\n\r\nWe want to hear from you! Submit feedback in the app to tell us what you think!",
+    "publisher":  "Microsoft Corporation",
+    "largeIcon":  null,
+    "createdDateTime":  "2025-04-19T19:58:09.4858012Z",
+    "lastModifiedDateTime":  "2025-04-19T19:58:09.4858012Z",
+    "isFeatured":  false,
+    "privacyInformationUrl":  null,
+    "informationUrl":  null,
+    "owner":  null,
+    "developer":  null,
+    "notes":  null,
+    "uploadState":  1,
+    "publishingState":  "published",
+    "isAssigned":  false,
+    "roleScopeTagIds":  [
+                            "0"
+                        ],
+    "dependentAppCount":  0,
+    "supersedingAppCount":  0,
+    "supersededAppCount":  0,
+    "appAvailability":  "lineOfBusiness",
+    "version":  "\"be04dfad-0000-0100-0000-680400510000\"",
+    "packageId":  "com.microsoft.emmx",
+    "appStoreUrl":  "https://play.google.com/store/apps/details?id=com.microsoft.emmx",
+    "minimumSupportedOperatingSystem":  {
+                                            "v4_0":  false,
+                                            "v4_0_3":  false,
+                                            "v4_1":  false,
+                                            "v4_2":  false,
+                                            "v4_3":  false,
+                                            "v4_4":  true,
+                                            "v5_0":  false,
+                                            "v5_1":  false,
+                                            "v6_0":  false,
+                                            "v7_0":  false,
+                                            "v7_1":  false,
+                                            "v8_0":  false,
+                                            "v8_1":  false,
+                                            "v9_0":  false,
+                                            "v10_0":  false,
+                                            "v11_0":  false,
+                                            "v12_0":  false,
+                                            "v13_0":  false,
+                                            "v14_0":  false,
+                                            "v15_0":  false
+                                        },
+    "categories":  [
+
+                   ],
+    "assignments@odata.context":  "https://graph.microsoft.com/beta/$metadata#deviceAppManagement/mobileApps(\u00276930c2be-9c12-4c76-ade2-2d440bffea0d\u0027)/microsoft.graph.managedAndroidStoreApp/assignments",
+    "assignments":  [
+
+                    ]
+}

@@ -1,0 +1,30 @@
+{
+    "@odata.context":  "https://graph.microsoft.com/beta/$metadata#deviceManagement/assignmentFilters/$entity",
+    "@odata.type":  "#microsoft.graph.deviceAndAppManagementAssignmentFilter",
+    "@odata.id":  "deviceManagement/assignmentFilters(\u0027d7e9908e-4627-448d-afc4-60a4e9a252b4\u0027)",
+    "@odata.editLink":  "deviceManagement/assignmentFilters(\u0027d7e9908e-4627-448d-afc4-60a4e9a252b4\u0027)",
+    "id":  "d7e9908e-4627-448d-afc4-60a4e9a252b4",
+    "createdDateTime@odata.type":  "#DateTimeOffset",
+    "createdDateTime":  "2025-04-11T05:02:28.6780231Z",
+    "lastModifiedDateTime@odata.type":  "#DateTimeOffset",
+    "lastModifiedDateTime":  "2025-04-11T05:02:28.6780231Z",
+    "displayName":  "Win - osVersion - Windows 11",
+    "description":  "",
+    "platform@odata.type":  "#microsoft.graph.devicePlatformType",
+    "platform":  "windows10AndLater",
+    "rule":  "(device.osVersion -startsWith \"10.0.2\")",
+    "roleScopeTags@odata.type":  "#Collection(String)",
+    "roleScopeTags":  [
+                          "0"
+                      ],
+    "assignmentFilterManagementType@odata.type":  "#microsoft.graph.assignmentFilterManagementType",
+    "assignmentFilterManagementType":  "devices",
+    "payloads@odata.type":  "#Collection(microsoft.graph.payloadByFilter)",
+    "payloads":  [
+
+                 ],
+    "#microsoft.graph.getSupportedProperties":  {
+                                                    "title":  "microsoft.graph.getSupportedProperties",
+                                                    "target":  "https://graph.microsoft.com/beta/deviceManagement/assignmentFilters(\u0027d7e9908e-4627-448d-afc4-60a4e9a252b4\u0027)/microsoft.graph.getSupportedProperties"
+                                                }
+}

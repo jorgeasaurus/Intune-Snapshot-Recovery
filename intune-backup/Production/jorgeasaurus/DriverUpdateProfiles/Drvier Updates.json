@@ -1,0 +1,61 @@
+{
+    "@odata.context":  "https://graph.microsoft.com/beta/$metadata#deviceManagement/windowsDriverUpdateProfiles(assignments())/$entity",
+    "@odata.type":  "#microsoft.graph.windowsDriverUpdateProfile",
+    "@odata.id":  "deviceManagement/windowsDriverUpdateProfiles(\u0027458b9993-c1ad-469c-a05c-6cd8f50b878d\u0027)",
+    "@odata.editLink":  "deviceManagement/windowsDriverUpdateProfiles(\u0027458b9993-c1ad-469c-a05c-6cd8f50b878d\u0027)",
+    "id":  "458b9993-c1ad-469c-a05c-6cd8f50b878d",
+    "displayName":  "Drvier Updates",
+    "description":  "",
+    "approvalType@odata.type":  "#microsoft.graph.driverUpdateProfileApprovalType",
+    "approvalType":  "automatic",
+    "deviceReporting":  0,
+    "newUpdates":  0,
+    "deploymentDeferralInDays":  1,
+    "createdDateTime@odata.type":  "#DateTimeOffset",
+    "createdDateTime":  "2025-03-29T01:33:05.1378558Z",
+    "lastModifiedDateTime@odata.type":  "#DateTimeOffset",
+    "lastModifiedDateTime":  "2025-03-29T01:33:05.1378558Z",
+    "roleScopeTagIds@odata.type":  "#Collection(String)",
+    "roleScopeTagIds":  [
+                            "0"
+                        ],
+    "inventorySyncStatus":  {
+                                "@odata.type":  "#microsoft.graph.windowsDriverUpdateProfileInventorySyncStatus",
+                                "lastSuccessfulSyncDateTime@odata.type":  "#DateTimeOffset",
+                                "lastSuccessfulSyncDateTime":  "2025-07-12T12:33:21.1573417Z",
+                                "driverInventorySyncState@odata.type":  "#microsoft.graph.windowsDriverUpdateProfileInventorySyncState",
+                                "driverInventorySyncState":  "success"
+                            },
+    "assignments@odata.context":  "https://graph.microsoft.com/beta/$metadata#deviceManagement/windowsDriverUpdateProfiles(\u0027458b9993-c1ad-469c-a05c-6cd8f50b878d\u0027)/assignments",
+    "assignments@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/windowsDriverUpdateProfiles(\u0027458b9993-c1ad-469c-a05c-6cd8f50b878d\u0027)/assignments/$ref",
+    "assignments@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/windowsDriverUpdateProfiles(\u0027458b9993-c1ad-469c-a05c-6cd8f50b878d\u0027)/assignments",
+    "assignments":  [
+                        {
+                            "@odata.type":  "#microsoft.graph.windowsDriverUpdateProfileAssignment",
+                            "@odata.id":  "deviceManagement/windowsDriverUpdateProfiles(\u0027458b9993-c1ad-469c-a05c-6cd8f50b878d\u0027)/assignments(\u0027458b9993-c1ad-469c-a05c-6cd8f50b878d_97b60d8a-5444-49ef-84ee-c2060b81029e\u0027)",
+                            "@odata.editLink":  "deviceManagement/windowsDriverUpdateProfiles(\u0027458b9993-c1ad-469c-a05c-6cd8f50b878d\u0027)/assignments(\u0027458b9993-c1ad-469c-a05c-6cd8f50b878d_97b60d8a-5444-49ef-84ee-c2060b81029e\u0027)",
+                            "id":  "458b9993-c1ad-469c-a05c-6cd8f50b878d_97b60d8a-5444-49ef-84ee-c2060b81029e",
+                            "target":  {
+                                           "@odata.type":  "#microsoft.graph.groupAssignmentTarget",
+                                           "deviceAndAppManagementAssignmentFilterId":  null,
+                                           "deviceAndAppManagementAssignmentFilterType@odata.type":  "#microsoft.graph.deviceAndAppManagementAssignmentFilterType",
+                                           "deviceAndAppManagementAssignmentFilterType":  "none",
+                                           "groupId":  "97b60d8a-5444-49ef-84ee-c2060b81029e"
+                                       }
+                        }
+                    ],
+    "driverInventories@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/windowsDriverUpdateProfiles(\u0027458b9993-c1ad-469c-a05c-6cd8f50b878d\u0027)/driverInventories/$ref",
+    "driverInventories@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/windowsDriverUpdateProfiles(\u0027458b9993-c1ad-469c-a05c-6cd8f50b878d\u0027)/driverInventories",
+    "#microsoft.graph.assign":  {
+                                    "title":  "microsoft.graph.assign",
+                                    "target":  "https://graph.microsoft.com/beta/deviceManagement/windowsDriverUpdateProfiles(\u0027458b9993-c1ad-469c-a05c-6cd8f50b878d\u0027)/microsoft.graph.assign"
+                                },
+    "#microsoft.graph.executeAction":  {
+                                           "title":  "microsoft.graph.executeAction",
+                                           "target":  "https://graph.microsoft.com/beta/deviceManagement/windowsDriverUpdateProfiles(\u0027458b9993-c1ad-469c-a05c-6cd8f50b878d\u0027)/microsoft.graph.executeAction"
+                                       },
+    "#microsoft.graph.syncInventory":  {
+                                           "title":  "microsoft.graph.syncInventory",
+                                           "target":  "https://graph.microsoft.com/beta/deviceManagement/windowsDriverUpdateProfiles(\u0027458b9993-c1ad-469c-a05c-6cd8f50b878d\u0027)/microsoft.graph.syncInventory"
+                                       }
+}

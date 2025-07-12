@@ -1,0 +1,58 @@
+{
+    "id":  "b426c05c-3e05-460f-8a90-259d8ceaefc7",
+    "deletedDateTime":  null,
+    "classification":  null,
+    "createdDateTime":  "2025-06-22T21:17:45Z",
+    "createdByAppId":  "d3506dad-8da3-461b-a5e6-cbc284e207e5",
+    "organizationId":  "%OrganizationId%",
+    "description":  "All Windows devices",
+    "displayName":  "Windows Devices",
+    "expirationDateTime":  null,
+    "groupTypes":  [
+                       "DynamicMembership"
+                   ],
+    "infoCatalogs":  [
+
+                     ],
+    "isAssignableToRole":  null,
+    "isManagementRestricted":  null,
+    "mail":  null,
+    "mailEnabled":  false,
+    "mailNickname":  "windowsdevices",
+    "membershipRule":  "(device.deviceOSType -eq \"Windows\") and (device.managementType -eq \"MDM\")",
+    "membershipRuleProcessingState":  "On",
+    "onPremisesDomainName":  null,
+    "onPremisesLastSyncDateTime":  null,
+    "onPremisesNetBiosName":  null,
+    "onPremisesObjectIdentifier":  null,
+    "onPremisesSamAccountName":  null,
+    "onPremisesSecurityIdentifier":  null,
+    "onPremisesSyncEnabled":  null,
+    "preferredDataLocation":  null,
+    "preferredLanguage":  null,
+    "proxyAddresses":  [
+
+                       ],
+    "renewedDateTime":  "2025-06-22T21:17:45Z",
+    "resourceBehaviorOptions":  [
+
+                                ],
+    "resourceProvisioningOptions":  [
+
+                                    ],
+    "securityEnabled":  true,
+    "securityIdentifier":  "S-1-12-1-3022438492-1175404037-2636484746-3354389132",
+    "theme":  null,
+    "visibility":  null,
+    "uniqueName":  null,
+    "onPremisesProvisioningErrors":  [
+
+                                     ],
+    "serviceProvisioningErrors":  [
+
+                                  ],
+    "writebackConfiguration":  {
+                                   "isEnabled":  null,
+                                   "onPremisesGroupType":  null
+                               }
+}

@@ -1,0 +1,30 @@
+{
+    "@odata.context":  "https://graph.microsoft.com/beta/$metadata#deviceManagement/assignmentFilters/$entity",
+    "@odata.type":  "#microsoft.graph.deviceAndAppManagementAssignmentFilter",
+    "@odata.id":  "deviceManagement/assignmentFilters(\u002740d63475-a9f0-459c-b42e-c7b09117aeac\u0027)",
+    "@odata.editLink":  "deviceManagement/assignmentFilters(\u002740d63475-a9f0-459c-b42e-c7b09117aeac\u0027)",
+    "id":  "40d63475-a9f0-459c-b42e-c7b09117aeac",
+    "createdDateTime@odata.type":  "#DateTimeOffset",
+    "createdDateTime":  "2025-04-11T05:02:28.7432447Z",
+    "lastModifiedDateTime@odata.type":  "#DateTimeOffset",
+    "lastModifiedDateTime":  "2025-04-11T05:02:28.7432447Z",
+    "displayName":  "iOS/iPadOS - osVersion - 16.x",
+    "description":  "",
+    "platform@odata.type":  "#microsoft.graph.devicePlatformType",
+    "platform":  "iOS",
+    "rule":  "(device.osVersion -startsWith \"16.\")",
+    "roleScopeTags@odata.type":  "#Collection(String)",
+    "roleScopeTags":  [
+                          "0"
+                      ],
+    "assignmentFilterManagementType@odata.type":  "#microsoft.graph.assignmentFilterManagementType",
+    "assignmentFilterManagementType":  "devices",
+    "payloads@odata.type":  "#Collection(microsoft.graph.payloadByFilter)",
+    "payloads":  [
+
+                 ],
+    "#microsoft.graph.getSupportedProperties":  {
+                                                    "title":  "microsoft.graph.getSupportedProperties",
+                                                    "target":  "https://graph.microsoft.com/beta/deviceManagement/assignmentFilters(\u002740d63475-a9f0-459c-b42e-c7b09117aeac\u0027)/microsoft.graph.getSupportedProperties"
+                                                }
+}

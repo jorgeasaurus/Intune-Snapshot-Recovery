@@ -1,0 +1,50 @@
+{
+    "@odata.context":  "https://graph.microsoft.com/beta/$metadata#deviceManagement/deviceEnrollmentConfigurations(assignments())/$entity",
+    "@odata.type":  "#microsoft.graph.windows10EnrollmentCompletionPageConfiguration",
+    "@odata.id":  "deviceManagement/deviceEnrollmentConfigurations(\u002735bfacd8-8a5c-4431-99e1-c24ac9f51340_Windows10EnrollmentCompletionPageConfiguration\u0027)",
+    "@odata.editLink":  "deviceManagement/deviceEnrollmentConfigurations(\u002735bfacd8-8a5c-4431-99e1-c24ac9f51340_Windows10EnrollmentCompletionPageConfiguration\u0027)/microsoft.graph.windows10EnrollmentCompletionPageConfiguration",
+    "id":  "35bfacd8-8a5c-4431-99e1-c24ac9f51340_Windows10EnrollmentCompletionPageConfiguration",
+    "displayName":  "AutoPilot Enrollment",
+    "description":  "Custom Enrollment Status",
+    "priority":  2,
+    "createdDateTime@odata.type":  "#DateTimeOffset",
+    "createdDateTime":  "2025-06-14T22:58:19.5597849Z",
+    "lastModifiedDateTime@odata.type":  "#DateTimeOffset",
+    "lastModifiedDateTime":  "2025-06-14T22:58:19.5597849Z",
+    "version":  1,
+    "roleScopeTagIds@odata.type":  "#Collection(String)",
+    "roleScopeTagIds":  [
+                            "0"
+                        ],
+    "deviceEnrollmentConfigurationType@odata.type":  "#microsoft.graph.deviceEnrollmentConfigurationType",
+    "deviceEnrollmentConfigurationType":  "windows10EnrollmentCompletionPageConfiguration",
+    "showInstallationProgress":  true,
+    "blockDeviceSetupRetryByUser":  false,
+    "allowDeviceResetOnInstallFailure":  false,
+    "allowLogCollectionOnInstallFailure":  true,
+    "customErrorMessage":  "Enter your custom error here",
+    "installProgressTimeoutInMinutes":  120,
+    "allowDeviceUseOnInstallFailure":  true,
+    "selectedMobileAppIds@odata.type":  "#Collection(String)",
+    "selectedMobileAppIds":  [
+
+                             ],
+    "allowNonBlockingAppInstallation":  false,
+    "installQualityUpdates":  false,
+    "trackInstallProgressForAutopilotOnly":  false,
+    "disableUserStatusTrackingAfterFirstUser":  false,
+    "assignments@odata.context":  "https://graph.microsoft.com/beta/$metadata#deviceManagement/deviceEnrollmentConfigurations(\u002735bfacd8-8a5c-4431-99e1-c24ac9f51340_Windows10EnrollmentCompletionPageConfiguration\u0027)/microsoft.graph.windows10EnrollmentCompletionPageConfiguration/assignments",
+    "assignments@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceEnrollmentConfigurations(\u002735bfacd8-8a5c-4431-99e1-c24ac9f51340_Windows10EnrollmentCompletionPageConfiguration\u0027)/microsoft.graph.windows10EnrollmentCompletionPageConfiguration/assignments/$ref",
+    "assignments@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceEnrollmentConfigurations(\u002735bfacd8-8a5c-4431-99e1-c24ac9f51340_Windows10EnrollmentCompletionPageConfiguration\u0027)/microsoft.graph.windows10EnrollmentCompletionPageConfiguration/assignments",
+    "assignments":  [
+
+                    ],
+    "#microsoft.graph.assign":  {
+                                    "title":  "microsoft.graph.assign",
+                                    "target":  "https://graph.microsoft.com/beta/deviceManagement/deviceEnrollmentConfigurations(\u002735bfacd8-8a5c-4431-99e1-c24ac9f51340_Windows10EnrollmentCompletionPageConfiguration\u0027)/microsoft.graph.deviceEnrollmentConfiguration/microsoft.graph.assign"
+                                },
+    "#microsoft.graph.setPriority":  {
+                                         "title":  "microsoft.graph.setPriority",
+                                         "target":  "https://graph.microsoft.com/beta/deviceManagement/deviceEnrollmentConfigurations(\u002735bfacd8-8a5c-4431-99e1-c24ac9f51340_Windows10EnrollmentCompletionPageConfiguration\u0027)/microsoft.graph.deviceEnrollmentConfiguration/microsoft.graph.setPriority"
+                                     }
+}

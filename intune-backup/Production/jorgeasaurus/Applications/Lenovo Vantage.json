@@ -1,0 +1,55 @@
+{
+    "@odata.context":  "https://graph.microsoft.com/beta/$metadata#deviceAppManagement/mobileApps(categories(),assignments())/$entity",
+    "@odata.type":  "#microsoft.graph.winGetApp",
+    "id":  "a12a6a73-90d7-4e54-bc40-45fe77cfe0a5",
+    "displayName":  "Lenovo Vantage",
+    "description":  "Enhance your PC experience with Lenovo Vantage. Vantage is a free app that makes it easy to optimize your computer performance and enable your device security protection. With Vantage, you can:\r\n\r\n. Customize your PC for how you use it with hardware setting controls\r\n. Check your warranty, discover the latest updates and request support \r\n. Install important software updates and get the latest drivers\r\n. Run device diagnostics \r\n. Vantage Smart Performance allows you to run a scan to assess your PC’s overall performance and identify issues that can be quickly fixed to make your device run smoother.\r\n. Lenovo Identity Advisor monitors over 120 data points on the dark web for a broad range of personal information. Including: data breach notifications, bank account takeovers, credit and account freezes, phone takeover monitoring, USPS address change verification, court record scanning, and sex offender registry reports.\r\n. Access online Wi-Fi security with advanced algorithms and crowd sourced security data to preemptively warn you about risky networks, so you can make safe connections. \r\n. Lenovo Smart Lock, powered by Absolute®, is a cloud-based security solution that helps locate, lock, secure, and recover your stolen device and gives you complete control over your personal information\r\n   \r\nVantage consolidates functionality into one easy-to-use application – less clutter for your PC means more control for you.",
+    "publisher":  "LENOVO INC.",
+    "largeIcon":  null,
+    "createdDateTime":  "2025-07-08T14:33:41.1711Z",
+    "lastModifiedDateTime":  "2025-07-08T14:33:41.1711Z",
+    "isFeatured":  false,
+    "privacyInformationUrl":  "https://www.lenovo.com/us/en/privacy/",
+    "informationUrl":  null,
+    "owner":  "",
+    "developer":  "",
+    "notes":  "",
+    "uploadState":  1,
+    "publishingState":  "published",
+    "isAssigned":  false,
+    "roleScopeTagIds":  [
+                            "0"
+                        ],
+    "dependentAppCount":  0,
+    "supersedingAppCount":  0,
+    "supersededAppCount":  0,
+    "manifestHash":  null,
+    "packageIdentifier":  "9WZDNCRFJ4MV",
+    "installExperience":  {
+                              "runAsAccount":  "system"
+                          },
+    "categories":  [
+
+                   ],
+    "assignments@odata.context":  "https://graph.microsoft.com/beta/$metadata#deviceAppManagement/mobileApps(\u0027a12a6a73-90d7-4e54-bc40-45fe77cfe0a5\u0027)/microsoft.graph.winGetApp/assignments",
+    "assignments":  [
+                        {
+                            "id":  "35b099de-2b73-4d39-a3bf-b9727384bf42_1_0",
+                            "intent":  "required",
+                            "source":  "direct",
+                            "sourceId":  null,
+                            "target":  {
+                                           "@odata.type":  "#microsoft.graph.groupAssignmentTarget",
+                                           "deviceAndAppManagementAssignmentFilterId":  null,
+                                           "deviceAndAppManagementAssignmentFilterType":  "none",
+                                           "groupId":  "35b099de-2b73-4d39-a3bf-b9727384bf42"
+                                       },
+                            "settings":  {
+                                             "@odata.type":  "#microsoft.graph.winGetAppAssignmentSettings",
+                                             "notifications":  "showAll",
+                                             "restartSettings":  null,
+                                             "installTimeSettings":  null
+                                         }
+                        }
+                    ]
+}

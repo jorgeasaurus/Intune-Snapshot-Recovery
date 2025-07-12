@@ -1,0 +1,58 @@
+{
+    "id":  "772cc75c-7891-4c1b-9d90-9116b888ef62",
+    "deletedDateTime":  null,
+    "classification":  null,
+    "createdDateTime":  "2025-07-08T01:00:02Z",
+    "createdByAppId":  "d3506dad-8da3-461b-a5e6-cbc284e207e5",
+    "organizationId":  "%OrganizationId%",
+    "description":  "Pilot ring for testing Intune policies (1-5% of devices)",
+    "displayName":  "Intune-Pilot-Devices",
+    "expirationDateTime":  null,
+    "groupTypes":  [
+
+                   ],
+    "infoCatalogs":  [
+
+                     ],
+    "isAssignableToRole":  null,
+    "isManagementRestricted":  null,
+    "mail":  null,
+    "mailEnabled":  false,
+    "mailNickname":  "pilot-devices",
+    "membershipRule":  null,
+    "membershipRuleProcessingState":  null,
+    "onPremisesDomainName":  null,
+    "onPremisesLastSyncDateTime":  null,
+    "onPremisesNetBiosName":  null,
+    "onPremisesObjectIdentifier":  null,
+    "onPremisesSamAccountName":  null,
+    "onPremisesSecurityIdentifier":  null,
+    "onPremisesSyncEnabled":  null,
+    "preferredDataLocation":  null,
+    "preferredLanguage":  null,
+    "proxyAddresses":  [
+
+                       ],
+    "renewedDateTime":  "2025-07-08T01:00:02Z",
+    "resourceBehaviorOptions":  [
+
+                                ],
+    "resourceProvisioningOptions":  [
+
+                                    ],
+    "securityEnabled":  true,
+    "securityIdentifier":  "S-1-12-1-1999423324-1276868753-378638493-1659865272",
+    "theme":  null,
+    "visibility":  null,
+    "uniqueName":  null,
+    "onPremisesProvisioningErrors":  [
+
+                                     ],
+    "serviceProvisioningErrors":  [
+
+                                  ],
+    "writebackConfiguration":  {
+                                   "isEnabled":  null,
+                                   "onPremisesGroupType":  null
+                               }
+}

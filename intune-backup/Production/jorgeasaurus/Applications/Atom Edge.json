@@ -1,0 +1,54 @@
+{
+    "@odata.context":  "https://graph.microsoft.com/beta/$metadata#deviceAppManagement/mobileApps(categories(),assignments())/$entity",
+    "@odata.type":  "#microsoft.graph.managedIOSStoreApp",
+    "id":  "68dad851-5a65-48c6-87e6-c191ea624fd3",
+    "displayName":  "Atom Edge",
+    "description":  "Introducing ATOM EdgeATOM Edge is leading the charge in transforming corporate security with its integrated suite of services, tailored to enhance businesses\u0027 operational capabilities. Our application provides a holistic approach to security management, seamlessly blending automation, real-time analytics, and strategic planning to foster a safe and productive working environment.Key Features:Automated Compliance Management: Simplifies adherence to regulatory changes, ensuring continuous compliance with the latest standards.Real-Time Analytics and Risk Assessment: Empowers users with tools for immediate threat detection and evaluation, facilitating prompt and well-informed decision-making.Centralized Operations Module: Serves as a central hub for security management, integrating diverse yet interconnected features for a cohesive user experience.Important Modules Details:Operations:Article Found Register: Improves accountability for on-premises items, significantly reducing incidents of lost property.Law Enforcement Visit List: Tracks law enforcement visits, facilitating proper documentation and follow-up actions.Event Protection List: Optimizes security resource deployment during events for heightened efficiency and vigilance.Incident Management: Provides a comprehensive toolset for recording, analyzing, and resolving security incidents, strengthening both reactive and proactive measures.Material Movement:1. Inward Material Movement: Monitors material entry, ensuring security and traceability.2. Outward Material Movement: Tracks material exits, ensuring proper authorization and documentation.Pass Management:1. Day Pass Management: Streamlines the issuance and tracking of day passes.2. Visitor Pass Management: Manages visitor pass issuance and records.3. Vendor Pass Management: Ensures efficient management and tracking of vendor passes.4. SEZ Pass Management: Specialized management of SEZ passes, maintaining stringent security and compliance standards.Guarding Operations:1. Guarding Master Data and Reports: Provides comprehensive data and reporting tools for efficient guarding operations.2. Female Drop Pickup: Facilitates safe transportation arrangements for female employees.3. Key Management Master: Efficiently manages keys and access control.4. SLA Violation Penalty: Tracks and manages penalties for service-level agreement violations.Enhanced Security and Efficiency:ATOM Edge\u0027s multifaceted approach to security management ensures comprehensive coverage of your business\u0027s security needs. From material movement tracking to detailed pass management, our application offers a seamless and secure operational experience. With ATOM Edge, users not only deploy a security solution but also elevate to a smarter, safer, and more efficient approach to managing their business\u0027s security requirements. User Guide and Benefits:ATOM Edge offers an intuitive user interface, making it easy for users to navigate through its various modules and functionalities. Whether you\u0027re a security manager, operations executive, or compliance officer, ATOM Edge empowers you to:- Monitor security compliance effortlessly, ensuring your business remains up-to-date with regulations.- Respond swiftly to security threats with real-time analytics and risk assessment tools.- Streamline operational workflows with centralized management and automation features.- Enhance accountability and reduce incidents with detailed tracking and incident management capabilities.With ATOM Edge, users gain peace of mind knowing that their business is equipped with a robust security solution that not only meets but exceeds their operational needs.",
+    "publisher":  "Arlanto GMBH",
+    "largeIcon":  null,
+    "createdDateTime":  "2025-04-19T19:54:58.1435731Z",
+    "lastModifiedDateTime":  "2025-04-19T19:54:58.1435731Z",
+    "isFeatured":  false,
+    "privacyInformationUrl":  null,
+    "informationUrl":  null,
+    "owner":  null,
+    "developer":  null,
+    "notes":  null,
+    "uploadState":  1,
+    "publishingState":  "published",
+    "isAssigned":  false,
+    "roleScopeTagIds":  [
+                            "0"
+                        ],
+    "dependentAppCount":  0,
+    "supersedingAppCount":  0,
+    "supersededAppCount":  0,
+    "appAvailability":  "lineOfBusiness",
+    "version":  "\"be04b16b-0000-0100-0000-6803ff920000\"",
+    "bundleId":  "com.arlanto.atomedge",
+    "appStoreUrl":  "https://itunes.apple.com/us/app/atom-edge/id6472163711?mt=8",
+    "applicableDeviceType":  {
+                                 "iPad":  true,
+                                 "iPhoneAndIPod":  true
+                             },
+    "minimumSupportedOperatingSystem":  {
+                                            "v8_0":  false,
+                                            "v9_0":  false,
+                                            "v10_0":  false,
+                                            "v11_0":  false,
+                                            "v12_0":  true,
+                                            "v13_0":  false,
+                                            "v14_0":  false,
+                                            "v15_0":  false,
+                                            "v16_0":  false,
+                                            "v17_0":  false,
+                                            "v18_0":  false
+                                        },
+    "categories":  [
+
+                   ],
+    "assignments@odata.context":  "https://graph.microsoft.com/beta/$metadata#deviceAppManagement/mobileApps(\u002768dad851-5a65-48c6-87e6-c191ea624fd3\u0027)/microsoft.graph.managedIOSStoreApp/assignments",
+    "assignments":  [
+
+                    ]
+}

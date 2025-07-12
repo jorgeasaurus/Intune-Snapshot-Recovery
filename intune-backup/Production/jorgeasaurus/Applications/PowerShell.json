@@ -1,0 +1,54 @@
+{
+    "@odata.context":  "https://graph.microsoft.com/beta/$metadata#deviceAppManagement/mobileApps(categories(),assignments())/$entity",
+    "@odata.type":  "#microsoft.graph.winGetApp",
+    "id":  "e23a2eeb-c91f-4331-a09e-8f710815948d",
+    "displayName":  "PowerShell",
+    "description":  "PowerShell is a task-based command-line shell and scripting language built on .NET.  PowerShell helps system administrators and power-users rapidly automate task that manage operating systems (Linux, macOS, and Windows) and processes.\r\n\r\nPowerShell commands let you manage computers from the command line.  PowerShell providers let you access data stores, such as the registry and certificate store, as easily as you access the file system.  PowerShell includes a rich expression parser and a fully developed scripting language.\r\n\r\nPowerShell is Open Source.  See https://github.com/powershell/powershell",
+    "publisher":  "Microsoft Corporation",
+    "largeIcon":  null,
+    "createdDateTime":  "2025-07-08T14:57:45.8559046Z",
+    "lastModifiedDateTime":  "2025-07-08T14:57:45.8559046Z",
+    "isFeatured":  false,
+    "privacyInformationUrl":  "https://github.com/PowerShell/PowerShell#telemetry",
+    "informationUrl":  null,
+    "owner":  "",
+    "developer":  "",
+    "notes":  "",
+    "uploadState":  1,
+    "publishingState":  "published",
+    "isAssigned":  false,
+    "roleScopeTagIds":  [
+                            "0"
+                        ],
+    "dependentAppCount":  0,
+    "supersedingAppCount":  0,
+    "supersededAppCount":  0,
+    "manifestHash":  null,
+    "packageIdentifier":  "9MZ1SNWT0N5D",
+    "installExperience":  {
+                              "runAsAccount":  "user"
+                          },
+    "categories":  [
+
+                   ],
+    "assignments@odata.context":  "https://graph.microsoft.com/beta/$metadata#deviceAppManagement/mobileApps(\u0027e23a2eeb-c91f-4331-a09e-8f710815948d\u0027)/microsoft.graph.winGetApp/assignments",
+    "assignments":  [
+                        {
+                            "id":  "adadadad-808e-44e2-905a-0b7873a8a531_1_0",
+                            "intent":  "required",
+                            "source":  "direct",
+                            "sourceId":  null,
+                            "target":  {
+                                           "@odata.type":  "#microsoft.graph.allDevicesAssignmentTarget",
+                                           "deviceAndAppManagementAssignmentFilterId":  null,
+                                           "deviceAndAppManagementAssignmentFilterType":  "none"
+                                       },
+                            "settings":  {
+                                             "@odata.type":  "#microsoft.graph.winGetAppAssignmentSettings",
+                                             "notifications":  "showAll",
+                                             "restartSettings":  null,
+                                             "installTimeSettings":  null
+                                         }
+                        }
+                    ]
+}

@@ -1,0 +1,113 @@
+{
+    "@odata.context":  "https://graph.microsoft.com/beta/$metadata#identity/conditionalAccess/policies/$entity",
+    "@odata.type":  "#microsoft.graph.conditionalAccessPolicy",
+    "@odata.id":  "identity/conditionalAccess/policies(\u0027772596c6-1461-4ba3-ba00-7a7ee881183f\u0027)",
+    "@odata.editLink":  "identity/conditionalAccess/policies(\u0027772596c6-1461-4ba3-ba00-7a7ee881183f\u0027)",
+    "id":  "772596c6-1461-4ba3-ba00-7a7ee881183f",
+    "templateId":  "4200930c-0da2-4e33-ca01-000000000008",
+    "displayName":  "Microsoft-managed: Block device code flow",
+    "createdDateTime@odata.type":  "#DateTimeOffset",
+    "createdDateTime":  "2025-04-14T23:02:13.2718216Z",
+    "modifiedDateTime@odata.type":  "#DateTimeOffset",
+    "modifiedDateTime":  "2025-06-04T20:19:45.8974354Z",
+    "state@odata.type":  "#microsoft.graph.conditionalAccessPolicyState",
+    "state":  "enabled",
+    "deletedDateTime":  null,
+    "partialEnablementStrategy":  null,
+    "sessionControls":  null,
+    "conditions":  {
+                       "@odata.type":  "#microsoft.graph.conditionalAccessConditionSet",
+                       "userRiskLevels@odata.type":  "#Collection(microsoft.graph.riskLevel)",
+                       "userRiskLevels":  [
+
+                                          ],
+                       "signInRiskLevels@odata.type":  "#Collection(microsoft.graph.riskLevel)",
+                       "signInRiskLevels":  [
+
+                                            ],
+                       "clientAppTypes@odata.type":  "#Collection(microsoft.graph.conditionalAccessClientApp)",
+                       "clientAppTypes":  [
+                                              "all"
+                                          ],
+                       "platforms":  null,
+                       "locations":  null,
+                       "times":  null,
+                       "deviceStates":  null,
+                       "devices":  null,
+                       "clientApplications":  null,
+                       "applications":  {
+                                            "@odata.type":  "#microsoft.graph.conditionalAccessApplications",
+                                            "includeApplications@odata.type":  "#Collection(String)",
+                                            "includeApplications":  [
+                                                                        "All"
+                                                                    ],
+                                            "excludeApplications@odata.type":  "#Collection(String)",
+                                            "excludeApplications":  [
+
+                                                                    ],
+                                            "includeUserActions@odata.type":  "#Collection(String)",
+                                            "includeUserActions":  [
+
+                                                                   ],
+                                            "includeAuthenticationContextClassReferences@odata.type":  "#Collection(String)",
+                                            "includeAuthenticationContextClassReferences":  [
+
+                                                                                            ],
+                                            "applicationFilter":  null
+                                        },
+                       "users":  {
+                                     "@odata.type":  "#microsoft.graph.conditionalAccessUsers",
+                                     "includeUsers@odata.type":  "#Collection(String)",
+                                     "includeUsers":  [
+                                                          "All"
+                                                      ],
+                                     "excludeUsers@odata.type":  "#Collection(String)",
+                                     "excludeUsers":  [
+
+                                                      ],
+                                     "includeGroups@odata.type":  "#Collection(String)",
+                                     "includeGroups":  [
+
+                                                       ],
+                                     "excludeGroups@odata.type":  "#Collection(String)",
+                                     "excludeGroups":  [
+
+                                                       ],
+                                     "includeRoles@odata.type":  "#Collection(String)",
+                                     "includeRoles":  [
+
+                                                      ],
+                                     "excludeRoles@odata.type":  "#Collection(String)",
+                                     "excludeRoles":  [
+
+                                                      ],
+                                     "includeGuestsOrExternalUsers":  null,
+                                     "excludeGuestsOrExternalUsers":  null
+                                 },
+                       "authenticationFlows":  {
+                                                   "@odata.type":  "#microsoft.graph.conditionalAccessAuthenticationFlows",
+                                                   "transferMethods@odata.type":  "#microsoft.graph.conditionalAccessTransferMethods",
+                                                   "transferMethods":  "deviceCodeFlow"
+                                               }
+                   },
+    "grantControls":  {
+                          "@odata.type":  "#microsoft.graph.conditionalAccessGrantControls",
+                          "operator":  "OR",
+                          "builtInControls@odata.type":  "#Collection(microsoft.graph.conditionalAccessGrantControl)",
+                          "builtInControls":  [
+                                                  "block"
+                                              ],
+                          "customAuthenticationFactors@odata.type":  "#Collection(String)",
+                          "customAuthenticationFactors":  [
+
+                                                          ],
+                          "termsOfUse@odata.type":  "#Collection(String)",
+                          "termsOfUse":  [
+
+                                         ],
+                          "authenticationStrength@odata.context":  "https://graph.microsoft.com/beta/$metadata#identity/conditionalAccess/policies(\u0027772596c6-1461-4ba3-ba00-7a7ee881183f\u0027)/grantControls/authenticationStrength/$entity",
+                          "authenticationStrength@odata.associationLink":  "https://graph.microsoft.com/beta/identity/conditionalAccess/policies(\u0027772596c6-1461-4ba3-ba00-7a7ee881183f\u0027)/grantControls/authenticationStrength/$ref",
+                          "authenticationStrength@odata.navigationLink":  "https://graph.microsoft.com/beta/identity/conditionalAccess/policies(\u0027772596c6-1461-4ba3-ba00-7a7ee881183f\u0027)/grantControls/authenticationStrength",
+                          "authenticationStrength":  null
+                      }
+}

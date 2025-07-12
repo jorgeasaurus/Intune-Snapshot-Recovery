@@ -1,0 +1,74 @@
+{
+    "@odata.context":  "https://graph.microsoft.com/beta/$metadata#deviceManagement/deviceConfigurations(assignments())/$entity",
+    "@odata.type":  "#microsoft.graph.iosUpdateConfiguration",
+    "@odata.id":  "deviceManagement/deviceConfigurations(\u0027364a4753-0fd5-496d-8ba6-a8694c875869\u0027)",
+    "@odata.editLink":  "deviceManagement/deviceConfigurations(\u0027364a4753-0fd5-496d-8ba6-a8694c875869\u0027)/microsoft.graph.iosUpdateConfiguration",
+    "id":  "364a4753-0fd5-496d-8ba6-a8694c875869",
+    "lastModifiedDateTime@odata.type":  "#DateTimeOffset",
+    "lastModifiedDateTime":  "2025-06-02T05:58:27.0111317Z",
+    "roleScopeTagIds@odata.type":  "#Collection(String)",
+    "roleScopeTagIds":  [
+                            "0"
+                        ],
+    "supportsScopeTags":  true,
+    "deviceManagementApplicabilityRuleOsEdition":  null,
+    "deviceManagementApplicabilityRuleOsVersion":  null,
+    "deviceManagementApplicabilityRuleDeviceMode":  null,
+    "createdDateTime@odata.type":  "#DateTimeOffset",
+    "createdDateTime":  "2025-06-02T05:58:27.0111317Z",
+    "description":  null,
+    "displayName":  "iOS/iPadOS - Default - Latest update - v1.0",
+    "version":  1,
+    "isEnabled":  false,
+    "activeHoursStart@odata.type":  "#TimeOfDay",
+    "activeHoursStart":  "00:00:00.0000000",
+    "activeHoursEnd@odata.type":  "#TimeOfDay",
+    "activeHoursEnd":  "00:00:00.0000000",
+    "desiredOsVersion":  null,
+    "scheduledInstallDays@odata.type":  "#Collection(microsoft.graph.dayOfWeek)",
+    "scheduledInstallDays":  [
+
+                             ],
+    "utcTimeOffsetInMinutes":  null,
+    "enforcedSoftwareUpdateDelayInDays":  null,
+    "updateScheduleType@odata.type":  "#microsoft.graph.iosSoftwareUpdateScheduleType",
+    "updateScheduleType":  "alwaysUpdate",
+    "customUpdateTimeWindows@odata.type":  "#Collection(microsoft.graph.customUpdateTimeWindow)",
+    "customUpdateTimeWindows":  [
+
+                                ],
+    "assignments@odata.context":  "https://graph.microsoft.com/beta/$metadata#deviceManagement/deviceConfigurations(\u0027364a4753-0fd5-496d-8ba6-a8694c875869\u0027)/microsoft.graph.iosUpdateConfiguration/assignments",
+    "assignments@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027364a4753-0fd5-496d-8ba6-a8694c875869\u0027)/microsoft.graph.iosUpdateConfiguration/assignments/$ref",
+    "assignments@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027364a4753-0fd5-496d-8ba6-a8694c875869\u0027)/microsoft.graph.iosUpdateConfiguration/assignments",
+    "assignments":  [
+
+                    ],
+    "deviceSettingStateSummaries@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027364a4753-0fd5-496d-8ba6-a8694c875869\u0027)/microsoft.graph.iosUpdateConfiguration/deviceSettingStateSummaries/$ref",
+    "deviceSettingStateSummaries@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027364a4753-0fd5-496d-8ba6-a8694c875869\u0027)/microsoft.graph.iosUpdateConfiguration/deviceSettingStateSummaries",
+    "deviceStatuses@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027364a4753-0fd5-496d-8ba6-a8694c875869\u0027)/microsoft.graph.iosUpdateConfiguration/deviceStatuses/$ref",
+    "deviceStatuses@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027364a4753-0fd5-496d-8ba6-a8694c875869\u0027)/microsoft.graph.iosUpdateConfiguration/deviceStatuses",
+    "deviceStatusOverview@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027364a4753-0fd5-496d-8ba6-a8694c875869\u0027)/microsoft.graph.iosUpdateConfiguration/deviceStatusOverview/$ref",
+    "deviceStatusOverview@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027364a4753-0fd5-496d-8ba6-a8694c875869\u0027)/microsoft.graph.iosUpdateConfiguration/deviceStatusOverview",
+    "groupAssignments@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027364a4753-0fd5-496d-8ba6-a8694c875869\u0027)/microsoft.graph.iosUpdateConfiguration/groupAssignments/$ref",
+    "groupAssignments@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027364a4753-0fd5-496d-8ba6-a8694c875869\u0027)/microsoft.graph.iosUpdateConfiguration/groupAssignments",
+    "userStatuses@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027364a4753-0fd5-496d-8ba6-a8694c875869\u0027)/microsoft.graph.iosUpdateConfiguration/userStatuses/$ref",
+    "userStatuses@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027364a4753-0fd5-496d-8ba6-a8694c875869\u0027)/microsoft.graph.iosUpdateConfiguration/userStatuses",
+    "userStatusOverview@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027364a4753-0fd5-496d-8ba6-a8694c875869\u0027)/microsoft.graph.iosUpdateConfiguration/userStatusOverview/$ref",
+    "userStatusOverview@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027364a4753-0fd5-496d-8ba6-a8694c875869\u0027)/microsoft.graph.iosUpdateConfiguration/userStatusOverview",
+    "#microsoft.graph.assign":  {
+                                    "title":  "microsoft.graph.assign",
+                                    "target":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027364a4753-0fd5-496d-8ba6-a8694c875869\u0027)/microsoft.graph.deviceConfiguration/microsoft.graph.assign"
+                                },
+    "#microsoft.graph.assignedAccessMultiModeProfiles":  {
+                                                             "title":  "microsoft.graph.assignedAccessMultiModeProfiles",
+                                                             "target":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027364a4753-0fd5-496d-8ba6-a8694c875869\u0027)/microsoft.graph.deviceConfiguration/microsoft.graph.assignedAccessMultiModeProfiles"
+                                                         },
+    "#microsoft.graph.windowsPrivacyAccessControls":  {
+                                                          "title":  "microsoft.graph.windowsPrivacyAccessControls",
+                                                          "target":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027364a4753-0fd5-496d-8ba6-a8694c875869\u0027)/microsoft.graph.deviceConfiguration/microsoft.graph.windowsPrivacyAccessControls"
+                                                      },
+    "#microsoft.graph.getOmaSettingPlainTextValue":  {
+                                                         "title":  "microsoft.graph.getOmaSettingPlainTextValue",
+                                                         "target":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027364a4753-0fd5-496d-8ba6-a8694c875869\u0027)/microsoft.graph.deviceConfiguration/microsoft.graph.getOmaSettingPlainTextValue"
+                                                     }
+}

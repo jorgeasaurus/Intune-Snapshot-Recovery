@@ -1,0 +1,125 @@
+{
+    "@odata.context":  "https://graph.microsoft.com/beta/$metadata#deviceManagement/deviceConfigurations(assignments())/$entity",
+    "@odata.type":  "#microsoft.graph.androidGeneralDeviceConfiguration",
+    "@odata.id":  "deviceManagement/deviceConfigurations(\u0027a667cdb9-0780-442f-aa10-64df49ac1adc\u0027)",
+    "@odata.editLink":  "deviceManagement/deviceConfigurations(\u0027a667cdb9-0780-442f-aa10-64df49ac1adc\u0027)/microsoft.graph.androidGeneralDeviceConfiguration",
+    "id":  "a667cdb9-0780-442f-aa10-64df49ac1adc",
+    "lastModifiedDateTime@odata.type":  "#DateTimeOffset",
+    "lastModifiedDateTime":  "2025-06-06T13:26:31.7156484Z",
+    "roleScopeTagIds@odata.type":  "#Collection(String)",
+    "roleScopeTagIds":  [
+                            "0"
+                        ],
+    "supportsScopeTags":  true,
+    "deviceManagementApplicabilityRuleOsEdition":  null,
+    "deviceManagementApplicabilityRuleOsVersion":  null,
+    "deviceManagementApplicabilityRuleDeviceMode":  null,
+    "createdDateTime@odata.type":  "#DateTimeOffset",
+    "createdDateTime":  "2025-06-06T13:26:31.7156484Z",
+    "description":  "Android Device Restriction Policy",
+    "displayName":  "Android Device Restriction Policy",
+    "version":  1,
+    "appsBlockClipboardSharing":  false,
+    "appsBlockCopyPaste":  false,
+    "appsBlockYouTube":  false,
+    "bluetoothBlocked":  false,
+    "cameraBlocked":  false,
+    "cellularBlockDataRoaming":  true,
+    "cellularBlockMessaging":  false,
+    "cellularBlockVoiceRoaming":  false,
+    "cellularBlockWiFiTethering":  false,
+    "compliantAppListType@odata.type":  "#microsoft.graph.appListType",
+    "compliantAppListType":  "none",
+    "diagnosticDataBlockSubmission":  false,
+    "locationServicesBlocked":  false,
+    "googleAccountBlockAutoSync":  false,
+    "googlePlayStoreBlocked":  false,
+    "kioskModeBlockSleepButton":  false,
+    "kioskModeBlockVolumeButtons":  false,
+    "dateAndTimeBlockChanges":  false,
+    "nfcBlocked":  false,
+    "passwordBlockFingerprintUnlock":  true,
+    "passwordBlockTrustAgents":  false,
+    "passwordExpirationDays":  null,
+    "passwordMinimumLength":  4,
+    "passwordMinutesOfInactivityBeforeScreenTimeout":  null,
+    "passwordPreviousPasswordBlockCount":  null,
+    "passwordSignInFailureCountBeforeFactoryReset":  null,
+    "passwordRequiredType@odata.type":  "#microsoft.graph.androidRequiredPasswordType",
+    "passwordRequiredType":  "deviceDefault",
+    "requiredPasswordComplexity@odata.type":  "#microsoft.graph.androidRequiredPasswordComplexity",
+    "requiredPasswordComplexity":  "none",
+    "passwordRequired":  true,
+    "powerOffBlocked":  false,
+    "factoryResetBlocked":  false,
+    "screenCaptureBlocked":  false,
+    "deviceSharingAllowed":  false,
+    "storageBlockGoogleBackup":  true,
+    "storageBlockRemovableStorage":  false,
+    "storageRequireDeviceEncryption":  true,
+    "storageRequireRemovableStorageEncryption":  true,
+    "voiceAssistantBlocked":  false,
+    "voiceDialingBlocked":  false,
+    "webBrowserBlockPopups":  false,
+    "webBrowserBlockAutofill":  false,
+    "webBrowserBlockJavaScript":  false,
+    "webBrowserBlocked":  false,
+    "webBrowserCookieSettings@odata.type":  "#microsoft.graph.webBrowserCookieSettings",
+    "webBrowserCookieSettings":  "browserDefault",
+    "wiFiBlocked":  false,
+    "securityRequireVerifyApps":  false,
+    "compliantAppsList@odata.type":  "#Collection(microsoft.graph.appListItem)",
+    "compliantAppsList":  [
+
+                          ],
+    "kioskModeApps@odata.type":  "#Collection(microsoft.graph.appListItem)",
+    "kioskModeApps":  [
+
+                      ],
+    "appsInstallAllowList@odata.type":  "#Collection(microsoft.graph.appListItem)",
+    "appsInstallAllowList":  [
+
+                             ],
+    "appsLaunchBlockList@odata.type":  "#Collection(microsoft.graph.appListItem)",
+    "appsLaunchBlockList":  [
+
+                            ],
+    "appsHideList@odata.type":  "#Collection(microsoft.graph.appListItem)",
+    "appsHideList":  [
+
+                     ],
+    "assignments@odata.context":  "https://graph.microsoft.com/beta/$metadata#deviceManagement/deviceConfigurations(\u0027a667cdb9-0780-442f-aa10-64df49ac1adc\u0027)/microsoft.graph.androidGeneralDeviceConfiguration/assignments",
+    "assignments@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027a667cdb9-0780-442f-aa10-64df49ac1adc\u0027)/microsoft.graph.androidGeneralDeviceConfiguration/assignments/$ref",
+    "assignments@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027a667cdb9-0780-442f-aa10-64df49ac1adc\u0027)/microsoft.graph.androidGeneralDeviceConfiguration/assignments",
+    "assignments":  [
+
+                    ],
+    "deviceSettingStateSummaries@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027a667cdb9-0780-442f-aa10-64df49ac1adc\u0027)/microsoft.graph.androidGeneralDeviceConfiguration/deviceSettingStateSummaries/$ref",
+    "deviceSettingStateSummaries@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027a667cdb9-0780-442f-aa10-64df49ac1adc\u0027)/microsoft.graph.androidGeneralDeviceConfiguration/deviceSettingStateSummaries",
+    "deviceStatuses@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027a667cdb9-0780-442f-aa10-64df49ac1adc\u0027)/microsoft.graph.androidGeneralDeviceConfiguration/deviceStatuses/$ref",
+    "deviceStatuses@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027a667cdb9-0780-442f-aa10-64df49ac1adc\u0027)/microsoft.graph.androidGeneralDeviceConfiguration/deviceStatuses",
+    "deviceStatusOverview@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027a667cdb9-0780-442f-aa10-64df49ac1adc\u0027)/microsoft.graph.androidGeneralDeviceConfiguration/deviceStatusOverview/$ref",
+    "deviceStatusOverview@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027a667cdb9-0780-442f-aa10-64df49ac1adc\u0027)/microsoft.graph.androidGeneralDeviceConfiguration/deviceStatusOverview",
+    "groupAssignments@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027a667cdb9-0780-442f-aa10-64df49ac1adc\u0027)/microsoft.graph.androidGeneralDeviceConfiguration/groupAssignments/$ref",
+    "groupAssignments@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027a667cdb9-0780-442f-aa10-64df49ac1adc\u0027)/microsoft.graph.androidGeneralDeviceConfiguration/groupAssignments",
+    "userStatuses@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027a667cdb9-0780-442f-aa10-64df49ac1adc\u0027)/microsoft.graph.androidGeneralDeviceConfiguration/userStatuses/$ref",
+    "userStatuses@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027a667cdb9-0780-442f-aa10-64df49ac1adc\u0027)/microsoft.graph.androidGeneralDeviceConfiguration/userStatuses",
+    "userStatusOverview@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027a667cdb9-0780-442f-aa10-64df49ac1adc\u0027)/microsoft.graph.androidGeneralDeviceConfiguration/userStatusOverview/$ref",
+    "userStatusOverview@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027a667cdb9-0780-442f-aa10-64df49ac1adc\u0027)/microsoft.graph.androidGeneralDeviceConfiguration/userStatusOverview",
+    "#microsoft.graph.assign":  {
+                                    "title":  "microsoft.graph.assign",
+                                    "target":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027a667cdb9-0780-442f-aa10-64df49ac1adc\u0027)/microsoft.graph.deviceConfiguration/microsoft.graph.assign"
+                                },
+    "#microsoft.graph.assignedAccessMultiModeProfiles":  {
+                                                             "title":  "microsoft.graph.assignedAccessMultiModeProfiles",
+                                                             "target":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027a667cdb9-0780-442f-aa10-64df49ac1adc\u0027)/microsoft.graph.deviceConfiguration/microsoft.graph.assignedAccessMultiModeProfiles"
+                                                         },
+    "#microsoft.graph.windowsPrivacyAccessControls":  {
+                                                          "title":  "microsoft.graph.windowsPrivacyAccessControls",
+                                                          "target":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027a667cdb9-0780-442f-aa10-64df49ac1adc\u0027)/microsoft.graph.deviceConfiguration/microsoft.graph.windowsPrivacyAccessControls"
+                                                      },
+    "#microsoft.graph.getOmaSettingPlainTextValue":  {
+                                                         "title":  "microsoft.graph.getOmaSettingPlainTextValue",
+                                                         "target":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027a667cdb9-0780-442f-aa10-64df49ac1adc\u0027)/microsoft.graph.deviceConfiguration/microsoft.graph.getOmaSettingPlainTextValue"
+                                                     }
+}

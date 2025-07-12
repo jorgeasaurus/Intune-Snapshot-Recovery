@@ -1,0 +1,51 @@
+{
+    "@odata.context":  "https://graph.microsoft.com/beta/$metadata#identity/conditionalAccess/authenticationStrengths/policies/$entity",
+    "@odata.type":  "#microsoft.graph.authenticationStrengthPolicy",
+    "@odata.id":  "identity/conditionalAccess/authenticationStrengths/policies(\u002700000000-0000-0000-0000-000000000002\u0027)",
+    "@odata.editLink":  "identity/conditionalAccess/authenticationStrengths/policies(\u002700000000-0000-0000-0000-000000000002\u0027)",
+    "id":  "00000000-0000-0000-0000-000000000002",
+    "createdDateTime@odata.type":  "#DateTimeOffset",
+    "createdDateTime":  "2021-12-01T00:00:00Z",
+    "modifiedDateTime@odata.type":  "#DateTimeOffset",
+    "modifiedDateTime":  "2021-12-01T00:00:00Z",
+    "displayName":  "Multifactor authentication",
+    "description":  "Combinations of methods that satisfy strong authentication, such as a password + SMS",
+    "policyType@odata.type":  "#microsoft.graph.authenticationStrengthPolicyType",
+    "policyType":  "builtIn",
+    "requirementsSatisfied@odata.type":  "#microsoft.graph.authenticationStrengthRequirements",
+    "requirementsSatisfied":  "mfa",
+    "allowedCombinations@odata.type":  "#Collection(microsoft.graph.authenticationMethodModes)",
+    "allowedCombinations":  [
+                                "windowsHelloForBusiness",
+                                "fido2",
+                                "x509CertificateMultiFactor",
+                                "deviceBasedPush",
+                                "temporaryAccessPassOneTime",
+                                "temporaryAccessPassMultiUse",
+                                "password,microsoftAuthenticatorPush",
+                                "password,softwareOath",
+                                "password,hardwareOath",
+                                "password,sms",
+                                "password,voice",
+                                "federatedMultiFactor",
+                                "microsoftAuthenticatorPush,federatedSingleFactor",
+                                "softwareOath,federatedSingleFactor",
+                                "hardwareOath,federatedSingleFactor",
+                                "sms,federatedSingleFactor",
+                                "voice,federatedSingleFactor"
+                            ],
+    "combinationConfigurations@odata.context":  "https://graph.microsoft.com/beta/$metadata#identity/conditionalAccess/authenticationStrengths/policies(\u002700000000-0000-0000-0000-000000000002\u0027)/combinationConfigurations",
+    "combinationConfigurations@odata.associationLink":  "https://graph.microsoft.com/beta/identity/conditionalAccess/authenticationStrengths/policies(\u002700000000-0000-0000-0000-000000000002\u0027)/combinationConfigurations/$ref",
+    "combinationConfigurations@odata.navigationLink":  "https://graph.microsoft.com/beta/identity/conditionalAccess/authenticationStrengths/policies(\u002700000000-0000-0000-0000-000000000002\u0027)/combinationConfigurations",
+    "combinationConfigurations":  [
+
+                                  ],
+    "#microsoft.graph.updateAllowedCombinations":  {
+                                                       "title":  "microsoft.graph.updateAllowedCombinations",
+                                                       "target":  "https://graph.microsoft.com/beta/identity/conditionalAccess/authenticationStrengths/policies(\u002700000000-0000-0000-0000-000000000002\u0027)/microsoft.graph.updateAllowedCombinations"
+                                                   },
+    "#microsoft.graph.usage":  {
+                                   "title":  "microsoft.graph.usage",
+                                   "target":  "https://graph.microsoft.com/beta/identity/conditionalAccess/authenticationStrengths/policies(\u002700000000-0000-0000-0000-000000000002\u0027)/microsoft.graph.usage"
+                               }
+}

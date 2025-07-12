@@ -1,0 +1,35 @@
+{
+    "@odata.context":  "https://graph.microsoft.com/beta/$metadata#identity/conditionalAccess/authenticationStrengths/policies/$entity",
+    "@odata.type":  "#microsoft.graph.authenticationStrengthPolicy",
+    "@odata.id":  "identity/conditionalAccess/authenticationStrengths/policies(\u002746699706-3149-4cbf-be73-66151c107ca4\u0027)",
+    "@odata.editLink":  "identity/conditionalAccess/authenticationStrengths/policies(\u002746699706-3149-4cbf-be73-66151c107ca4\u0027)",
+    "id":  "46699706-3149-4cbf-be73-66151c107ca4",
+    "createdDateTime@odata.type":  "#DateTimeOffset",
+    "createdDateTime":  "2025-06-06T13:28:54.900403Z",
+    "modifiedDateTime@odata.type":  "#DateTimeOffset",
+    "modifiedDateTime":  "2025-06-06T13:28:54.900403Z",
+    "displayName":  "TPA",
+    "description":  null,
+    "policyType@odata.type":  "#microsoft.graph.authenticationStrengthPolicyType",
+    "policyType":  "custom",
+    "requirementsSatisfied@odata.type":  "#microsoft.graph.authenticationStrengthRequirements",
+    "requirementsSatisfied":  "mfa",
+    "allowedCombinations@odata.type":  "#Collection(microsoft.graph.authenticationMethodModes)",
+    "allowedCombinations":  [
+                                "temporaryAccessPassOneTime"
+                            ],
+    "combinationConfigurations@odata.context":  "https://graph.microsoft.com/beta/$metadata#identity/conditionalAccess/authenticationStrengths/policies(\u002746699706-3149-4cbf-be73-66151c107ca4\u0027)/combinationConfigurations",
+    "combinationConfigurations@odata.associationLink":  "https://graph.microsoft.com/beta/identity/conditionalAccess/authenticationStrengths/policies(\u002746699706-3149-4cbf-be73-66151c107ca4\u0027)/combinationConfigurations/$ref",
+    "combinationConfigurations@odata.navigationLink":  "https://graph.microsoft.com/beta/identity/conditionalAccess/authenticationStrengths/policies(\u002746699706-3149-4cbf-be73-66151c107ca4\u0027)/combinationConfigurations",
+    "combinationConfigurations":  [
+
+                                  ],
+    "#microsoft.graph.updateAllowedCombinations":  {
+                                                       "title":  "microsoft.graph.updateAllowedCombinations",
+                                                       "target":  "https://graph.microsoft.com/beta/identity/conditionalAccess/authenticationStrengths/policies(\u002746699706-3149-4cbf-be73-66151c107ca4\u0027)/microsoft.graph.updateAllowedCombinations"
+                                                   },
+    "#microsoft.graph.usage":  {
+                                   "title":  "microsoft.graph.usage",
+                                   "target":  "https://graph.microsoft.com/beta/identity/conditionalAccess/authenticationStrengths/policies(\u002746699706-3149-4cbf-be73-66151c107ca4\u0027)/microsoft.graph.usage"
+                               }
+}

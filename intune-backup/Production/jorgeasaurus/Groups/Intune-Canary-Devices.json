@@ -1,0 +1,58 @@
+{
+    "id":  "68243fc3-8f1f-4d0c-8afe-37769ba2de82",
+    "deletedDateTime":  null,
+    "classification":  null,
+    "createdDateTime":  "2025-07-08T01:00:03Z",
+    "createdByAppId":  "d3506dad-8da3-461b-a5e6-cbc284e207e5",
+    "organizationId":  "%OrganizationId%",
+    "description":  "Early adopter devices (5-10% of fleet)",
+    "displayName":  "Intune-Canary-Devices",
+    "expirationDateTime":  null,
+    "groupTypes":  [
+
+                   ],
+    "infoCatalogs":  [
+
+                     ],
+    "isAssignableToRole":  null,
+    "isManagementRestricted":  null,
+    "mail":  null,
+    "mailEnabled":  false,
+    "mailNickname":  "canary-devices",
+    "membershipRule":  null,
+    "membershipRuleProcessingState":  null,
+    "onPremisesDomainName":  null,
+    "onPremisesLastSyncDateTime":  null,
+    "onPremisesNetBiosName":  null,
+    "onPremisesObjectIdentifier":  null,
+    "onPremisesSamAccountName":  null,
+    "onPremisesSecurityIdentifier":  null,
+    "onPremisesSyncEnabled":  null,
+    "preferredDataLocation":  null,
+    "preferredLanguage":  null,
+    "proxyAddresses":  [
+
+                       ],
+    "renewedDateTime":  "2025-07-08T01:00:03Z",
+    "resourceBehaviorOptions":  [
+
+                                ],
+    "resourceProvisioningOptions":  [
+
+                                    ],
+    "securityEnabled":  true,
+    "securityIdentifier":  "S-1-12-1-1747206083-1292668703-1983381130-2195628699",
+    "theme":  null,
+    "visibility":  null,
+    "uniqueName":  null,
+    "onPremisesProvisioningErrors":  [
+
+                                     ],
+    "serviceProvisioningErrors":  [
+
+                                  ],
+    "writebackConfiguration":  {
+                                   "isEnabled":  null,
+                                   "onPremisesGroupType":  null
+                               }
+}

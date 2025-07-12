@@ -1,0 +1,85 @@
+{
+    "@odata.context":  "https://graph.microsoft.com/beta/$metadata#organization(\u0027%OrganizationId%\u0027)/branding/localizations/$entity",
+    "@odata.type":  "#microsoft.graph.organizationalBrandingProperties",
+    "@odata.id":  "organization(\u0027%OrganizationId%\u0027)/branding/localizations(\u00270\u0027)",
+    "@odata.editLink":  "organization(\u0027%OrganizationId%\u0027)/branding/localizations(\u00270\u0027)/microsoft.graph.organizationalBrandingProperties",
+    "id":  "0",
+    "backgroundColor":  "#000000",
+    "backgroundImageRelativeUrl":  "dbd5a2dd-rljqslze5bj7hrliijgmz-vupaemetzzxhag3clp2ik/logintenantbranding/0/illustration?ts=638438837361588221",
+    "bannerLogoRelativeUrl":  "dbd5a2dd-rljqslze5bj7hrliijgmz-vupaemetzzxhag3clp2ik/logintenantbranding/0/bannerlogo?ts=638438837328522621",
+    "cdnList@odata.type":  "#Collection(String)",
+    "cdnList":  [
+                    "aadcdn.msftauthimages.net",
+                    "aadcdn.msauthimages.net"
+                ],
+    "customAccountResetCredentialsUrl":  null,
+    "customCannotAccessYourAccountText":  null,
+    "customCannotAccessYourAccountUrl":  null,
+    "customForgotMyPasswordText":  null,
+    "customPrivacyAndCookiesText":  null,
+    "customPrivacyAndCookiesUrl":  null,
+    "customResetItNowText":  null,
+    "customTermsOfUseText":  null,
+    "customTermsOfUseUrl":  null,
+    "faviconRelativeUrl":  "dbd5a2dd-rljqslze5bj7hrliijgmz-vupaemetzzxhag3clp2ik/logintenantbranding/0/favicon?ts=638438837353803691",
+    "customCSSRelativeUrl":  null,
+    "headerBackgroundColor":  null,
+    "signInPageText":  "",
+    "squareLogoRelativeUrl":  "dbd5a2dd-rljqslze5bj7hrliijgmz-vupaemetzzxhag3clp2ik/logintenantbranding/0/tilelogo?ts=638438837336664428",
+    "squareLogoDarkRelativeUrl":  "dbd5a2dd-rljqslze5bj7hrliijgmz-vupaemetzzxhag3clp2ik/logintenantbranding/0/squarelogodark?ts=638438837347983693",
+    "usernameHintText":  "",
+    "headerLogoRelativeUrl":  null,
+    "loginPageTextVisibilitySettings":  {
+                                            "@odata.type":  "#microsoft.graph.loginPageTextVisibilitySettings",
+                                            "hideCannotAccessYourAccount":  null,
+                                            "hideAccountResetCredentials":  false,
+                                            "hideTermsOfUse":  false,
+                                            "hidePrivacyAndCookies":  false,
+                                            "hideForgotMyPassword":  null,
+                                            "hideResetItNow":  null
+                                        },
+    "contentCustomization":  {
+                                 "@odata.type":  "#microsoft.graph.contentCustomization",
+                                 "adminConsentRelativeUrl":  null,
+                                 "attributeCollectionRelativeUrl":  null,
+                                 "registrationCampaignRelativeUrl":  null,
+                                 "conditionalAccessRelativeUrl":  null,
+                                 "adminConsent@odata.type":  "#Collection(microsoft.graph.keyValue)",
+                                 "adminConsent":  [
+
+                                                  ],
+                                 "attributeCollection@odata.type":  "#Collection(microsoft.graph.keyValue)",
+                                 "attributeCollection":  [
+
+                                                         ],
+                                 "registrationCampaign@odata.type":  "#Collection(microsoft.graph.keyValue)",
+                                 "registrationCampaign":  [
+
+                                                          ],
+                                 "conditionalAccess@odata.type":  "#Collection(microsoft.graph.keyValue)",
+                                 "conditionalAccess":  [
+
+                                                       ]
+                             },
+    "loginPageLayoutConfiguration":  {
+                                         "@odata.type":  "#microsoft.graph.loginPageLayoutConfiguration",
+                                         "layoutTemplateType@odata.type":  "#microsoft.graph.layoutTemplateType",
+                                         "layoutTemplateType":  "default",
+                                         "isHeaderShown":  false,
+                                         "isFooterShown":  true
+                                     },
+    "backgroundImage@odata.mediaEditLink":  "https://graph.microsoft.com/beta/organization(\u0027%OrganizationId%\u0027)/branding/localizations(\u00270\u0027)/microsoft.graph.organizationalBrandingProperties/backgroundImage",
+    "backgroundImage@odata.mediaReadLink":  "https://graph.microsoft.com/beta/organization(\u0027%OrganizationId%\u0027)/branding/localizations(\u00270\u0027)/microsoft.graph.organizationalBrandingProperties/backgroundImage",
+    "bannerLogo@odata.mediaEditLink":  "https://graph.microsoft.com/beta/organization(\u0027%OrganizationId%\u0027)/branding/localizations(\u00270\u0027)/microsoft.graph.organizationalBrandingProperties/bannerLogo",
+    "bannerLogo@odata.mediaReadLink":  "https://graph.microsoft.com/beta/organization(\u0027%OrganizationId%\u0027)/branding/localizations(\u00270\u0027)/microsoft.graph.organizationalBrandingProperties/bannerLogo",
+    "customCSS@odata.mediaEditLink":  "https://graph.microsoft.com/beta/organization(\u0027%OrganizationId%\u0027)/branding/localizations(\u00270\u0027)/microsoft.graph.organizationalBrandingProperties/customCSS",
+    "customCSS@odata.mediaReadLink":  "https://graph.microsoft.com/beta/organization(\u0027%OrganizationId%\u0027)/branding/localizations(\u00270\u0027)/microsoft.graph.organizationalBrandingProperties/customCSS",
+    "favicon@odata.mediaEditLink":  "https://graph.microsoft.com/beta/organization(\u0027%OrganizationId%\u0027)/branding/localizations(\u00270\u0027)/microsoft.graph.organizationalBrandingProperties/favicon",
+    "favicon@odata.mediaReadLink":  "https://graph.microsoft.com/beta/organization(\u0027%OrganizationId%\u0027)/branding/localizations(\u00270\u0027)/microsoft.graph.organizationalBrandingProperties/favicon",
+    "headerLogo@odata.mediaEditLink":  "https://graph.microsoft.com/beta/organization(\u0027%OrganizationId%\u0027)/branding/localizations(\u00270\u0027)/microsoft.graph.organizationalBrandingProperties/headerLogo",
+    "headerLogo@odata.mediaReadLink":  "https://graph.microsoft.com/beta/organization(\u0027%OrganizationId%\u0027)/branding/localizations(\u00270\u0027)/microsoft.graph.organizationalBrandingProperties/headerLogo",
+    "squareLogo@odata.mediaEditLink":  "https://graph.microsoft.com/beta/organization(\u0027%OrganizationId%\u0027)/branding/localizations(\u00270\u0027)/microsoft.graph.organizationalBrandingProperties/squareLogo",
+    "squareLogo@odata.mediaReadLink":  "https://graph.microsoft.com/beta/organization(\u0027%OrganizationId%\u0027)/branding/localizations(\u00270\u0027)/microsoft.graph.organizationalBrandingProperties/squareLogo",
+    "squareLogoDark@odata.mediaEditLink":  "https://graph.microsoft.com/beta/organization(\u0027%OrganizationId%\u0027)/branding/localizations(\u00270\u0027)/microsoft.graph.organizationalBrandingProperties/squareLogoDark",
+    "squareLogoDark@odata.mediaReadLink":  "https://graph.microsoft.com/beta/organization(\u0027%OrganizationId%\u0027)/branding/localizations(\u00270\u0027)/microsoft.graph.organizationalBrandingProperties/squareLogoDark"
+}

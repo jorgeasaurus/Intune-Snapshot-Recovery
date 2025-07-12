@@ -1,0 +1,58 @@
+{
+    "id":  "97b60d8a-5444-49ef-84ee-c2060b81029e",
+    "deletedDateTime":  null,
+    "classification":  null,
+    "createdDateTime":  "2025-03-29T01:32:51Z",
+    "createdByAppId":  "74658136-14ec-4630-ad9b-26e160ff0fc6",
+    "organizationId":  "%OrganizationId%",
+    "description":  null,
+    "displayName":  "All Windows Computers",
+    "expirationDateTime":  null,
+    "groupTypes":  [
+                       "DynamicMembership"
+                   ],
+    "infoCatalogs":  [
+
+                     ],
+    "isAssignableToRole":  null,
+    "isManagementRestricted":  null,
+    "mail":  null,
+    "mailEnabled":  false,
+    "mailNickname":  "c07a971e-2",
+    "membershipRule":  "(device.deviceOSType -eq \"Windows\")",
+    "membershipRuleProcessingState":  "On",
+    "onPremisesDomainName":  null,
+    "onPremisesLastSyncDateTime":  null,
+    "onPremisesNetBiosName":  null,
+    "onPremisesObjectIdentifier":  null,
+    "onPremisesSamAccountName":  null,
+    "onPremisesSecurityIdentifier":  null,
+    "onPremisesSyncEnabled":  null,
+    "preferredDataLocation":  null,
+    "preferredLanguage":  null,
+    "proxyAddresses":  [
+
+                       ],
+    "renewedDateTime":  "2025-03-29T01:32:51Z",
+    "resourceBehaviorOptions":  [
+
+                                ],
+    "resourceProvisioningOptions":  [
+
+                                    ],
+    "securityEnabled":  true,
+    "securityIdentifier":  "S-1-12-1-2545290634-1240421444-113438340-2650964235",
+    "theme":  null,
+    "visibility":  null,
+    "uniqueName":  null,
+    "onPremisesProvisioningErrors":  [
+
+                                     ],
+    "serviceProvisioningErrors":  [
+
+                                  ],
+    "writebackConfiguration":  {
+                                   "isEnabled":  null,
+                                   "onPremisesGroupType":  null
+                               }
+}

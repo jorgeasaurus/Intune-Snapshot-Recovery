@@ -1,0 +1,58 @@
+{
+    "id":  "674766ea-7258-4b24-bbca-379b8b98251f",
+    "deletedDateTime":  null,
+    "classification":  null,
+    "createdDateTime":  "2024-02-18T19:02:28Z",
+    "createdByAppId":  "74658136-14ec-4630-ad9b-26e160ff0fc6",
+    "organizationId":  "%OrganizationId%",
+    "description":  null,
+    "displayName":  "Autopilot Lab",
+    "expirationDateTime":  null,
+    "groupTypes":  [
+                       "DynamicMembership"
+                   ],
+    "infoCatalogs":  [
+
+                     ],
+    "isAssignableToRole":  null,
+    "isManagementRestricted":  null,
+    "mail":  null,
+    "mailEnabled":  false,
+    "mailNickname":  "776a91a7-1",
+    "membershipRule":  "(device.devicePhysicalIDs -any (_ -startsWith \"[ZTDid]\"))",
+    "membershipRuleProcessingState":  "On",
+    "onPremisesDomainName":  null,
+    "onPremisesLastSyncDateTime":  null,
+    "onPremisesNetBiosName":  null,
+    "onPremisesObjectIdentifier":  null,
+    "onPremisesSamAccountName":  null,
+    "onPremisesSecurityIdentifier":  null,
+    "onPremisesSyncEnabled":  null,
+    "preferredDataLocation":  null,
+    "preferredLanguage":  null,
+    "proxyAddresses":  [
+
+                       ],
+    "renewedDateTime":  "2024-02-18T19:02:28Z",
+    "resourceBehaviorOptions":  [
+
+                                ],
+    "resourceProvisioningOptions":  [
+
+                                    ],
+    "securityEnabled":  true,
+    "securityIdentifier":  "S-1-12-1-1732732650-1260679768-2604124859-522557579",
+    "theme":  null,
+    "visibility":  null,
+    "uniqueName":  null,
+    "onPremisesProvisioningErrors":  [
+
+                                     ],
+    "serviceProvisioningErrors":  [
+
+                                  ],
+    "writebackConfiguration":  {
+                                   "isEnabled":  null,
+                                   "onPremisesGroupType":  null
+                               }
+}

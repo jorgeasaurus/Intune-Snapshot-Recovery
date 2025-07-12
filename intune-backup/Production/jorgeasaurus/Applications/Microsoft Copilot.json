@@ -1,0 +1,59 @@
+{
+    "@odata.context":  "https://graph.microsoft.com/beta/$metadata#deviceAppManagement/mobileApps(categories(),assignments())/$entity",
+    "@odata.type":  "#microsoft.graph.managedAndroidStoreApp",
+    "id":  "fd86e45c-d236-4254-b865-b4fa1579a4b7",
+    "displayName":  "Microsoft Copilot",
+    "description":  "Improve Your Productivity with Copilot–Your Secure and Efficient AI-Powered Chat Assistant\r\nCopilot is a pioneering chat assistant from Microsoft powered by the latest OpenAI models, GPT-4 and DALL·E 3.",
+    "publisher":  "Microsoft Corporation",
+    "largeIcon":  null,
+    "createdDateTime":  "2025-04-19T19:58:09.5030404Z",
+    "lastModifiedDateTime":  "2025-04-19T19:58:09.5030404Z",
+    "isFeatured":  false,
+    "privacyInformationUrl":  null,
+    "informationUrl":  null,
+    "owner":  null,
+    "developer":  null,
+    "notes":  null,
+    "uploadState":  1,
+    "publishingState":  "published",
+    "isAssigned":  false,
+    "roleScopeTagIds":  [
+                            "0"
+                        ],
+    "dependentAppCount":  0,
+    "supersedingAppCount":  0,
+    "supersededAppCount":  0,
+    "appAvailability":  "lineOfBusiness",
+    "version":  "\"91019fbc-0000-0100-0000-680400510000\"",
+    "packageId":  "com.microsoft.copilot",
+    "appStoreUrl":  "https://play.google.com/store/apps/details?id=com.microsoft.copilot",
+    "minimumSupportedOperatingSystem":  {
+                                            "v4_0":  false,
+                                            "v4_0_3":  false,
+                                            "v4_1":  false,
+                                            "v4_2":  false,
+                                            "v4_3":  false,
+                                            "v4_4":  false,
+                                            "v5_0":  false,
+                                            "v5_1":  false,
+                                            "v6_0":  false,
+                                            "v7_0":  false,
+                                            "v7_1":  false,
+                                            "v8_0":  true,
+                                            "v8_1":  false,
+                                            "v9_0":  false,
+                                            "v10_0":  false,
+                                            "v11_0":  false,
+                                            "v12_0":  false,
+                                            "v13_0":  false,
+                                            "v14_0":  false,
+                                            "v15_0":  false
+                                        },
+    "categories":  [
+
+                   ],
+    "assignments@odata.context":  "https://graph.microsoft.com/beta/$metadata#deviceAppManagement/mobileApps(\u0027fd86e45c-d236-4254-b865-b4fa1579a4b7\u0027)/microsoft.graph.managedAndroidStoreApp/assignments",
+    "assignments":  [
+
+                    ]
+}

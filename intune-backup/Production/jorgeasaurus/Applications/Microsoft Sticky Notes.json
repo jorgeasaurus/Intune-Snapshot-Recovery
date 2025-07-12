@@ -1,0 +1,38 @@
+{
+    "@odata.context":  "https://graph.microsoft.com/beta/$metadata#deviceAppManagement/mobileApps(categories(),assignments())/$entity",
+    "@odata.type":  "#microsoft.graph.winGetApp",
+    "id":  "10afe6b9-2c4e-4462-a9dd-fe014050f138",
+    "displayName":  "Microsoft Sticky Notes",
+    "description":  "Need to remember something for later? Use Microsoft Sticky Notes. They\u0027re the simple way to quickly save something for later, so you can stay in the flow. With Sticky Notes, you can create notes, type, ink or add a picture, add text formatting, stick them to the desktop, move them around there freely, close them to the Notes list, and sync them across devices and apps like OneNote Mobile, Microsoft Launcher for Android, and Outlook for Windows.",
+    "publisher":  "Microsoft Corporation",
+    "largeIcon":  null,
+    "createdDateTime":  "2025-07-07T23:13:50.8813065Z",
+    "lastModifiedDateTime":  "2025-07-07T23:13:50.8813065Z",
+    "isFeatured":  false,
+    "privacyInformationUrl":  "http://go.microsoft.com/fwlink/?LinkID=521839",
+    "informationUrl":  null,
+    "owner":  "",
+    "developer":  "",
+    "notes":  "",
+    "uploadState":  1,
+    "publishingState":  "published",
+    "isAssigned":  false,
+    "roleScopeTagIds":  [
+                            "0"
+                        ],
+    "dependentAppCount":  0,
+    "supersedingAppCount":  0,
+    "supersededAppCount":  0,
+    "manifestHash":  null,
+    "packageIdentifier":  "9NBLGGH4QGHW",
+    "installExperience":  {
+                              "runAsAccount":  "user"
+                          },
+    "categories":  [
+
+                   ],
+    "assignments@odata.context":  "https://graph.microsoft.com/beta/$metadata#deviceAppManagement/mobileApps(\u002710afe6b9-2c4e-4462-a9dd-fe014050f138\u0027)/microsoft.graph.winGetApp/assignments",
+    "assignments":  [
+
+                    ]
+}

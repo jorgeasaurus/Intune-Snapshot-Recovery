@@ -1,0 +1,24 @@
+{
+    "@odata.context":  "https://graph.microsoft.com/beta/$metadata#identity/conditionalAccess/namedLocations/$entity",
+    "@odata.type":  "#microsoft.graph.countryNamedLocation",
+    "@odata.id":  "identity/conditionalAccess/namedLocations(\u002712ed65b8-fb68-43d2-805f-6b0e4f06f25b\u0027)",
+    "@odata.editLink":  "identity/conditionalAccess/namedLocations(\u002712ed65b8-fb68-43d2-805f-6b0e4f06f25b\u0027)/microsoft.graph.countryNamedLocation",
+    "id":  "12ed65b8-fb68-43d2-805f-6b0e4f06f25b",
+    "displayName":  "Unknown and untrusted countries and regions",
+    "modifiedDateTime@odata.type":  "#DateTimeOffset",
+    "modifiedDateTime":  "2025-06-06T13:29:53.0047132Z",
+    "createdDateTime@odata.type":  "#DateTimeOffset",
+    "createdDateTime":  "2025-06-06T13:29:53.0047132Z",
+    "deletedDateTime":  null,
+    "countriesAndRegions@odata.type":  "#Collection(String)",
+    "countriesAndRegions":  [
+                                "RU",
+                                "CN",
+                                "IR",
+                                "KP",
+                                "BY"
+                            ],
+    "includeUnknownCountriesAndRegions":  true,
+    "countryLookupMethod@odata.type":  "#microsoft.graph.countryLookupMethodType",
+    "countryLookupMethod":  "clientIpAddress"
+}

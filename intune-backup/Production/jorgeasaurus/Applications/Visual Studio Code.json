@@ -1,0 +1,54 @@
+{
+    "@odata.context":  "https://graph.microsoft.com/beta/$metadata#deviceAppManagement/mobileApps(categories(),assignments())/$entity",
+    "@odata.type":  "#microsoft.graph.winGetApp",
+    "id":  "0849d762-e570-482b-b19b-113138a8cc04",
+    "displayName":  "Visual Studio Code",
+    "description":  "Visual Studio Code is a free, lightweight, and extensible code editor for building web, desktop, and mobile applications, using any programming language and framework.\n\nVisual Studio Code has built-in support for Git source control management and powerful integrations with GitHub, an integrated debugger, and smart code completion with IntelliSense and with AI-driven IntelliCode. With over 30,000 extensions and themes in the Visual Studio Code Marketplace, you can customize the features and the look of Visual Studio Code to fit your needs, preferences, and style.\n\nYou can use Visual Studio Code to build any kind of app, for web, desktop, and mobile. Visual Studio Code supports JavaScript and TypeScript natively and offers extensions for coding in languages such as Python, Java, C/C++, C#, Go, Rust, PHP, and many more.",
+    "publisher":  "Microsoft Corporation",
+    "largeIcon":  null,
+    "createdDateTime":  "2024-02-18T19:18:55.7849275Z",
+    "lastModifiedDateTime":  "2024-02-18T19:18:55.7849275Z",
+    "isFeatured":  false,
+    "privacyInformationUrl":  "https://privacy.microsoft.com/en-US/privacystatement",
+    "informationUrl":  null,
+    "owner":  "",
+    "developer":  "",
+    "notes":  "",
+    "uploadState":  1,
+    "publishingState":  "published",
+    "isAssigned":  false,
+    "roleScopeTagIds":  [
+                            "0"
+                        ],
+    "dependentAppCount":  0,
+    "supersedingAppCount":  0,
+    "supersededAppCount":  0,
+    "manifestHash":  null,
+    "packageIdentifier":  "XP9KHM4BK9FZ7Q",
+    "installExperience":  {
+                              "runAsAccount":  "user"
+                          },
+    "categories":  [
+
+                   ],
+    "assignments@odata.context":  "https://graph.microsoft.com/beta/$metadata#deviceAppManagement/mobileApps(\u00270849d762-e570-482b-b19b-113138a8cc04\u0027)/microsoft.graph.winGetApp/assignments",
+    "assignments":  [
+                        {
+                            "id":  "acacacac-9df4-4c7d-9d50-4ef0226f57a9_0_0",
+                            "intent":  "available",
+                            "source":  "direct",
+                            "sourceId":  null,
+                            "target":  {
+                                           "@odata.type":  "#microsoft.graph.allLicensedUsersAssignmentTarget",
+                                           "deviceAndAppManagementAssignmentFilterId":  null,
+                                           "deviceAndAppManagementAssignmentFilterType":  "none"
+                                       },
+                            "settings":  {
+                                             "@odata.type":  "#microsoft.graph.winGetAppAssignmentSettings",
+                                             "notifications":  "showAll",
+                                             "restartSettings":  null,
+                                             "installTimeSettings":  null
+                                         }
+                        }
+                    ]
+}

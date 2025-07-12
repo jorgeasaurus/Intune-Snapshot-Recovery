@@ -1,0 +1,133 @@
+{
+    "@odata.context":  "https://graph.microsoft.com/beta/$metadata#deviceManagement/deviceCompliancePolicies(assignments(),scheduledActionsForRule(scheduledActionConfigurations()))/$entity",
+    "@odata.type":  "#microsoft.graph.windows10CompliancePolicy",
+    "@odata.id":  "deviceManagement/deviceCompliancePolicies(\u0027fd8c4cff-4f29-47dc-9407-a55bcff36d30\u0027)",
+    "@odata.editLink":  "deviceManagement/deviceCompliancePolicies(\u0027fd8c4cff-4f29-47dc-9407-a55bcff36d30\u0027)/microsoft.graph.windows10CompliancePolicy",
+    "roleScopeTagIds@odata.type":  "#Collection(String)",
+    "roleScopeTagIds":  [
+                            "0"
+                        ],
+    "id":  "fd8c4cff-4f29-47dc-9407-a55bcff36d30",
+    "createdDateTime@odata.type":  "#DateTimeOffset",
+    "createdDateTime":  "2025-07-09T20:33:54.1553718Z",
+    "description":  null,
+    "lastModifiedDateTime@odata.type":  "#DateTimeOffset",
+    "lastModifiedDateTime":  "2025-07-09T20:33:54.1553718Z",
+    "displayName":  "WIN-Compliance_canary_v1",
+    "version":  1,
+    "passwordRequired":  false,
+    "passwordBlockSimple":  false,
+    "passwordRequiredToUnlockFromIdle":  false,
+    "passwordMinutesOfInactivityBeforeLock":  null,
+    "passwordExpirationDays":  null,
+    "passwordMinimumLength":  null,
+    "passwordMinimumCharacterSetCount":  null,
+    "passwordRequiredType@odata.type":  "#microsoft.graph.requiredPasswordType",
+    "passwordRequiredType":  "deviceDefault",
+    "passwordPreviousPasswordBlockCount":  null,
+    "requireHealthyDeviceReport":  false,
+    "osMinimumVersion":  "10.0.19041",
+    "osMaximumVersion":  null,
+    "mobileOsMinimumVersion":  null,
+    "mobileOsMaximumVersion":  null,
+    "earlyLaunchAntiMalwareDriverEnabled":  false,
+    "bitLockerEnabled":  false,
+    "secureBootEnabled":  true,
+    "codeIntegrityEnabled":  false,
+    "memoryIntegrityEnabled":  false,
+    "kernelDmaProtectionEnabled":  false,
+    "virtualizationBasedSecurityEnabled":  false,
+    "firmwareProtectionEnabled":  false,
+    "storageRequireEncryption":  false,
+    "activeFirewallRequired":  false,
+    "defenderEnabled":  false,
+    "defenderVersion":  null,
+    "signatureOutOfDate":  false,
+    "rtpEnabled":  false,
+    "antivirusRequired":  false,
+    "antiSpywareRequired":  false,
+    "deviceThreatProtectionEnabled":  false,
+    "deviceThreatProtectionRequiredSecurityLevel@odata.type":  "#microsoft.graph.deviceThreatProtectionLevel",
+    "deviceThreatProtectionRequiredSecurityLevel":  "unavailable",
+    "configurationManagerComplianceRequired":  false,
+    "tpmRequired":  false,
+    "deviceCompliancePolicyScript":  null,
+    "validOperatingSystemBuildRanges@odata.type":  "#Collection(microsoft.graph.operatingSystemVersionRange)",
+    "validOperatingSystemBuildRanges":  [
+
+                                        ],
+    "wslDistributions@odata.type":  "#Collection(microsoft.graph.wslDistributionConfiguration)",
+    "wslDistributions":  [
+
+                         ],
+    "assignments@odata.context":  "https://graph.microsoft.com/beta/$metadata#deviceManagement/deviceCompliancePolicies(\u0027fd8c4cff-4f29-47dc-9407-a55bcff36d30\u0027)/microsoft.graph.windows10CompliancePolicy/assignments",
+    "assignments@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceCompliancePolicies(\u0027fd8c4cff-4f29-47dc-9407-a55bcff36d30\u0027)/microsoft.graph.windows10CompliancePolicy/assignments/$ref",
+    "assignments@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceCompliancePolicies(\u0027fd8c4cff-4f29-47dc-9407-a55bcff36d30\u0027)/microsoft.graph.windows10CompliancePolicy/assignments",
+    "assignments":  [
+                        {
+                            "@odata.type":  "#microsoft.graph.deviceCompliancePolicyAssignment",
+                            "@odata.id":  "deviceManagement/deviceCompliancePolicies(\u0027fd8c4cff-4f29-47dc-9407-a55bcff36d30\u0027)/assignments(\u0027fd8c4cff-4f29-47dc-9407-a55bcff36d30_68243fc3-8f1f-4d0c-8afe-37769ba2de82\u0027)",
+                            "@odata.editLink":  "deviceManagement/deviceCompliancePolicies(\u0027fd8c4cff-4f29-47dc-9407-a55bcff36d30\u0027)/assignments(\u0027fd8c4cff-4f29-47dc-9407-a55bcff36d30_68243fc3-8f1f-4d0c-8afe-37769ba2de82\u0027)",
+                            "id":  "fd8c4cff-4f29-47dc-9407-a55bcff36d30_68243fc3-8f1f-4d0c-8afe-37769ba2de82",
+                            "source@odata.type":  "#microsoft.graph.deviceAndAppManagementAssignmentSource",
+                            "source":  "direct",
+                            "sourceId":  "fd8c4cff-4f29-47dc-9407-a55bcff36d30",
+                            "target":  {
+                                           "@odata.type":  "#microsoft.graph.groupAssignmentTarget",
+                                           "deviceAndAppManagementAssignmentFilterId":  null,
+                                           "deviceAndAppManagementAssignmentFilterType@odata.type":  "#microsoft.graph.deviceAndAppManagementAssignmentFilterType",
+                                           "deviceAndAppManagementAssignmentFilterType":  "none",
+                                           "groupId":  "68243fc3-8f1f-4d0c-8afe-37769ba2de82"
+                                       }
+                        }
+                    ],
+    "scheduledActionsForRule@odata.context":  "https://graph.microsoft.com/beta/$metadata#deviceManagement/deviceCompliancePolicies(\u0027fd8c4cff-4f29-47dc-9407-a55bcff36d30\u0027)/microsoft.graph.windows10CompliancePolicy/scheduledActionsForRule(scheduledActionConfigurations())",
+    "scheduledActionsForRule@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceCompliancePolicies(\u0027fd8c4cff-4f29-47dc-9407-a55bcff36d30\u0027)/microsoft.graph.windows10CompliancePolicy/scheduledActionsForRule/$ref",
+    "scheduledActionsForRule@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceCompliancePolicies(\u0027fd8c4cff-4f29-47dc-9407-a55bcff36d30\u0027)/microsoft.graph.windows10CompliancePolicy/scheduledActionsForRule",
+    "scheduledActionsForRule":  [
+                                    {
+                                        "@odata.type":  "#microsoft.graph.deviceComplianceScheduledActionForRule",
+                                        "@odata.id":  "deviceManagement/deviceCompliancePolicies(\u0027fd8c4cff-4f29-47dc-9407-a55bcff36d30\u0027)/scheduledActionsForRule(\u0027fd8c4cff-4f29-47dc-9407-a55bcff36d30\u0027)",
+                                        "@odata.editLink":  "deviceManagement/deviceCompliancePolicies(\u0027fd8c4cff-4f29-47dc-9407-a55bcff36d30\u0027)/scheduledActionsForRule(\u0027fd8c4cff-4f29-47dc-9407-a55bcff36d30\u0027)",
+                                        "id":  "fd8c4cff-4f29-47dc-9407-a55bcff36d30",
+                                        "ruleName":  null,
+                                        "scheduledActionConfigurations@odata.context":  "https://graph.microsoft.com/beta/$metadata#deviceManagement/deviceCompliancePolicies(\u0027fd8c4cff-4f29-47dc-9407-a55bcff36d30\u0027)/microsoft.graph.windows10CompliancePolicy/scheduledActionsForRule(\u0027fd8c4cff-4f29-47dc-9407-a55bcff36d30\u0027)/scheduledActionConfigurations",
+                                        "scheduledActionConfigurations@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceCompliancePolicies(\u0027fd8c4cff-4f29-47dc-9407-a55bcff36d30\u0027)/scheduledActionsForRule(\u0027fd8c4cff-4f29-47dc-9407-a55bcff36d30\u0027)/scheduledActionConfigurations/$ref",
+                                        "scheduledActionConfigurations@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceCompliancePolicies(\u0027fd8c4cff-4f29-47dc-9407-a55bcff36d30\u0027)/scheduledActionsForRule(\u0027fd8c4cff-4f29-47dc-9407-a55bcff36d30\u0027)/scheduledActionConfigurations",
+                                        "scheduledActionConfigurations":  [
+                                                                              {
+                                                                                  "@odata.type":  "#microsoft.graph.deviceComplianceActionItem",
+                                                                                  "@odata.id":  "deviceManagement/deviceCompliancePolicies(\u0027fd8c4cff-4f29-47dc-9407-a55bcff36d30\u0027)/scheduledActionsForRule(\u0027fd8c4cff-4f29-47dc-9407-a55bcff36d30\u0027)/scheduledActionConfigurations(\u00279172b570-cf7f-4e38-a80e-187e906b847a\u0027)",
+                                                                                  "@odata.editLink":  "deviceManagement/deviceCompliancePolicies(\u0027fd8c4cff-4f29-47dc-9407-a55bcff36d30\u0027)/scheduledActionsForRule(\u0027fd8c4cff-4f29-47dc-9407-a55bcff36d30\u0027)/scheduledActionConfigurations(\u00279172b570-cf7f-4e38-a80e-187e906b847a\u0027)",
+                                                                                  "id":  "9172b570-cf7f-4e38-a80e-187e906b847a",
+                                                                                  "gracePeriodHours":  0,
+                                                                                  "actionType@odata.type":  "#microsoft.graph.deviceComplianceActionType",
+                                                                                  "actionType":  "block",
+                                                                                  "notificationTemplateId":  "00000000-0000-0000-0000-000000000000",
+                                                                                  "notificationMessageCCList@odata.type":  "#Collection(String)",
+                                                                                  "notificationMessageCCList":  [
+
+                                                                                                                ]
+                                                                              }
+                                                                          ]
+                                    }
+                                ],
+    "deviceSettingStateSummaries@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceCompliancePolicies(\u0027fd8c4cff-4f29-47dc-9407-a55bcff36d30\u0027)/microsoft.graph.windows10CompliancePolicy/deviceSettingStateSummaries/$ref",
+    "deviceSettingStateSummaries@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceCompliancePolicies(\u0027fd8c4cff-4f29-47dc-9407-a55bcff36d30\u0027)/microsoft.graph.windows10CompliancePolicy/deviceSettingStateSummaries",
+    "deviceStatuses@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceCompliancePolicies(\u0027fd8c4cff-4f29-47dc-9407-a55bcff36d30\u0027)/microsoft.graph.windows10CompliancePolicy/deviceStatuses/$ref",
+    "deviceStatuses@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceCompliancePolicies(\u0027fd8c4cff-4f29-47dc-9407-a55bcff36d30\u0027)/microsoft.graph.windows10CompliancePolicy/deviceStatuses",
+    "deviceStatusOverview@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceCompliancePolicies(\u0027fd8c4cff-4f29-47dc-9407-a55bcff36d30\u0027)/microsoft.graph.windows10CompliancePolicy/deviceStatusOverview/$ref",
+    "deviceStatusOverview@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceCompliancePolicies(\u0027fd8c4cff-4f29-47dc-9407-a55bcff36d30\u0027)/microsoft.graph.windows10CompliancePolicy/deviceStatusOverview",
+    "userStatuses@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceCompliancePolicies(\u0027fd8c4cff-4f29-47dc-9407-a55bcff36d30\u0027)/microsoft.graph.windows10CompliancePolicy/userStatuses/$ref",
+    "userStatuses@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceCompliancePolicies(\u0027fd8c4cff-4f29-47dc-9407-a55bcff36d30\u0027)/microsoft.graph.windows10CompliancePolicy/userStatuses",
+    "userStatusOverview@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceCompliancePolicies(\u0027fd8c4cff-4f29-47dc-9407-a55bcff36d30\u0027)/microsoft.graph.windows10CompliancePolicy/userStatusOverview/$ref",
+    "userStatusOverview@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceCompliancePolicies(\u0027fd8c4cff-4f29-47dc-9407-a55bcff36d30\u0027)/microsoft.graph.windows10CompliancePolicy/userStatusOverview",
+    "#microsoft.graph.assign":  {
+                                    "title":  "microsoft.graph.assign",
+                                    "target":  "https://graph.microsoft.com/beta/deviceManagement/deviceCompliancePolicies(\u0027fd8c4cff-4f29-47dc-9407-a55bcff36d30\u0027)/microsoft.graph.deviceCompliancePolicy/microsoft.graph.assign"
+                                },
+    "#microsoft.graph.scheduleActionsForRules":  {
+                                                     "title":  "microsoft.graph.scheduleActionsForRules",
+                                                     "target":  "https://graph.microsoft.com/beta/deviceManagement/deviceCompliancePolicies(\u0027fd8c4cff-4f29-47dc-9407-a55bcff36d30\u0027)/microsoft.graph.deviceCompliancePolicy/microsoft.graph.scheduleActionsForRules"
+                                                 }
+}

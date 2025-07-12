@@ -1,0 +1,54 @@
+{
+    "@odata.context":  "https://graph.microsoft.com/beta/$metadata#deviceAppManagement/mobileApps(categories(),assignments())/$entity",
+    "@odata.type":  "#microsoft.graph.winGetApp",
+    "id":  "8725d985-6d57-4326-9abc-47d8e8661da7",
+    "displayName":  "Parallels Toolbox",
+    "description":  "Parallels® Toolbox is all-in-one solution with 40 tools for Windows 10 and 11. \n\n\nWith just one click, you can:\n- Download video files from the internet\n- Save space on your hard drive by removing junk or finding duplicate files\n- Create high-quality screenshots or GIF files\n- Quickly optimize your computer settings for a presentation\n- And so much more of things you do every day on your computer\nOur suite of tools replaces the need for multiple applications.",
+    "publisher":  "Corel Corporation",
+    "largeIcon":  null,
+    "createdDateTime":  "2024-02-18T03:00:35.4469567Z",
+    "lastModifiedDateTime":  "2024-02-18T03:00:35.4469567Z",
+    "isFeatured":  false,
+    "privacyInformationUrl":  "https://www.parallels.com/about/legal/privacy/",
+    "informationUrl":  null,
+    "owner":  "",
+    "developer":  "",
+    "notes":  "",
+    "uploadState":  1,
+    "publishingState":  "published",
+    "isAssigned":  false,
+    "roleScopeTagIds":  [
+                            "0"
+                        ],
+    "dependentAppCount":  0,
+    "supersedingAppCount":  0,
+    "supersededAppCount":  0,
+    "manifestHash":  null,
+    "packageIdentifier":  "XP99JXDBM4XKFP",
+    "installExperience":  {
+                              "runAsAccount":  "system"
+                          },
+    "categories":  [
+
+                   ],
+    "assignments@odata.context":  "https://graph.microsoft.com/beta/$metadata#deviceAppManagement/mobileApps(\u00278725d985-6d57-4326-9abc-47d8e8661da7\u0027)/microsoft.graph.winGetApp/assignments",
+    "assignments":  [
+                        {
+                            "id":  "acacacac-9df4-4c7d-9d50-4ef0226f57a9_0_0",
+                            "intent":  "available",
+                            "source":  "direct",
+                            "sourceId":  null,
+                            "target":  {
+                                           "@odata.type":  "#microsoft.graph.allLicensedUsersAssignmentTarget",
+                                           "deviceAndAppManagementAssignmentFilterId":  null,
+                                           "deviceAndAppManagementAssignmentFilterType":  "none"
+                                       },
+                            "settings":  {
+                                             "@odata.type":  "#microsoft.graph.winGetAppAssignmentSettings",
+                                             "notifications":  "showAll",
+                                             "restartSettings":  null,
+                                             "installTimeSettings":  null
+                                         }
+                        }
+                    ]
+}

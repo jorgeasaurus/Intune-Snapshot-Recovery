@@ -1,0 +1,41 @@
+{
+    "TenantId":  "0e3028c5-ada7-4d5d-b767-eea5ff7417b5",
+    "Objects":  [
+                    {
+                        "DisplayName":  "All Lenovo Devices",
+                        "Id":  "35b099de-2b73-4d39-a3bf-b9727384bf42",
+                        "Type":  "Group"
+                    },
+                    {
+                        "DisplayName":  "Autopilot-Devices",
+                        "Id":  "852d094c-b565-4e17-a150-b14bf2cd527c",
+                        "Type":  "Group"
+                    },
+                    {
+                        "DisplayName":  "Intune-Canary-Devices",
+                        "Id":  "68243fc3-8f1f-4d0c-8afe-37769ba2de82",
+                        "Type":  "Group"
+                    },
+                    {
+                        "DisplayName":  "Intune-Pilot-Devices",
+                        "Id":  "772cc75c-7891-4c1b-9d90-9116b888ef62",
+                        "Type":  "Group"
+                    },
+                    {
+                        "DisplayName":  "All Windows Computers",
+                        "Id":  "97b60d8a-5444-49ef-84ee-c2060b81029e",
+                        "Type":  "Group"
+                    },
+                    {
+                        "DisplayName":  "Autopilot Lab",
+                        "Id":  "674766ea-7258-4b24-bbca-379b8b98251f",
+                        "Type":  "Group"
+                    },
+                    {
+                        "DisplayName":  "Windows Devices",
+                        "Id":  "b426c05c-3e05-460f-8a90-259d8ceaefc7",
+                        "Type":  "Group"
+                    }
+                ],
+    "Organization":  "jorgeasaurus"
+}

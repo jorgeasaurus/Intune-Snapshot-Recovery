@@ -1,0 +1,58 @@
+{
+    "id":  "35b099de-2b73-4d39-a3bf-b9727384bf42",
+    "deletedDateTime":  null,
+    "classification":  null,
+    "createdDateTime":  "2025-07-08T14:32:31Z",
+    "createdByAppId":  "74658136-14ec-4630-ad9b-26e160ff0fc6",
+    "organizationId":  "%OrganizationId%",
+    "description":  null,
+    "displayName":  "All Lenovo Devices",
+    "expirationDateTime":  null,
+    "groupTypes":  [
+                       "DynamicMembership"
+                   ],
+    "infoCatalogs":  [
+
+                     ],
+    "isAssignableToRole":  null,
+    "isManagementRestricted":  null,
+    "mail":  null,
+    "mailEnabled":  false,
+    "mailNickname":  "718ff7e7-2",
+    "membershipRule":  "(device.deviceManufacturer -eq \"LENOVO\")",
+    "membershipRuleProcessingState":  "On",
+    "onPremisesDomainName":  null,
+    "onPremisesLastSyncDateTime":  null,
+    "onPremisesNetBiosName":  null,
+    "onPremisesObjectIdentifier":  null,
+    "onPremisesSamAccountName":  null,
+    "onPremisesSecurityIdentifier":  null,
+    "onPremisesSyncEnabled":  null,
+    "preferredDataLocation":  null,
+    "preferredLanguage":  null,
+    "proxyAddresses":  [
+
+                       ],
+    "renewedDateTime":  "2025-07-08T14:32:31Z",
+    "resourceBehaviorOptions":  [
+
+                                ],
+    "resourceProvisioningOptions":  [
+
+                                    ],
+    "securityEnabled":  true,
+    "securityIdentifier":  "S-1-12-1-900766174-1295592307-1924775843-1119847539",
+    "theme":  null,
+    "visibility":  null,
+    "uniqueName":  null,
+    "onPremisesProvisioningErrors":  [
+
+                                     ],
+    "serviceProvisioningErrors":  [
+
+                                  ],
+    "writebackConfiguration":  {
+                                   "isEnabled":  null,
+                                   "onPremisesGroupType":  null
+                               }
+}

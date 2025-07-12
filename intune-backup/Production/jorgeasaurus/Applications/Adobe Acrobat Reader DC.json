@@ -1,0 +1,58 @@
+{
+    "@odata.context":  "https://graph.microsoft.com/beta/$metadata#deviceAppManagement/mobileApps(categories(),assignments())/$entity",
+    "@odata.type":  "#microsoft.graph.winGetApp",
+    "id":  "ed623b61-6ba6-4060-829d-7f07e3db1de6",
+    "displayName":  "Adobe Acrobat Reader DC",
+    "description":  "Adobe Acrobat Reader is the free, trusted global standard for viewing, printing, e-signing, sharing, and annotating PDFs.\n\nView PDFs:\nOpen and interact with all types of PDF content including forms and multimedia.\n\nEasily leave comments or annotate PDFs:\nSimply annotate documents using sticky notes, type text directly on the page, highlight, underline, or use strikethrough tools, and even draw on the screen with a freehand drawing tool.\n\nFill, e-sign, and lock your forms:\nFill out and e-sign PDF forms fast and share locked copies that become invalid if they are edited.\n\nCollaborate better with PDFs:\nShare PDFs and gather comments from multiple people in one file. Recipients get an email with a link to your PDF. They just click to open, view, and comment. Reviewers can respond to each other’s comments and you get notified of activity. It’s that easy.\n\nSuccessful installation requires Administrator access",
+    "publisher":  "ADOBE INC.",
+    "largeIcon":  null,
+    "createdDateTime":  "2024-02-18T19:19:24.98988Z",
+    "lastModifiedDateTime":  "2024-02-26T01:51:44.3480382Z",
+    "isFeatured":  false,
+    "privacyInformationUrl":  "https://www.adobe.com/privacy/policy-linkfree.html",
+    "informationUrl":  null,
+    "owner":  "",
+    "developer":  "",
+    "notes":  "",
+    "uploadState":  1,
+    "publishingState":  "published",
+    "isAssigned":  false,
+    "roleScopeTagIds":  [
+                            "0"
+                        ],
+    "dependentAppCount":  0,
+    "supersedingAppCount":  0,
+    "supersededAppCount":  0,
+    "manifestHash":  null,
+    "packageIdentifier":  "XPDP273C0XHQH2",
+    "installExperience":  {
+                              "runAsAccount":  "system"
+                          },
+    "categories":  [
+                       {
+                           "id":  "ed899483-3019-425e-a470-28e901b9790e",
+                           "displayName":  "Productivity",
+                           "lastModifiedDateTime":  "0001-01-01T00:00:00Z"
+                       }
+                   ],
+    "assignments@odata.context":  "https://graph.microsoft.com/beta/$metadata#deviceAppManagement/mobileApps(\u0027ed623b61-6ba6-4060-829d-7f07e3db1de6\u0027)/microsoft.graph.winGetApp/assignments",
+    "assignments":  [
+                        {
+                            "id":  "acacacac-9df4-4c7d-9d50-4ef0226f57a9_0_0",
+                            "intent":  "available",
+                            "source":  "direct",
+                            "sourceId":  null,
+                            "target":  {
+                                           "@odata.type":  "#microsoft.graph.allLicensedUsersAssignmentTarget",
+                                           "deviceAndAppManagementAssignmentFilterId":  null,
+                                           "deviceAndAppManagementAssignmentFilterType":  "none"
+                                       },
+                            "settings":  {
+                                             "@odata.type":  "#microsoft.graph.winGetAppAssignmentSettings",
+                                             "notifications":  "showAll",
+                                             "restartSettings":  null,
+                                             "installTimeSettings":  null
+                                         }
+                        }
+                    ]
+}

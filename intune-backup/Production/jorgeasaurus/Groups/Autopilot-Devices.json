@@ -1,0 +1,58 @@
+{
+    "id":  "852d094c-b565-4e17-a150-b14bf2cd527c",
+    "deletedDateTime":  null,
+    "classification":  null,
+    "createdDateTime":  "2025-06-14T22:59:07Z",
+    "createdByAppId":  "14d82eec-204b-4c2f-b7e8-296a70dab67e",
+    "organizationId":  "%OrganizationId%",
+    "description":  "Dynamic group for Autopilot Devices",
+    "displayName":  "Autopilot-Devices",
+    "expirationDateTime":  null,
+    "groupTypes":  [
+                       "DynamicMembership"
+                   ],
+    "infoCatalogs":  [
+
+                     ],
+    "isAssignableToRole":  null,
+    "isManagementRestricted":  null,
+    "mail":  null,
+    "mailEnabled":  false,
+    "mailNickname":  "autopilotdevices",
+    "membershipRule":  "(device.devicePhysicalIDs -any (_ -contains \"[ZTDid]\"))",
+    "membershipRuleProcessingState":  "On",
+    "onPremisesDomainName":  null,
+    "onPremisesLastSyncDateTime":  null,
+    "onPremisesNetBiosName":  null,
+    "onPremisesObjectIdentifier":  null,
+    "onPremisesSamAccountName":  null,
+    "onPremisesSecurityIdentifier":  null,
+    "onPremisesSyncEnabled":  null,
+    "preferredDataLocation":  null,
+    "preferredLanguage":  null,
+    "proxyAddresses":  [
+
+                       ],
+    "renewedDateTime":  "2025-06-14T22:59:07Z",
+    "resourceBehaviorOptions":  [
+
+                                ],
+    "resourceProvisioningOptions":  [
+
+                                    ],
+    "securityEnabled":  true,
+    "securityIdentifier":  "S-1-12-1-2234321228-1310176613-1269911713-2085801458",
+    "theme":  null,
+    "visibility":  null,
+    "uniqueName":  null,
+    "onPremisesProvisioningErrors":  [
+
+                                     ],
+    "serviceProvisioningErrors":  [
+
+                                  ],
+    "writebackConfiguration":  {
+                                   "isEnabled":  null,
+                                   "onPremisesGroupType":  null
+                               }
+}

@@ -1,0 +1,85 @@
+{
+    "@odata.context":  "https://graph.microsoft.com/beta/$metadata#deviceManagement/deviceHealthScripts(assignments())/$entity",
+    "@odata.type":  "#microsoft.graph.deviceHealthScript",
+    "@odata.id":  "deviceManagement/deviceHealthScripts(\u0027959011a8-5eef-4475-b992-cc1d9de8a5f5\u0027)",
+    "@odata.editLink":  "deviceManagement/deviceHealthScripts(\u0027959011a8-5eef-4475-b992-cc1d9de8a5f5\u0027)",
+    "id":  "959011a8-5eef-4475-b992-cc1d9de8a5f5",
+    "publisher":  "Jorge Suarez",
+    "version":  "1",
+    "displayName":  "Remove-Chome",
+    "description":  "",
+    "detectionScriptContent@odata.type":  "#Binary",
+    "detectionScriptContent":  "dHJ5CnsgIAoKJGNocm9tZUluc3RhbGxlZCA9IFRlc3QtUGF0aCAnSEtMTTpcU09GVFdBUkVcTWljcm9zb2Z0XFdpbmRvd3NcQ3VycmVudFZlcnNpb25cQXBwIFBhdGhzXGNocm9tZS5leGUnCgppZiAoJGNocm9tZUluc3RhbGxlZCAtZXEgJ1RydWUnKSB7CiAgICBXcml0ZS1Ib3N0ICJHb29nbGUgQ2hyb21lIGlzIGluc3RhbGxlZCIKICAgIGV4aXQgMQogICAgfQogICAgZWxzZSB7CiAgICAgICAgI05vIHJlbWVkaWF0aW9uIHJlcXVpcmVkICAgIAogICAgICAgIFdyaXRlLUhvc3QgIkdvb2dsZSBDaHJvbWUgaXMgbm90IGluc3RhbGxlZCIKICAgICAgICBleGl0IDAKICAgIH0gIAp9CmNhdGNoIHsKICAgICRlcnJNc2cgPSAkXy5FeGNlcHRpb24uTWVzc2FnZQogICAgV3JpdGUtRXJyb3IgJGVyck1zZwogICAgZXhpdCAxCn0=",
+    "remediationScriptContent@odata.type":  "#Binary",
+    "remediationScriptContent":  "IyBTdGFydC1Qcm9jZXNzIEluc3RhbGxlcnMgYW5kIEFyZ3VtZW50cwokSW5zdGFsbGVyID0gIiRlbnY6UHJvZ3JhbUZpbGVzXEdvb2dsZVxDaHJvbWVcQXBwbGljYXRpb25cJENocm9tZVZlcnNpb25cSW5zdGFsbGVyXGNocm1zdHAuZXhlIgokSW5zdGFsbGVyWDg2ID0gIiR7ZW52OlByb2dyYW1GaWxlcyh4ODYpfVxHb29nbGVcQ2hyb21lXEFwcGxpY2F0aW9uXCRDaHJvbWVWZXJzaW9uXEluc3RhbGxlclxjaHJtc3RwLmV4ZSIKJEFyZ3VlbWVudHMgPSAiLS11bmluc3RhbGwgLS1jaHJvbWUgLS1zeXN0ZW0tbGV2ZWwgLS1tdWx0aS1pbnN0YWxsIC0tZm9yY2UtdW5pbnN0YWxsIgoKJGNocm9tZUluc3RhbGxlZCA9IChHZXQtSXRlbSAoR2V0LUl0ZW1Qcm9wZXJ0eSAnSEtMTTpcU09GVFdBUkVcTWljcm9zb2Z0XFdpbmRvd3NcQ3VycmVudFZlcnNpb25cQXBwIFBhdGhzXGNocm9tZS5leGUnIC1FcnJvckFjdGlvbiBTaWxlbnRseUNvbnRpbnVlKS4nKERlZmF1bHQpJykuVmVyc2lvbkluZm8KICRDaHJvbWVWZXJzaW9uID0gJGNocm9tZUluc3RhbGxlZC5Qcm9kdWN0VmVyc2lvbgoKICMgQ2hlY2sgZm9yIHg2NCBDaHJvbWUKICRDaHJvbWV4NjQgPSAiQzpcUHJvZ3JhbSBGaWxlc1xHb29nbGVcQ2hyb21lXEFwcGxpY2F0aW9uXCRDaHJvbWVWZXJzaW9uXEluc3RhbGxlclxjaHJtc3RwLmV4ZSIKICRGaWxlRXhpc3RzeDY0ID0gVGVzdC1QYXRoICRDaHJvbWV4NjQKCiAjIENoZWNrIGZvciB4ODYgQ2hyb21lCiAkQ2hyb21leDg2ID0gIkM6XFByb2dyYW0gRmlsZXMgKHg4NilcR29vZ2xlXENocm9tZVxBcHBsaWNhdGlvblwkQ2hyb21lVmVyc2lvblxJbnN0YWxsZXJcY2hybXN0cC5leGUiCiAkRmlsZUV4aXN0c3g4NiA9IFRlc3QtUGF0aCAkQ2hyb21leDg2CgogIyBSZW1vdmUgeDY0IENocm9tZQogSWYgKCRGaWxlRXhpc3RzeDY0IC1lcSAkVHJ1ZSkgewogICAgU3RhcnQtUHJvY2VzcyAkSW5zdGFsbGVyICRBcmd1ZW1lbnRzIC1XYWl0CiB9CiAgCiAgIyBSZW1vdmUgeDg2IENocm9tZQogSWYgKCRGaWxlRXhpc3RzeDg2IC1lcSAkVHJ1ZSkgewogICAgU3RhcnQtUHJvY2VzcyAkSW5zdGFsbGVyWDg2ICRBcmd1ZW1lbnRzIC1XYWl0CiB9",
+    "createdDateTime@odata.type":  "#DateTimeOffset",
+    "createdDateTime":  "2025-07-09T15:01:49.6163288Z",
+    "lastModifiedDateTime@odata.type":  "#DateTimeOffset",
+    "lastModifiedDateTime":  "2025-07-09T15:01:49.6163288Z",
+    "runAsAccount@odata.type":  "#microsoft.graph.runAsAccountType",
+    "runAsAccount":  "system",
+    "enforceSignatureCheck":  false,
+    "runAs32Bit":  false,
+    "roleScopeTagIds@odata.type":  "#Collection(String)",
+    "roleScopeTagIds":  [
+                            "0"
+                        ],
+    "isGlobalScript":  false,
+    "highestAvailableVersion":  null,
+    "deviceHealthScriptType@odata.type":  "#microsoft.graph.deviceHealthScriptType",
+    "deviceHealthScriptType":  "deviceHealthScript",
+    "detectionScriptParameters@odata.type":  "#Collection(microsoft.graph.deviceHealthScriptParameter)",
+    "detectionScriptParameters":  [
+
+                                  ],
+    "remediationScriptParameters@odata.type":  "#Collection(microsoft.graph.deviceHealthScriptParameter)",
+    "remediationScriptParameters":  [
+
+                                    ],
+    "assignments@odata.context":  "https://graph.microsoft.com/beta/$metadata#deviceManagement/deviceHealthScripts(\u0027959011a8-5eef-4475-b992-cc1d9de8a5f5\u0027)/assignments",
+    "assignments@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceHealthScripts(\u0027959011a8-5eef-4475-b992-cc1d9de8a5f5\u0027)/assignments/$ref",
+    "assignments@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceHealthScripts(\u0027959011a8-5eef-4475-b992-cc1d9de8a5f5\u0027)/assignments",
+    "assignments":  [
+                        {
+                            "@odata.type":  "#microsoft.graph.deviceHealthScriptAssignment",
+                            "@odata.id":  "deviceManagement/deviceHealthScripts(\u0027959011a8-5eef-4475-b992-cc1d9de8a5f5\u0027)/assignments(\u0027959011a8-5eef-4475-b992-cc1d9de8a5f5%3A772cc75c-7891-4c1b-9d90-9116b888ef62\u0027)",
+                            "@odata.editLink":  "deviceManagement/deviceHealthScripts(\u0027959011a8-5eef-4475-b992-cc1d9de8a5f5\u0027)/assignments(\u0027959011a8-5eef-4475-b992-cc1d9de8a5f5%3A772cc75c-7891-4c1b-9d90-9116b888ef62\u0027)",
+                            "id":  "959011a8-5eef-4475-b992-cc1d9de8a5f5:772cc75c-7891-4c1b-9d90-9116b888ef62",
+                            "runRemediationScript":  false,
+                            "target":  {
+                                           "@odata.type":  "#microsoft.graph.groupAssignmentTarget",
+                                           "deviceAndAppManagementAssignmentFilterId":  "00000000-0000-0000-0000-000000000000",
+                                           "deviceAndAppManagementAssignmentFilterType@odata.type":  "#microsoft.graph.deviceAndAppManagementAssignmentFilterType",
+                                           "deviceAndAppManagementAssignmentFilterType":  "none",
+                                           "groupId":  "772cc75c-7891-4c1b-9d90-9116b888ef62"
+                                       },
+                            "runSchedule":  {
+                                                "@odata.type":  "#microsoft.graph.deviceHealthScriptDailySchedule",
+                                                "interval":  1,
+                                                "useUtc":  false,
+                                                "time@odata.type":  "#TimeOfDay",
+                                                "time":  "16:00:00.0000000"
+                                            }
+                        }
+                    ],
+    "deviceRunStates@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceHealthScripts(\u0027959011a8-5eef-4475-b992-cc1d9de8a5f5\u0027)/deviceRunStates/$ref",
+    "deviceRunStates@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceHealthScripts(\u0027959011a8-5eef-4475-b992-cc1d9de8a5f5\u0027)/deviceRunStates",
+    "runSummary@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceHealthScripts(\u0027959011a8-5eef-4475-b992-cc1d9de8a5f5\u0027)/runSummary/$ref",
+    "runSummary@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceHealthScripts(\u0027959011a8-5eef-4475-b992-cc1d9de8a5f5\u0027)/runSummary",
+    "#microsoft.graph.assign":  {
+                                    "title":  "microsoft.graph.assign",
+                                    "target":  "https://graph.microsoft.com/beta/deviceManagement/deviceHealthScripts(\u0027959011a8-5eef-4475-b992-cc1d9de8a5f5\u0027)/microsoft.graph.assign"
+                                },
+    "#microsoft.graph.getGlobalScriptHighestAvailableVersion":  {
+                                                                    "title":  "microsoft.graph.getGlobalScriptHighestAvailableVersion",
+                                                                    "target":  "https://graph.microsoft.com/beta/deviceManagement/deviceHealthScripts(\u0027959011a8-5eef-4475-b992-cc1d9de8a5f5\u0027)/microsoft.graph.getGlobalScriptHighestAvailableVersion"
+                                                                },
+    "#microsoft.graph.updateGlobalScript":  {
+                                                "title":  "microsoft.graph.updateGlobalScript",
+                                                "target":  "https://graph.microsoft.com/beta/deviceManagement/deviceHealthScripts(\u0027959011a8-5eef-4475-b992-cc1d9de8a5f5\u0027)/microsoft.graph.updateGlobalScript"
+                                            },
+    "#microsoft.graph.getRemediationHistory":  {
+                                                   "title":  "microsoft.graph.getRemediationHistory",
+                                                   "target":  "https://graph.microsoft.com/beta/deviceManagement/deviceHealthScripts(\u0027959011a8-5eef-4475-b992-cc1d9de8a5f5\u0027)/microsoft.graph.getRemediationHistory"
+                                               }
+}

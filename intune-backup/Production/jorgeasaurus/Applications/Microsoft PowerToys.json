@@ -1,0 +1,54 @@
+{
+    "@odata.context":  "https://graph.microsoft.com/beta/$metadata#deviceAppManagement/mobileApps(categories(),assignments())/$entity",
+    "@odata.type":  "#microsoft.graph.winGetApp",
+    "id":  "f867ae1f-e888-4983-8333-005725a0500a",
+    "displayName":  "Microsoft PowerToys",
+    "description":  "Microsoft PowerToys is a set of utilities for power users to tune and streamline their Windows experiences for greater productivity. For more info on PowerToys overviews and guides, or any other tools and resources for Windows development environments, head over to docs.microsoft.com!",
+    "publisher":  "Microsoft Corporation",
+    "largeIcon":  null,
+    "createdDateTime":  "2025-07-07T17:54:19.869699Z",
+    "lastModifiedDateTime":  "2025-07-07T17:54:19.869699Z",
+    "isFeatured":  false,
+    "privacyInformationUrl":  "http://go.microsoft.com/fwlink/?LinkId=521839",
+    "informationUrl":  null,
+    "owner":  "",
+    "developer":  "",
+    "notes":  "",
+    "uploadState":  1,
+    "publishingState":  "published",
+    "isAssigned":  false,
+    "roleScopeTagIds":  [
+                            "0"
+                        ],
+    "dependentAppCount":  0,
+    "supersedingAppCount":  0,
+    "supersededAppCount":  0,
+    "manifestHash":  null,
+    "packageIdentifier":  "XP89DCGQ3K6VLD",
+    "installExperience":  {
+                              "runAsAccount":  "user"
+                          },
+    "categories":  [
+
+                   ],
+    "assignments@odata.context":  "https://graph.microsoft.com/beta/$metadata#deviceAppManagement/mobileApps(\u0027f867ae1f-e888-4983-8333-005725a0500a\u0027)/microsoft.graph.winGetApp/assignments",
+    "assignments":  [
+                        {
+                            "id":  "acacacac-9df4-4c7d-9d50-4ef0226f57a9_0_0",
+                            "intent":  "available",
+                            "source":  "direct",
+                            "sourceId":  null,
+                            "target":  {
+                                           "@odata.type":  "#microsoft.graph.allLicensedUsersAssignmentTarget",
+                                           "deviceAndAppManagementAssignmentFilterId":  null,
+                                           "deviceAndAppManagementAssignmentFilterType":  "none"
+                                       },
+                            "settings":  {
+                                             "@odata.type":  "#microsoft.graph.winGetAppAssignmentSettings",
+                                             "notifications":  "showAll",
+                                             "restartSettings":  null,
+                                             "installTimeSettings":  null
+                                         }
+                        }
+                    ]
+}

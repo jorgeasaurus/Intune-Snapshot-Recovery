@@ -1,0 +1,86 @@
+{
+    "@odata.context":  "https://graph.microsoft.com/beta/$metadata#deviceManagement/deviceConfigurations(assignments())/$entity",
+    "@odata.type":  "#microsoft.graph.windows10CustomConfiguration",
+    "@odata.id":  "deviceManagement/deviceConfigurations(\u0027b6a20521-251d-4975-b9e6-dd7fc6ed2d5b\u0027)",
+    "@odata.editLink":  "deviceManagement/deviceConfigurations(\u0027b6a20521-251d-4975-b9e6-dd7fc6ed2d5b\u0027)/microsoft.graph.windows10CustomConfiguration",
+    "id":  "b6a20521-251d-4975-b9e6-dd7fc6ed2d5b",
+    "lastModifiedDateTime@odata.type":  "#DateTimeOffset",
+    "lastModifiedDateTime":  "2025-07-09T20:29:38.4008269Z",
+    "roleScopeTagIds@odata.type":  "#Collection(String)",
+    "roleScopeTagIds":  [
+                            "0"
+                        ],
+    "supportsScopeTags":  true,
+    "deviceManagementApplicabilityRuleOsEdition":  null,
+    "deviceManagementApplicabilityRuleOsVersion":  null,
+    "deviceManagementApplicabilityRuleDeviceMode":  null,
+    "createdDateTime@odata.type":  "#DateTimeOffset",
+    "createdDateTime":  "2025-07-09T20:29:38.4008269Z",
+    "description":  null,
+    "displayName":  "Disable Windows Copilot using Intune_pilot_v1",
+    "version":  1,
+    "omaSettings@odata.type":  "#Collection(microsoft.graph.omaSetting)",
+    "omaSettings":  [
+                        {
+                            "@odata.type":  "#microsoft.graph.omaSettingInteger",
+                            "displayName":  "TurnOffWindowsCopilot",
+                            "description":  "Disable Copilot on Windows devices",
+                            "omaUri":  "./User/Vendor/MSFT/Policy/Config/WindowsAI/TurnOffWindowsCopilot",
+                            "secretReferenceValueId":  null,
+                            "isEncrypted":  false,
+                            "value":  1,
+                            "isReadOnly":  false
+                        }
+                    ],
+    "assignments@odata.context":  "https://graph.microsoft.com/beta/$metadata#deviceManagement/deviceConfigurations(\u0027b6a20521-251d-4975-b9e6-dd7fc6ed2d5b\u0027)/microsoft.graph.windows10CustomConfiguration/assignments",
+    "assignments@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027b6a20521-251d-4975-b9e6-dd7fc6ed2d5b\u0027)/microsoft.graph.windows10CustomConfiguration/assignments/$ref",
+    "assignments@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027b6a20521-251d-4975-b9e6-dd7fc6ed2d5b\u0027)/microsoft.graph.windows10CustomConfiguration/assignments",
+    "assignments":  [
+                        {
+                            "@odata.type":  "#microsoft.graph.deviceConfigurationAssignment",
+                            "@odata.id":  "deviceManagement/deviceConfigurations(\u0027b6a20521-251d-4975-b9e6-dd7fc6ed2d5b\u0027)/assignments(\u0027b6a20521-251d-4975-b9e6-dd7fc6ed2d5b_772cc75c-7891-4c1b-9d90-9116b888ef62\u0027)",
+                            "@odata.editLink":  "deviceManagement/deviceConfigurations(\u0027b6a20521-251d-4975-b9e6-dd7fc6ed2d5b\u0027)/assignments(\u0027b6a20521-251d-4975-b9e6-dd7fc6ed2d5b_772cc75c-7891-4c1b-9d90-9116b888ef62\u0027)",
+                            "id":  "b6a20521-251d-4975-b9e6-dd7fc6ed2d5b_772cc75c-7891-4c1b-9d90-9116b888ef62",
+                            "source@odata.type":  "#microsoft.graph.deviceAndAppManagementAssignmentSource",
+                            "source":  "direct",
+                            "sourceId":  "b6a20521-251d-4975-b9e6-dd7fc6ed2d5b",
+                            "intent@odata.type":  "#microsoft.graph.deviceConfigAssignmentIntent",
+                            "intent":  "apply",
+                            "target":  {
+                                           "@odata.type":  "#microsoft.graph.groupAssignmentTarget",
+                                           "deviceAndAppManagementAssignmentFilterId":  null,
+                                           "deviceAndAppManagementAssignmentFilterType@odata.type":  "#microsoft.graph.deviceAndAppManagementAssignmentFilterType",
+                                           "deviceAndAppManagementAssignmentFilterType":  "none",
+                                           "groupId":  "772cc75c-7891-4c1b-9d90-9116b888ef62"
+                                       }
+                        }
+                    ],
+    "deviceSettingStateSummaries@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027b6a20521-251d-4975-b9e6-dd7fc6ed2d5b\u0027)/microsoft.graph.windows10CustomConfiguration/deviceSettingStateSummaries/$ref",
+    "deviceSettingStateSummaries@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027b6a20521-251d-4975-b9e6-dd7fc6ed2d5b\u0027)/microsoft.graph.windows10CustomConfiguration/deviceSettingStateSummaries",
+    "deviceStatuses@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027b6a20521-251d-4975-b9e6-dd7fc6ed2d5b\u0027)/microsoft.graph.windows10CustomConfiguration/deviceStatuses/$ref",
+    "deviceStatuses@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027b6a20521-251d-4975-b9e6-dd7fc6ed2d5b\u0027)/microsoft.graph.windows10CustomConfiguration/deviceStatuses",
+    "deviceStatusOverview@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027b6a20521-251d-4975-b9e6-dd7fc6ed2d5b\u0027)/microsoft.graph.windows10CustomConfiguration/deviceStatusOverview/$ref",
+    "deviceStatusOverview@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027b6a20521-251d-4975-b9e6-dd7fc6ed2d5b\u0027)/microsoft.graph.windows10CustomConfiguration/deviceStatusOverview",
+    "groupAssignments@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027b6a20521-251d-4975-b9e6-dd7fc6ed2d5b\u0027)/microsoft.graph.windows10CustomConfiguration/groupAssignments/$ref",
+    "groupAssignments@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027b6a20521-251d-4975-b9e6-dd7fc6ed2d5b\u0027)/microsoft.graph.windows10CustomConfiguration/groupAssignments",
+    "userStatuses@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027b6a20521-251d-4975-b9e6-dd7fc6ed2d5b\u0027)/microsoft.graph.windows10CustomConfiguration/userStatuses/$ref",
+    "userStatuses@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027b6a20521-251d-4975-b9e6-dd7fc6ed2d5b\u0027)/microsoft.graph.windows10CustomConfiguration/userStatuses",
+    "userStatusOverview@odata.associationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027b6a20521-251d-4975-b9e6-dd7fc6ed2d5b\u0027)/microsoft.graph.windows10CustomConfiguration/userStatusOverview/$ref",
+    "userStatusOverview@odata.navigationLink":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027b6a20521-251d-4975-b9e6-dd7fc6ed2d5b\u0027)/microsoft.graph.windows10CustomConfiguration/userStatusOverview",
+    "#microsoft.graph.assign":  {
+                                    "title":  "microsoft.graph.assign",
+                                    "target":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027b6a20521-251d-4975-b9e6-dd7fc6ed2d5b\u0027)/microsoft.graph.deviceConfiguration/microsoft.graph.assign"
+                                },
+    "#microsoft.graph.assignedAccessMultiModeProfiles":  {
+                                                             "title":  "microsoft.graph.assignedAccessMultiModeProfiles",
+                                                             "target":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027b6a20521-251d-4975-b9e6-dd7fc6ed2d5b\u0027)/microsoft.graph.deviceConfiguration/microsoft.graph.assignedAccessMultiModeProfiles"
+                                                         },
+    "#microsoft.graph.windowsPrivacyAccessControls":  {
+                                                          "title":  "microsoft.graph.windowsPrivacyAccessControls",
+                                                          "target":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027b6a20521-251d-4975-b9e6-dd7fc6ed2d5b\u0027)/microsoft.graph.deviceConfiguration/microsoft.graph.windowsPrivacyAccessControls"
+                                                      },
+    "#microsoft.graph.getOmaSettingPlainTextValue":  {
+                                                         "title":  "microsoft.graph.getOmaSettingPlainTextValue",
+                                                         "target":  "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u0027b6a20521-251d-4975-b9e6-dd7fc6ed2d5b\u0027)/microsoft.graph.deviceConfiguration/microsoft.graph.getOmaSettingPlainTextValue"
+                                                     }
+}
