@@ -1,0 +1,71 @@
+{
+    "@odata.context": "https://graph.microsoft.com/beta/$metadata#deviceManagement/deviceConfigurations(assignments())/$entity",
+    "@odata.type": "#microsoft.graph.windowsIdentityProtectionConfiguration",
+    "@odata.id": "deviceManagement/deviceConfigurations(\u00270e14cab8-0b53-4a2c-aa04-84eb4eea19b0\u0027)",
+    "@odata.editLink": "deviceManagement/deviceConfigurations(\u00270e14cab8-0b53-4a2c-aa04-84eb4eea19b0\u0027)/microsoft.graph.windowsIdentityProtectionConfiguration",
+    "id": "0e14cab8-0b53-4a2c-aa04-84eb4eea19b0",
+    "lastModifiedDateTime@odata.type": "#DateTimeOffset",
+    "lastModifiedDateTime": "2025-06-14T23:36:25.8030933Z",
+    "roleScopeTagIds@odata.type": "#Collection(String)",
+    "roleScopeTagIds": [
+        "0"
+    ],
+    "supportsScopeTags": true,
+    "deviceManagementApplicabilityRuleOsEdition": null,
+    "deviceManagementApplicabilityRuleOsVersion": null,
+    "deviceManagementApplicabilityRuleDeviceMode": null,
+    "createdDateTime@odata.type": "#DateTimeOffset",
+    "createdDateTime": "2025-06-05T03:05:55.3171817Z",
+    "description": "Enables Windows Hello for Business settings including option to use FIDO2 security keys.",
+    "displayName": "Windows 10 - Windows Hello for Business - Sample",
+    "version": 2,
+    "useSecurityKeyForSignin": true,
+    "enhancedAntiSpoofingForFacialFeaturesEnabled": true,
+    "pinMinimumLength": 6,
+    "pinMaximumLength": null,
+    "pinUppercaseCharactersUsage@odata.type": "#microsoft.graph.configurationUsage",
+    "pinUppercaseCharactersUsage": "blocked",
+    "pinLowercaseCharactersUsage@odata.type": "#microsoft.graph.configurationUsage",
+    "pinLowercaseCharactersUsage": "blocked",
+    "pinSpecialCharactersUsage@odata.type": "#microsoft.graph.configurationUsage",
+    "pinSpecialCharactersUsage": "blocked",
+    "pinExpirationInDays": null,
+    "pinPreviousBlockCount": null,
+    "pinRecoveryEnabled": true,
+    "securityDeviceRequired": false,
+    "unlockWithBiometricsEnabled": true,
+    "useCertificatesForOnPremisesAuthEnabled": false,
+    "windowsHelloForBusinessBlocked": false,
+    "assignments@odata.context": "https://graph.microsoft.com/beta/$metadata#deviceManagement/deviceConfigurations(\u00270e14cab8-0b53-4a2c-aa04-84eb4eea19b0\u0027)/microsoft.graph.windowsIdentityProtectionConfiguration/assignments",
+    "assignments@odata.associationLink": "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u00270e14cab8-0b53-4a2c-aa04-84eb4eea19b0\u0027)/microsoft.graph.windowsIdentityProtectionConfiguration/assignments/$ref",
+    "assignments@odata.navigationLink": "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u00270e14cab8-0b53-4a2c-aa04-84eb4eea19b0\u0027)/microsoft.graph.windowsIdentityProtectionConfiguration/assignments",
+    "assignments": [],
+    "deviceSettingStateSummaries@odata.associationLink": "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u00270e14cab8-0b53-4a2c-aa04-84eb4eea19b0\u0027)/microsoft.graph.windowsIdentityProtectionConfiguration/deviceSettingStateSummaries/$ref",
+    "deviceSettingStateSummaries@odata.navigationLink": "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u00270e14cab8-0b53-4a2c-aa04-84eb4eea19b0\u0027)/microsoft.graph.windowsIdentityProtectionConfiguration/deviceSettingStateSummaries",
+    "deviceStatuses@odata.associationLink": "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u00270e14cab8-0b53-4a2c-aa04-84eb4eea19b0\u0027)/microsoft.graph.windowsIdentityProtectionConfiguration/deviceStatuses/$ref",
+    "deviceStatuses@odata.navigationLink": "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u00270e14cab8-0b53-4a2c-aa04-84eb4eea19b0\u0027)/microsoft.graph.windowsIdentityProtectionConfiguration/deviceStatuses",
+    "deviceStatusOverview@odata.associationLink": "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u00270e14cab8-0b53-4a2c-aa04-84eb4eea19b0\u0027)/microsoft.graph.windowsIdentityProtectionConfiguration/deviceStatusOverview/$ref",
+    "deviceStatusOverview@odata.navigationLink": "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u00270e14cab8-0b53-4a2c-aa04-84eb4eea19b0\u0027)/microsoft.graph.windowsIdentityProtectionConfiguration/deviceStatusOverview",
+    "groupAssignments@odata.associationLink": "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u00270e14cab8-0b53-4a2c-aa04-84eb4eea19b0\u0027)/microsoft.graph.windowsIdentityProtectionConfiguration/groupAssignments/$ref",
+    "groupAssignments@odata.navigationLink": "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u00270e14cab8-0b53-4a2c-aa04-84eb4eea19b0\u0027)/microsoft.graph.windowsIdentityProtectionConfiguration/groupAssignments",
+    "userStatuses@odata.associationLink": "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u00270e14cab8-0b53-4a2c-aa04-84eb4eea19b0\u0027)/microsoft.graph.windowsIdentityProtectionConfiguration/userStatuses/$ref",
+    "userStatuses@odata.navigationLink": "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u00270e14cab8-0b53-4a2c-aa04-84eb4eea19b0\u0027)/microsoft.graph.windowsIdentityProtectionConfiguration/userStatuses",
+    "userStatusOverview@odata.associationLink": "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u00270e14cab8-0b53-4a2c-aa04-84eb4eea19b0\u0027)/microsoft.graph.windowsIdentityProtectionConfiguration/userStatusOverview/$ref",
+    "userStatusOverview@odata.navigationLink": "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u00270e14cab8-0b53-4a2c-aa04-84eb4eea19b0\u0027)/microsoft.graph.windowsIdentityProtectionConfiguration/userStatusOverview",
+    "#microsoft.graph.assign": {
+        "title": "microsoft.graph.assign",
+        "target": "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u00270e14cab8-0b53-4a2c-aa04-84eb4eea19b0\u0027)/microsoft.graph.deviceConfiguration/microsoft.graph.assign"
+    },
+    "#microsoft.graph.assignedAccessMultiModeProfiles": {
+        "title": "microsoft.graph.assignedAccessMultiModeProfiles",
+        "target": "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u00270e14cab8-0b53-4a2c-aa04-84eb4eea19b0\u0027)/microsoft.graph.deviceConfiguration/microsoft.graph.assignedAccessMultiModeProfiles"
+    },
+    "#microsoft.graph.windowsPrivacyAccessControls": {
+        "title": "microsoft.graph.windowsPrivacyAccessControls",
+        "target": "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u00270e14cab8-0b53-4a2c-aa04-84eb4eea19b0\u0027)/microsoft.graph.deviceConfiguration/microsoft.graph.windowsPrivacyAccessControls"
+    },
+    "#microsoft.graph.getOmaSettingPlainTextValue": {
+        "title": "microsoft.graph.getOmaSettingPlainTextValue",
+        "target": "https://graph.microsoft.com/beta/deviceManagement/deviceConfigurations(\u00270e14cab8-0b53-4a2c-aa04-84eb4eea19b0\u0027)/microsoft.graph.deviceConfiguration/microsoft.graph.getOmaSettingPlainTextValue"
+    }
+}
