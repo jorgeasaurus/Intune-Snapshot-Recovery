@@ -1,0 +1,71 @@
+﻿================================================================================
+Intune Backup/Restore Log
+================================================================================
+Script: Invoke-IntuneBackupRestore.ps1
+Action: Backup
+Start Time: 2025-07-12 19:30:48
+PowerShell Version: 5.1.20348.3932
+OS: Microsoft Windows NT 10.0.20348.0
+User: runneradmin
+Computer: fv-az1623-560
+================================================================================
+[2025-07-12 19:30:48] [INFO] ================================================================================
+[2025-07-12 19:30:48] [INFO] === SCRIPT EXECUTION START ===
+[2025-07-12 19:30:48] [INFO] ================================================================================
+[2025-07-12 19:30:48] [INFO] Starting Intune Management Script - Action: Backup
+[2025-07-12 19:30:48] [INFO] ------------------------------------------------------------
+[2025-07-12 19:30:48] [INFO] --- SCRIPT PARAMETERS ---
+[2025-07-12 19:30:48] [INFO] ------------------------------------------------------------
+[2025-07-12 19:30:48] [INFO] Action: Backup
+[2025-07-12 19:30:48] [INFO] TenantId: 0e3028c5-ada7-4d5d-b767-eea5ff7417b5
+[2025-07-12 19:30:48] [INFO] AppId: d3506dad-8da3-461b-a5e6-cbc284e207e5
+[2025-07-12 19:30:48] [INFO] AppSecret: [REDACTED - Length: 40]
+[2025-07-12 19:30:48] [INFO] IntuneManagementPath: .\IntuneManagement
+[2025-07-12 19:30:48] [INFO] BackupPath: .\intune-backup\Production
+[2025-07-12 19:30:48] [INFO] DryRun: False
+[2025-07-12 19:30:48] [INFO] EnableLogging: True
+[2025-07-12 19:30:48] [INFO] LogPath: .\logs
+[2025-07-12 19:30:48] [INFO] AddObjectType: True
+[2025-07-12 19:30:48] [INFO] ExportAssignments: True
+[2025-07-12 19:30:48] [INFO] AddCompanyName: True
+[2025-07-12 19:30:48] [INFO] ExportScript: True
+[2025-07-12 19:30:48] [INFO] ExportApplicationFile: False
+[2025-07-12 19:30:48] [INFO] ================================================================================
+[2025-07-12 19:30:48] [INFO] === STARTING BACKUP OPERATION ===
+[2025-07-12 19:30:48] [INFO] ================================================================================
+[2025-07-12 19:30:48] [INFO] ------------------------------------------------------------
+[2025-07-12 19:30:48] [INFO] --- BACKUP CONFIGURATION ---
+[2025-07-12 19:30:48] [INFO] ------------------------------------------------------------
+[2025-07-12 19:30:48] [INFO] Starting Intune configuration backup...
+[2025-07-12 19:30:48] [INFO] Target backup path: .\intune-backup\Production
+[2025-07-12 19:30:48] [INFO] Generating dynamic export configuration for path: .\intune-backup\Production
+[2025-07-12 19:30:48] [INFO] Generating dynamic export configuration for path: .\intune-backup\Production
+[2025-07-12 19:30:48] [SUCCESS] Dynamic export configuration saved to: D:\a\Intune-Snapshot-Recovery\Intune-Snapshot-Recovery\DynamicBulkExport_20250712193048.json
+[2025-07-12 19:30:48] [INFO] BulkExport.json validation successful
+[2025-07-12 19:30:48] [INFO] Backup directory exists: .\intune-backup\Production
+[2025-07-12 19:30:48] [INFO] IntuneManagement tool not found. Cloning from GitHub...
+[2025-07-12 19:30:51] [SUCCESS] Successfully cloned IntuneManagement tool
+[2025-07-12 19:30:51] [INFO] TenantId: 0e3028c5-ada7-4d5d-b767-eea5ff7417b5
+[2025-07-12 19:30:51] [INFO] AppId: d3506dad-8da3-461b-a5e6-cbc284e207e5
+[2025-07-12 19:30:51] [INFO] AppSecret Length: 40
+[2025-07-12 19:30:51] [INFO] Starting Intune export...
+[2025-07-12 19:31:40] [SUCCESS] Intune backup completed successfully
+[2025-07-12 19:31:40] [SUCCESS] Cleaned up temporary export configuration file
+[2025-07-12 19:31:40] [INFO] ------------------------------------------------------------
+[2025-07-12 19:31:40] [INFO] --- JSON UTF-8 CONVERSION ---
+[2025-07-12 19:31:40] [INFO] ------------------------------------------------------------
+[2025-07-12 19:31:40] [INFO] Converting JSON files to UTF-8 encoding in .\intune-backup\Production
+[2025-07-12 19:31:41] [INFO] ================================================================================
+[2025-07-12 19:31:41] [INFO] === SCRIPT EXECUTION COMPLETED ===
+[2025-07-12 19:31:41] [INFO] ================================================================================
+[2025-07-12 19:31:41] [SUCCESS] Script completed successfully
+
+================================================================================
+Script Execution Completed
+================================================================================
+Action: Backup
+End Time: 2025-07-12 19:31:41
+Status: SUCCESS
+Log File: .\logs\IntuneBackupRestore_Backup_20250712-193048.log
+================================================================================
+[2025-07-12 19:31:41] [SUCCESS] Log file completed: .\logs\IntuneBackupRestore_Backup_20250712-193048.log
