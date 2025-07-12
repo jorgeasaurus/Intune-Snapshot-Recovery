@@ -1,0 +1,151 @@
+name: Intune Export - Parameterized
+
+permissions:
+  contents: write
+
+on:
+  # Uncomment the following line to enable push events
+  #push:
+  # branches: [ main ]
+  # Uncomment the following line to enable scheduled runs
+  #schedule:
+  # - cron: "0 14 * * *"
+  workflow_dispatch:
+    inputs:
+      export_path:
+        description: 'Export path for backup files'
+        required: true
+        default: '.\intune-backup\Production'
+        type: string
+      name_filter:
+        description: 'Name filter for exported objects'
+        required: false
+        default: ''
+        type: string
+      add_object_type:
+        description: 'Add object type to exported files'
+        required: false
+        default: true
+        type: boolean
+      export_assignments:
+        description: 'Export assignments'
+        required: false
+        default: true
+        type: boolean
+      add_company_name:
+        description: 'Add company name to exported files'
+        required: false
+        default: true
+        type: boolean
+      export_scripts:
+        description: 'Export PowerShell scripts'
+        required: false
+        default: true
+        type: boolean
+      export_application_files:
+        description: 'Export application files'
+        required: false
+        default: false
+        type: boolean
+      object_types:
+        description: 'Comma-separated list of object types to export (leave empty for all)'
+        required: false
+        default: ''
+        type: string
+      commit_message_prefix:
+        description: 'Prefix for commit message'
+        required: false
+        default: 'Intune backup'
+        type: string
+
+jobs:
+  intune-export:
+    runs-on: windows-latest
+    steps:
+      # 1. Check out the current repo
+      - uses: actions/checkout@v4
+
+      # 2. Ensure backup directory exists
+      - name: Prepare backup directory
+        run: |
+          $backupDir = "${{ inputs.export_path || '.\intune-backup\Production' }}"
+          if (-not (Test-Path $backupDir -PathType Container)) {
+            Write-Host "Creating backup directory: $backupDir"
+            New-Item -Path $backupDir -ItemType Directory -Force | Out-Null
+          } else {
+            Write-Host "Backup directory exists: $backupDir"
+          }
+        shell: powershell
+
+      # 3. Run Intune backup using our unified script
+      - name: Export Intune Configuration
+        run: |
+          Write-Host "Starting Intune export using Invoke-IntuneBackupRestore.ps1"
+          Write-Host "Export Path: ${{ inputs.export_path || '.\intune-backup\Production' }}"
+          Write-Host "Name Filter: ${{ inputs.name_filter || '' }}"
+          Write-Host "Add Object Type: ${{ inputs.add_object_type || 'true' }}"
+          Write-Host "Export Assignments: ${{ inputs.export_assignments || 'true' }}"
+          Write-Host "Add Company Name: ${{ inputs.add_company_name || 'true' }}"
+          Write-Host "Export Scripts: ${{ inputs.export_scripts || 'true' }}"
+          Write-Host "Export Application Files: ${{ inputs.export_application_files || 'false' }}"
+          Write-Host "Object Types: ${{ inputs.object_types || '' }}"
+          
+          # Parse object types if provided
+          $objectTypesArray = if ("${{ inputs.object_types || '' }}" -eq "") {
+            $null
+          } else {
+            "${{ inputs.object_types || '' }}" -split "," | ForEach-Object { $_.Trim() }
+          }
+          
+          # Build parameters for the script
+          $scriptParams = @{
+            Action = "Backup"
+            TenantId = "${{ secrets.AZURE_TENANT_ID }}"
+            AppId = "${{ secrets.AZURE_CLIENT_ID }}"
+            Secret = "${{ secrets.AZURE_CLIENT_SECRET }}"
+            BackupPath = "${{ inputs.export_path || '.\intune-backup\Production' }}"
+          }
+          
+          # Add optional parameters if provided
+          if ("${{ inputs.name_filter || '' }}" -ne "") {
+            $scriptParams.NameFilter = "${{ inputs.name_filter || '' }}"
+          }
+          
+          if ("${{ inputs.add_object_type || 'true' }}" -ne "") {
+            $scriptParams.AddObjectType = [bool]::Parse("${{ inputs.add_object_type || 'true' }}")
+          }
+          
+          if ("${{ inputs.export_assignments || 'true' }}" -ne "") {
+            $scriptParams.ExportAssignments = [bool]::Parse("${{ inputs.export_assignments || 'true' }}")
+          }
+          
+          if ("${{ inputs.add_company_name || 'true' }}" -ne "") {
+            $scriptParams.AddCompanyName = [bool]::Parse("${{ inputs.add_company_name || 'true' }}")
+          }
+          
+          if ("${{ inputs.export_scripts || 'true' }}" -ne "") {
+            $scriptParams.ExportScript = [bool]::Parse("${{ inputs.export_scripts || 'true' }}")
+          }
+          
+          if ("${{ inputs.export_application_files || 'false' }}" -ne "") {
+            $scriptParams.ExportApplicationFile = [bool]::Parse("${{ inputs.export_application_files || 'false' }}")
+          }
+          
+          if ($objectTypesArray) {
+            $scriptParams.ObjectTypes = $objectTypesArray
+          }
+          
+          # Execute the backup script
+          .\Invoke-IntuneBackupRestore.ps1 @scriptParams
+        shell: powershell
+
+      # 4. Commit and push the backup to the repo
+      - name: Commit Intune backup to repo
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: "${{ inputs.commit_message_prefix || 'Intune backup' }}: ${{ github.run_number }} on ${{ github.event.repository.pushed_at }}"
+          add: './*'
+          default_author: github_actions
+          fetch: --tags --force
+          pathspec_error_handling: ignore
+          push: true

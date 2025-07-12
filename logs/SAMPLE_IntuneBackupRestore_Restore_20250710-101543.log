@@ -1,0 +1,85 @@
+﻿================================================================================
+Intune Backup/Restore Log
+================================================================================
+Script: Invoke-IntuneBackupRestore.ps1
+Action: Restore
+Start Time: 2025-07-10 10:15:43
+PowerShell Version: 5.1.26100.4652
+OS: Microsoft Windows NT 10.0.26100.0
+User: jorge
+Computer: DESKTOP-NA2MH9O
+================================================================================
+[2025-07-10 10:15:43] [INFO] ================================================================================
+[2025-07-10 10:15:43] [INFO] === SCRIPT EXECUTION START ===
+[2025-07-10 10:15:43] [INFO] ================================================================================
+[2025-07-10 10:15:44] [INFO] Starting Intune Management Script - Action: Restore
+[2025-07-10 10:15:44] [INFO] ------------------------------------------------------------
+[2025-07-10 10:15:44] [INFO] --- SCRIPT PARAMETERS ---
+[2025-07-10 10:15:44] [INFO] ------------------------------------------------------------
+[2025-07-10 10:15:44] [INFO] Action: Restore
+[2025-07-10 10:15:44] [INFO] TenantId: [REDACTED]
+[2025-07-10 10:15:44] [INFO] AppId: [REDACTED]
+[2025-07-10 10:15:44] [INFO] AppSecret: [REDACTED]
+[2025-07-10 10:15:44] [INFO] IntuneManagementPath: .\IntuneManagement
+[2025-07-10 10:15:44] [INFO] BackupPath: .\intune-backup\jorgeasaurus
+[2025-07-10 10:15:44] [INFO] DryRun: False
+[2025-07-10 10:15:44] [INFO] EnableLogging: True
+[2025-07-10 10:15:44] [INFO] LogPath: .\logs
+[2025-07-10 10:15:44] [INFO] ================================================================================
+[2025-07-10 10:15:44] [INFO] === STARTING RESTORE OPERATION ===
+[2025-07-10 10:15:44] [INFO] ================================================================================
+[2025-07-10 10:15:44] [INFO] ------------------------------------------------------------
+[2025-07-10 10:15:44] [INFO] --- RESTORE CONFIGURATION ---
+[2025-07-10 10:15:44] [INFO] ------------------------------------------------------------
+[2025-07-10 10:15:44] [INFO] Starting Intune configuration restore...
+[2025-07-10 10:15:44] [INFO] Source backup path: .\intune-backup\jorgeasaurus
+[2025-07-10 10:15:44] [INFO] Generating dynamic import configuration for path: .\intune-backup\jorgeasaurus
+[2025-07-10 10:15:44] [INFO] Generating dynamic import configuration for path: .\intune-backup\jorgeasaurus
+[2025-07-10 10:15:44] [SUCCESS] Dynamic import configuration saved to: C:\Logs\DynamicBulkImport_20250710101544.json
+[2025-07-10 10:15:44] [SUCCESS] Configuration file validation successful
+[2025-07-10 10:15:44] [SUCCESS] Import path validated: .\intune-backup\jorgeasaurus
+[2025-07-10 10:15:44] [INFO] Preview of files that would be processed:
+[2025-07-10 10:15:44] [INFO]   AppConfigurationManagedDevice: 1 files
+[2025-07-10 10:15:44] [INFO]   Applications: 21 files
+[2025-07-10 10:15:44] [INFO]   AppProtection: 5 files
+[2025-07-10 10:15:44] [INFO]   AssignmentFilters: 2 files
+[2025-07-10 10:15:44] [INFO]   AuthenticationStrengths: 4 files
+[2025-07-10 10:15:44] [INFO]   AutoPilot: 1 files
+[2025-07-10 10:15:44] [INFO]   AzureBranding: 1 files
+[2025-07-10 10:15:44] [INFO]   CompliancePolicies: 15 files
+[2025-07-10 10:15:44] [INFO]   ComplianceScripts: 1 files
+[2025-07-10 10:15:44] [INFO]   ConditionalAccess: 24 files
+[2025-07-10 10:15:44] [INFO]   DeviceConfiguration: 19 files
+[2025-07-10 10:15:44] [INFO]   DeviceHealthScripts: 3 files
+[2025-07-10 10:15:44] [INFO]   DriverUpdateProfiles: 1 files
+[2025-07-10 10:15:44] [INFO]   EnrollmentRestrictions: 2 files
+[2025-07-10 10:15:44] [INFO]   EnrollmentStatusPage: 3 files
+[2025-07-10 10:15:44] [INFO]   FeatureUpdates: 1 files
+[2025-07-10 10:15:44] [INFO]   Groups: 8 files
+[2025-07-10 10:15:44] [INFO]   IntuneBranding: 1 files
+[2025-07-10 10:15:44] [INFO]   jorgeasaurus: 1 files
+[2025-07-10 10:15:44] [INFO]   NamedLocations: 1 files
+[2025-07-10 10:15:44] [INFO]   PowerShellScripts: 1 files
+[2025-07-10 10:15:44] [INFO]   SettingsCatalog: 6 files
+[2025-07-10 10:15:44] [INFO]   UpdatePolicies: 4 files
+[2025-07-10 10:15:44] [INFO] IntuneManagement tool found at: .\IntuneManagement
+[2025-07-10 10:15:44] [INFO] TenantId: [REDACTED]
+[2025-07-10 10:15:44] [INFO] AppId: [REDACTED]
+[2025-07-10 10:15:44] [INFO] AppSecret Length: 40
+[2025-07-10 10:15:44] [INFO] Starting Intune restore...
+[2025-07-10 10:16:07] [SUCCESS] Intune restore completed successfully
+[2025-07-10 10:16:07] [SUCCESS] Cleaned up temporary configuration file
+[2025-07-10 10:16:07] [INFO] ================================================================================
+[2025-07-10 10:16:07] [INFO] === SCRIPT EXECUTION COMPLETED ===
+[2025-07-10 10:16:07] [INFO] ================================================================================
+[2025-07-10 10:16:07] [SUCCESS] Script completed successfully
+
+================================================================================
+Script Execution Completed
+================================================================================
+Action: Restore
+End Time: 2025-07-10 10:16:07
+Status: SUCCESS
+Log File: .\logs\IntuneBackupRestore_Restore_20250710-101543.log
+================================================================================
+[2025-07-10 10:16:07] [SUCCESS] Log file completed: .\logs\IntuneBackupRestore_Restore_20250710-101543.log

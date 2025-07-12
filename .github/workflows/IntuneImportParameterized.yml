@@ -1,0 +1,183 @@
+name: Intune Import - Parameterized
+
+permissions:
+  contents: write
+
+on:
+  workflow_dispatch:
+    inputs:
+      import_path:
+        description: 'Import path for backup files'
+        required: false
+        default: '.\intune-backup\sample-tenant'
+        type: string
+      name_filter:
+        description: 'Name filter for imported objects'
+        required: false
+        default: ''
+        type: string
+      import_assignments:
+        description: 'Import assignments'
+        required: false
+        default: false
+        type: boolean
+      replace_dependency_ids:
+        description: 'Replace dependency IDs'
+        required: false
+        default: true
+        type: boolean
+      import_type:
+        description: 'Import type behavior'
+        required: false
+        default: 'skipIfExist'
+        type: choice
+        options:
+          - 'skipIfExist'
+          - 'overwrite'
+          - 'append'
+      conditional_access_state:
+        description: 'Conditional Access policy state after import'
+        required: false
+        default: 'disabled'
+        type: choice
+        options:
+          - 'disabled'
+          - 'enabled'
+          - 'enabledForReportingButNotEnforced'
+      object_types:
+        description: 'Comma-separated list of object types to import (leave empty for all)'
+        required: false
+        default: 'AppProtection,SettingsCatalog'
+        type: string
+      dry_run:
+        description: 'Perform a dry run (validate configuration without importing)'
+        required: false
+        default: false
+        type: boolean
+      commit_message_prefix:
+        description: 'Prefix for commit message'
+        required: false
+        default: 'Intune import'
+        type: string
+
+jobs:
+  intune-import:
+    runs-on: windows-latest
+    steps:
+      # 1. Check out the current repo
+      - uses: actions/checkout@v4
+
+      # 2. Validate import path exists
+      - name: Validate Import Path
+        run: |
+          $importPath = "${{ inputs.import_path }}"
+          if (-not (Test-Path $importPath -PathType Container)) {
+            Write-Error "Import path does not exist: $importPath"
+            Write-Host "Available directories:"
+            Get-ChildItem -Directory | ForEach-Object { Write-Host "  - $($_.Name)" }
+            exit 1
+          }
+          
+          Write-Host "Import path validated: $importPath"
+          
+          # Show what's in the import directory
+          Write-Host "Contents of import directory:"
+          Get-ChildItem $importPath -Recurse -Directory | ForEach-Object { 
+            Write-Host "  Directory: $($_.FullName)"
+            $fileCount = (Get-ChildItem $_.FullName -File -ErrorAction SilentlyContinue).Count
+            Write-Host "    Files: $fileCount"
+          }
+        shell: powershell
+
+      # 3. Dry run validation (if enabled)
+      - name: Dry Run Validation
+        if: ${{ inputs.dry_run == true }}
+        run: |
+          Write-Host "=== DRY RUN MODE ===" -ForegroundColor Yellow
+          Write-Host "This is a dry run. No actual import will be performed." -ForegroundColor Yellow
+          Write-Host "Configuration validation and preview only." -ForegroundColor Yellow
+          Write-Host ""
+          
+          # Preview what would be imported
+          $importPath = "${{ inputs.import_path }}"
+          if (Test-Path $importPath) {
+            Write-Host "Preview of files that would be processed:" -ForegroundColor Cyan
+            Get-ChildItem $importPath -Recurse -File -Include "*.json" | ForEach-Object {
+              Write-Host "  - $($_.FullName)" -ForegroundColor Gray
+            }
+          }
+          
+          Write-Host ""
+          Write-Host "=== DRY RUN COMPLETE ===" -ForegroundColor Yellow
+          Write-Host "Configuration is valid. Set dry_run to false to perform actual import." -ForegroundColor Yellow
+        shell: powershell
+
+      # 4. Run Intune import using our unified script
+      - name: Import Intune Configuration
+        if: ${{ inputs.dry_run == false }}
+        run: |
+          Write-Host "Starting Intune import using Invoke-IntuneBackupRestore.ps1"
+          Write-Host "Import Path: ${{ inputs.import_path }}"
+          Write-Host "Name Filter: ${{ inputs.name_filter }}"
+          Write-Host "Import Assignments: ${{ inputs.import_assignments }}"
+          Write-Host "Replace Dependency IDs: ${{ inputs.replace_dependency_ids }}"
+          Write-Host "Import Type: ${{ inputs.import_type }}"
+          Write-Host "Conditional Access State: ${{ inputs.conditional_access_state }}"
+          Write-Host "Object Types: ${{ inputs.object_types }}"
+          
+          # Parse object types if provided
+          $objectTypesArray = if ("${{ inputs.object_types }}" -eq "") {
+            $null
+          } else {
+            "${{ inputs.object_types }}" -split "," | ForEach-Object { $_.Trim() }
+          }
+          
+          # Build parameters for the script
+          $scriptParams = @{
+            Action = "Restore"
+            TenantId = "${{ secrets.AZURE_TENANT_ID }}"
+            AppId = "${{ secrets.AZURE_CLIENT_ID }}"
+            Secret = "${{ secrets.AZURE_CLIENT_SECRET }}"
+            BackupPath = "${{ inputs.import_path }}"
+          }
+          
+          # Add optional parameters if provided
+          if ("${{ inputs.name_filter }}" -ne "") {
+            $scriptParams.NameFilter = "${{ inputs.name_filter }}"
+          }
+          
+          if ("${{ inputs.import_assignments }}" -ne "") {
+            $scriptParams.ImportAssignments = [bool]::Parse("${{ inputs.import_assignments }}")
+          }
+          
+          if ("${{ inputs.replace_dependency_ids }}" -ne "") {
+            $scriptParams.ReplaceDependencyIds = [bool]::Parse("${{ inputs.replace_dependency_ids }}")
+          }
+          
+          if ("${{ inputs.import_type }}" -ne "") {
+            $scriptParams.ImportType = "${{ inputs.import_type }}"
+          }
+          
+          if ("${{ inputs.conditional_access_state }}" -ne "") {
+            $scriptParams.CAState = "${{ inputs.conditional_access_state }}"
+          }
+          
+          if ($objectTypesArray) {
+            $scriptParams.ObjectTypes = $objectTypesArray
+          }
+          
+          # Execute the restore script
+          .\Invoke-IntuneBackupRestore.ps1 @scriptParams
+        shell: powershell
+
+      # 5. Commit and push the import results to the repo
+      - name: Commit Intune import results to repo
+        if: ${{ inputs.dry_run == false }}
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: "${{ inputs.commit_message_prefix }}: ${{ github.run_number }} on ${{ github.event.repository.pushed_at }}"
+          add: './*'
+          default_author: github_actions
+          fetch: --tags --force
+          pathspec_error_handling: ignore
+          push: true
