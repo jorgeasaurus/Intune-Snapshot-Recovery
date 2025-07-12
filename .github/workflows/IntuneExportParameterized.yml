@@ -4,14 +4,16 @@ permissions:
   contents: write
 
 on:
+  push:
+    branches: [ main ]
   # Uncomment the following line to enable scheduled runs
-  # schedule:
-  #  - cron: "0 14 * * *"
+  #schedule:
+  # - cron: "0 14 * * *"
   workflow_dispatch:
     inputs:
       export_path:
         description: 'Export path for backup files'
-        required: false
+        required: true
         default: '.\intune-backup\Production'
         type: string
       name_filter:
@@ -65,7 +67,7 @@ jobs:
       # 2. Ensure backup directory exists
       - name: Prepare backup directory
         run: |
-          $backupDir = "${{ inputs.export_path }}"
+          $backupDir = "${{ inputs.export_path || '.\intune-backup\Production' }}"
           if (-not (Test-Path $backupDir -PathType Container)) {
             Write-Host "Creating backup directory: $backupDir"
             New-Item -Path $backupDir -ItemType Directory -Force | Out-Null
@@ -78,20 +80,20 @@ jobs:
       - name: Export Intune Configuration
         run: |
           Write-Host "Starting Intune export using Invoke-IntuneBackupRestore.ps1"
-          Write-Host "Export Path: ${{ inputs.export_path }}"
-          Write-Host "Name Filter: ${{ inputs.name_filter }}"
-          Write-Host "Add Object Type: ${{ inputs.add_object_type }}"
-          Write-Host "Export Assignments: ${{ inputs.export_assignments }}"
-          Write-Host "Add Company Name: ${{ inputs.add_company_name }}"
-          Write-Host "Export Scripts: ${{ inputs.export_scripts }}"
-          Write-Host "Export Application Files: ${{ inputs.export_application_files }}"
-          Write-Host "Object Types: ${{ inputs.object_types }}"
+          Write-Host "Export Path: ${{ inputs.export_path || '.\intune-backup\Production' }}"
+          Write-Host "Name Filter: ${{ inputs.name_filter || '' }}"
+          Write-Host "Add Object Type: ${{ inputs.add_object_type || 'true' }}"
+          Write-Host "Export Assignments: ${{ inputs.export_assignments || 'true' }}"
+          Write-Host "Add Company Name: ${{ inputs.add_company_name || 'true' }}"
+          Write-Host "Export Scripts: ${{ inputs.export_scripts || 'true' }}"
+          Write-Host "Export Application Files: ${{ inputs.export_application_files || 'false' }}"
+          Write-Host "Object Types: ${{ inputs.object_types || '' }}"
           
           # Parse object types if provided
-          $objectTypesArray = if ("${{ inputs.object_types }}" -eq "") {
+          $objectTypesArray = if ("${{ inputs.object_types || '' }}" -eq "") {
             $null
           } else {
-            "${{ inputs.object_types }}" -split "," | ForEach-Object { $_.Trim() }
+            "${{ inputs.object_types || '' }}" -split "," | ForEach-Object { $_.Trim() }
           }
           
           # Build parameters for the script
@@ -100,32 +102,32 @@ jobs:
             TenantId = "${{ secrets.AZURE_TENANT_ID }}"
             AppId = "${{ secrets.AZURE_CLIENT_ID }}"
             Secret = "${{ secrets.AZURE_CLIENT_SECRET }}"
-            BackupPath = "${{ inputs.export_path }}"
+            BackupPath = "${{ inputs.export_path || '.\intune-backup\Production' }}"
           }
           
           # Add optional parameters if provided
-          if ("${{ inputs.name_filter }}" -ne "") {
-            $scriptParams.NameFilter = "${{ inputs.name_filter }}"
+          if ("${{ inputs.name_filter || '' }}" -ne "") {
+            $scriptParams.NameFilter = "${{ inputs.name_filter || '' }}"
           }
           
-          if ("${{ inputs.add_object_type }}" -ne "") {
-            $scriptParams.AddObjectType = [bool]::Parse("${{ inputs.add_object_type }}")
+          if ("${{ inputs.add_object_type || 'true' }}" -ne "") {
+            $scriptParams.AddObjectType = [bool]::Parse("${{ inputs.add_object_type || 'true' }}")
           }
           
-          if ("${{ inputs.export_assignments }}" -ne "") {
-            $scriptParams.ExportAssignments = [bool]::Parse("${{ inputs.export_assignments }}")
+          if ("${{ inputs.export_assignments || 'true' }}" -ne "") {
+            $scriptParams.ExportAssignments = [bool]::Parse("${{ inputs.export_assignments || 'true' }}")
           }
           
-          if ("${{ inputs.add_company_name }}" -ne "") {
-            $scriptParams.AddCompanyName = [bool]::Parse("${{ inputs.add_company_name }}")
+          if ("${{ inputs.add_company_name || 'true' }}" -ne "") {
+            $scriptParams.AddCompanyName = [bool]::Parse("${{ inputs.add_company_name || 'true' }}")
           }
           
-          if ("${{ inputs.export_scripts }}" -ne "") {
-            $scriptParams.ExportScript = [bool]::Parse("${{ inputs.export_scripts }}")
+          if ("${{ inputs.export_scripts || 'true' }}" -ne "") {
+            $scriptParams.ExportScript = [bool]::Parse("${{ inputs.export_scripts || 'true' }}")
           }
           
-          if ("${{ inputs.export_application_files }}" -ne "") {
-            $scriptParams.ExportApplicationFile = [bool]::Parse("${{ inputs.export_application_files }}")
+          if ("${{ inputs.export_application_files || 'false' }}" -ne "") {
+            $scriptParams.ExportApplicationFile = [bool]::Parse("${{ inputs.export_application_files || 'false' }}")
           }
           
           if ($objectTypesArray) {
@@ -140,7 +142,7 @@ jobs:
       - name: Commit Intune backup to repo
         uses: EndBug/add-and-commit@v9
         with:
-          message: "${{ inputs.commit_message_prefix }}: ${{ github.run_number }} on ${{ github.event.repository.pushed_at }}"
+          message: "${{ inputs.commit_message_prefix || 'Intune backup' }}: ${{ github.run_number }} on ${{ github.event.repository.pushed_at }}"
           add: './*'
           default_author: github_actions
           fetch: --tags --force
