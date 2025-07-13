@@ -24,6 +24,10 @@ This repository provides automated solutions for:
 
 This toolkit leverages the powerful [IntuneManagement](https://github.com/Micke-K/IntuneManagement) project as its core engine. The IntuneManagement tool provides the robust Microsoft Graph API integration and comprehensive Intune object type support that makes this automation possible.
 
+**📋 Best Practice Policies Included**
+
+This repository includes curated best practice policies from [OpenIntuneBaseline](https://github.com/SkipToTheEndpoint/OpenIntuneBaseline), providing a comprehensive set of security-focused configurations for Windows, macOS, and mobile platforms. These policies offer a solid foundation for implementing secure endpoint management across your organization.
+
 ## 📁 Repository Structure
 
 ```
@@ -31,6 +35,8 @@ This toolkit leverages the powerful [IntuneManagement](https://github.com/Micke-
 │   ├── IntuneExportParameterized.yml    # Parameterized export workflow (with scheduling)
 │   └── IntuneImportParameterized.yml    # Parameterized import workflow (with dry run)
 ├── intune-backup/                  # Backup storage directory
+│   ├── OpenIntuneBaseline/        # Best practice policies from OpenIntuneBaseline
+│   ├── sample-tenant/             # Sample tenant configurations
 │   └── [tenant-name]/             # Tenant-specific backups
 │       ├── Applications/
 │       ├── CompliancePolicies/
@@ -120,6 +126,15 @@ cd Intune-Snapshot-Recovery
     -AppId $env:AZURE_CLIENT_ID `
     -Secret $env:AZURE_CLIENT_SECRET `
     -BackupPath ".\intune-backup\production"
+
+# Deploy OpenIntuneBaseline best practice policies
+.\Invoke-IntuneBackupRestore.ps1 `
+    -Action Restore `
+    -TenantId $env:AZURE_TENANT_ID `
+    -AppId $env:AZURE_CLIENT_ID `
+    -Secret $env:AZURE_CLIENT_SECRET `
+    -BackupPath ".\intune-backup\OpenIntuneBaseline" `
+    -DryRun
 
 # Dry run restore (preview only)
 .\Invoke-IntuneBackupRestore.ps1 `
@@ -248,6 +263,12 @@ The unified script allows you to specify all configuration options directly as p
 - Automated daily backups via GitHub Actions
 - Version-controlled configuration history
 - Quick rollback capabilities
+
+### Best Practice Policy Implementation
+
+- Deploy OpenIntuneBaseline security policies to new tenants
+- Implement industry-standard security configurations
+- Use as a foundation for custom policy development
 
 ### Environment Promotion
 
