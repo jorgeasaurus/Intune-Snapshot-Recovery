@@ -151,7 +151,7 @@ jobs:
           }
           
           if ("${{ inputs.replace_dependency_ids }}" -ne "") {
-            $scriptParams.ReplaceDependencyIds = [bool]::Parse("${{ inputs.replace_dependency_ids }}")
+            $scriptParams.ReplaceDependencyIDs = [bool]::Parse("${{ inputs.replace_dependency_ids }}")
           }
           
           if ("${{ inputs.import_type }}" -ne "") {

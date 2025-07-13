@@ -85,7 +85,7 @@ Configure these secrets in your GitHub repository:
 
 ```bash
 git clone https://github.com/jorgeasaurus/Intune-Snapshot-Recovery
-cd intune-snapshot-recovery
+cd Intune-Snapshot-Recovery
 ```
 
 ### 2. Local Backup (PowerShell)
@@ -94,17 +94,17 @@ cd intune-snapshot-recovery
 # Basic backup
 .\Invoke-IntuneBackupRestore.ps1 `
     -Action Backup `
-    -TenantId "your-tenant-id" `
-    -AppId "your-app-id" `
-    -Secret "your-secret" `
+    -TenantId $env:AZURE_TENANT_ID `
+    -AppId $env:AZURE_CLIENT_ID `
+    -Secret $env:AZURE_CLIENT_SECRET `
     -BackupPath ".\intune-backup\production"
 
 # Customized backup with specific options
 .\Invoke-IntuneBackupRestore.ps1 `
     -Action Backup `
-    -TenantId "your-tenant-id" `
-    -AppId "your-app-id" `
-    -Secret "your-secret" `
+    -TenantId $env:AZURE_TENANT_ID `
+    -AppId $env:AZURE_CLIENT_ID `
+    -Secret $env:AZURE_CLIENT_SECRET `
     -BackupPath ".\intune-backup\custom" `
     -AddCompanyName $true `
     -ExportAssignments $true
@@ -116,17 +116,17 @@ cd intune-snapshot-recovery
 # Basic restore from backup
 .\Invoke-IntuneBackupRestore.ps1 `
     -Action Restore `
-    -TenantId "your-tenant-id" `
-    -AppId "your-app-id" `
-    -Secret "your-secret" `
+    -TenantId $env:AZURE_TENANT_ID `
+    -AppId $env:AZURE_CLIENT_ID `
+    -Secret $env:AZURE_CLIENT_SECRET `
     -BackupPath ".\intune-backup\production"
 
 # Dry run restore (preview only)
 .\Invoke-IntuneBackupRestore.ps1 `
     -Action Restore `
-    -TenantId "your-tenant-id" `
-    -AppId "your-app-id" `
-    -Secret "your-secret" `
+    -TenantId $env:AZURE_TENANT_ID `
+    -AppId $env:AZURE_CLIENT_ID `
+    -Secret $env:AZURE_CLIENT_SECRET `
     -BackupPath ".\intune-backup\production" `
     -DryRun
 ```
@@ -255,17 +255,17 @@ The unified script allows you to specify all configuration options directly as p
 # Export from DEV tenant
 .\Invoke-IntuneBackupRestore.ps1 `
     -Action Backup `
-    -TenantId "dev-tenant-id" `
-    -AppId "app-id" `
-    -Secret "secret" `
+    -TenantId $env:DEV_AZURE_TENANT_ID `
+    -AppId $env:DEV_AZURE_CLIENT_ID `
+    -Secret $env:DEV_AZURE_CLIENT_SECRET `
     -BackupPath ".\dev-export"
 
 # Import to PROD tenant
 .\Invoke-IntuneBackupRestore.ps1 `
     -Action Restore `
-    -TenantId "prod-tenant-id" `
-    -AppId "app-id" `
-    -Secret "secret" `
+    -TenantId $env:PROD_AZURE_TENANT_ID `
+    -AppId $env:PROD_AZURE_CLIENT_ID `
+    -Secret $env:PROD_AZURE_CLIENT_SECRET `
     -BackupPath ".\dev-export"
 ```
 
@@ -355,9 +355,9 @@ Add `-Verbose` parameter to scripts for detailed logging:
 ```powershell
 .\Invoke-IntuneBackupRestore.ps1 `
     -Action Backup `
-    -TenantId "tenant" `
-    -AppId "app" `
-    -Secret "secret" `
+    -TenantId $env:AZURE_TENANT_ID `
+    -AppId $env:AZURE_CLIENT_ID `
+    -Secret $env:AZURE_CLIENT_SECRET `
     -BackupPath ".\debug-backup" `
     -Verbose
 ```

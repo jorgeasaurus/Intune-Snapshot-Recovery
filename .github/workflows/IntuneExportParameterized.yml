@@ -7,15 +7,15 @@ on:
   # Uncomment the following line to enable push events
   #push:
   # branches: [ main ]
-  # Uncomment the following line to enable scheduled runs
-  #schedule:
-  # - cron: "0 14 * * *"
+  # Scheduled daily backup at 14:00 UTC
+  schedule:
+   - cron: "0 14 * * *"
   workflow_dispatch:
     inputs:
       export_path:
         description: 'Export path for backup files'
         required: true
-        default: '.\intune-backup\Production'
+        default: '.\intune-backup\production'
         type: string
       name_filter:
         description: 'Name filter for exported objects'
@@ -68,7 +68,7 @@ jobs:
       # 2. Ensure backup directory exists
       - name: Prepare backup directory
         run: |
-          $backupDir = "${{ inputs.export_path || '.\intune-backup\Production' }}"
+          $backupDir = "${{ inputs.export_path || '.\intune-backup\production' }}"
           if (-not (Test-Path $backupDir -PathType Container)) {
             Write-Host "Creating backup directory: $backupDir"
             New-Item -Path $backupDir -ItemType Directory -Force | Out-Null
@@ -81,7 +81,7 @@ jobs:
       - name: Export Intune Configuration
         run: |
           Write-Host "Starting Intune export using Invoke-IntuneBackupRestore.ps1"
-          Write-Host "Export Path: ${{ inputs.export_path || '.\intune-backup\Production' }}"
+          Write-Host "Export Path: ${{ inputs.export_path || '.\intune-backup\production' }}"
           Write-Host "Name Filter: ${{ inputs.name_filter || '' }}"
           Write-Host "Add Object Type: ${{ inputs.add_object_type || 'true' }}"
           Write-Host "Export Assignments: ${{ inputs.export_assignments || 'true' }}"
@@ -103,7 +103,7 @@ jobs:
             TenantId = "${{ secrets.AZURE_TENANT_ID }}"
             AppId = "${{ secrets.AZURE_CLIENT_ID }}"
             Secret = "${{ secrets.AZURE_CLIENT_SECRET }}"
-            BackupPath = "${{ inputs.export_path || '.\intune-backup\Production' }}"
+            BackupPath = "${{ inputs.export_path || '.\intune-backup\production' }}"
           }
           
           # Add optional parameters if provided
